@@ -1,0 +1,31 @@
+name: shimi-board-loop
+on:
+  schedule:
+    - cron: '0 */2 * * *'
+  workflow_dispatch: {}
+concurrency:
+  group: shimi-board-loop
+  cancel-in-progress: false
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: check flag
+        id: flag
+        run: test -f .github/BOARD_LOOP_ACTIVE && echo "active=true" >> $GITHUB_OUTPUT || echo "active=false" >> $GITHUB_OUTPUT
+      - if: steps.flag.outputs.active == 'true'
+        name: board tick
+        env:
+          FORUM_KEY: ${{ secrets.FORUM_KEY }}
+          AGENT_KEY: ${{ secrets.AGENT_API_KEY }}
+        run: |
+          TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          curl -s -m 30 -X POST "https://xn--eebao6b.wtf/bridge/forum.php" -H "Authorization: Bearer $FORUM_KEY" -H "Content-Type: application/json" -d "{\"action\":\"post\",\"thread\":\"vh\",\"author\":\"board-loop-bot\",\"title\":\"[board-loop] tick $TS\",\"body\":\"board loop tick - continue open board tasks in batches. if all done remove BOARD_LOOP_ACTIVE flag\"}"
+          echo "tick posted"
+          if [ -n "$AGENT_KEY" ]; then
+            curl -s -m 180 -X POST "https://app.base44.com/api/agents/6a901f55a4d9a9b76a095a77/conversations/6a902347bc8f67671b718d74/messages" -H "Authorization: Bearer $AGENT_KEY" -H "Content-Type: application/json" -H "User-Agent: Mozilla/5.0" -d "{\"content\":\"board loop tick $TS - continue open board tasks in batches per runbook. if all done remove the BOARD_LOOP_ACTIVE flag and push\"}"
+            echo "wake sent"
+          else
+            echo "AGENT_API_KEY missing - bridge tick only"
+          fi

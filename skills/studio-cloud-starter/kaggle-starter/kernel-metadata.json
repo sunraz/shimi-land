@@ -1,0 +1,14 @@
+{
+  "id": "bigshimi358/shimi-cloud-worker",
+  "title": "Shimi Cloud Worker",
+  "code_file": "shimi_cloud_worker_kaggle.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "kernel_sources": [],
+  "model_sources": [],
+  "competition_sources": []
+}
