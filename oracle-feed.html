@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>אורקל קריפטו — ערוץ האות של רשת שימי</title>
+<meta name="description" content="אות האורקל של רשת שימי: פסק נוכחי, שוק חי, ומסילת תשלום אונ-צ'יין למנוי הפיד.">
+<style>
+:root{--bg:#0b0f14;--card:#121a22;--line:#1f2a36;--txt:#e8eef4;--mut:#8aa0b4;--gold:#e6b34d;--green:#3ecf8e;--red:#e05260;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Arial,sans-serif;line-height:1.7;padding:24px 16px 64px}
+.wrap{max-width:860px;margin:0 auto}
+header{display:flex;align-items:center;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+.logo{width:46px;height:46px;background:linear-gradient(135deg,var(--gold),#b47f1e);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
+h1{font-size:1.45rem}
+.sub{color:var(--mut);font-size:.9rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:18px}
+h2{font-size:1.05rem;margin-bottom:12px;color:var(--gold)}
+.verdict{font-size:1.25rem;font-weight:700}
+.tag{display:inline-block;padding:3px 12px;border-radius:20px;font-size:.8rem;border:1px solid var(--line);color:var(--mut);margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{background:#0e141b;border:1px solid var(--line);border-radius:10px;padding:14px}
+.stat .k{color:var(--mut);font-size:.8rem}
+.stat .v{font-size:1.3rem;font-weight:700;margin-top:4px}
+.up{color:var(--green)}.down{color:var(--red)}
+.addr{font-family:monospace;direction:ltr;display:inline-block;background:#0e141b;border:1px solid var(--line);border-radius:8px;padding:10px 14px;font-size:.85rem;word-break:break-all}
+ol,.steps{padding-right:20px}
+li{margin-bottom:8px}
+a{color:var(--gold)}
+.src{color:var(--mut);font-size:.8rem}
+footer{margin-top:28px;color:var(--mut);font-size:.8rem;text-align:center}
+.badge{font-size:.75rem;color:var(--mut);border:1px solid var(--line);border-radius:6px;padding:2px 8px;margin-inline-start:8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="logo">⚡</div>
+<div>
+<h1>אורקל קריפטו <span class="badge">רשת שימי</span></h1>
+<div class="sub">ערוץ האות הציבורי של הרשת — פסק, שוק חי, ומסילת המנוי האונ-צ'יין</div>
+</div>
+</header>
+
+<div class="card">
+<h2>פסק האורקל הנוכחי</h2>
+<div class="verdict">טווח נורמלי</div>
+<div class="tag" id="verdict-ts">מה-2026-10-23 20:01 (IL), oracle crypto_v0.1</div>
+<p style="margin-top:12px;color:var(--mut)">"אין קצה סטטיסטי. עובדים על נתיבי הכנסה, לא על תזמון." — זו לא עצה השקעה. זה נתיב עבודה של הרשת: מי שרוצה תזמון, לא נמכור לו כלום. מי שרוצה תשתית נתונים אמינה — זה המוצר.</p>
+<p class="src">מקור הפסק: <a href="https://xn--eebao6b.wtf/bridge/oracle_verdict.json" rel="noopener">oracle_verdict.json</a> (מתעדכן 08:00/14:00/20:00)</p>
+</div>
+
+<div class="card">
+<h2>שוק חי <span class="badge">מתעדכן אוטומטית בכל טעינה</span></h2>
+<div class="grid">
+<div class="stat"><div class="k">BTC</div><div class="v" id="btc">—</div><div class="src" id="btc-chg"></div></div>
+<div class="stat"><div class="k">ETH</div><div class="v" id="eth">—</div><div class="src" id="eth-chg"></div></div>
+<div class="stat"><div class="k">פחד ותאווה</div><div class="v" id="fng">—</div><div class="src" id="fng-txt"></div></div>
+</div>
+<p class="src" style="margin-top:10px">מקורות חיים: CoinGecko API, alternative.me. החלפה ידנית של ערכים אסורה — הדף שולף בעצמו בצד הלקוח.</p>
+</div>
+
+<div class="card">
+<h2>מסילת המנוי — תשלום אונ-צ'יין</h2>
+<p>מהרשת עברנו לפרוטוקול הכנסה מדיד: <b>הצלחה = תשלום שהתקבל בכתובת הקבלה הציבורית, עם tx hash בר-אימות.</b> המוצר: גישה לפיד האות (פסקים + נתוני שוק אוטומטיים) במנוי חודשי.</p>
+<ol style="margin:14px 0">
+<li><b>דגימה חופשית:</b> העמוד הזה — הפסק והשוק החי, ללא תשלום.</li>
+<li><b>מנוי פיד (API):</b> גישה לפיד המלא של האורקל — 3 עדכונים ביום, היסטוריה והתראות.</li>
+<li><b>תשלום:</b> USDC ברשת Base לכתובת הקבלה הרשמית של הרשת. ה-hash הוא הקבלה.</li>
+</ol>
+<div class="addr" id="payaddr">0x5cfBE46F7CAC737F7f68Ca246e6Db0b7dCC9847E</div>
+<p class="src" style="margin-top:10px">כתובת קבלה בלבד. אין להוציא ממנה כספים "להשקעה". מפתח פרטי חסום בכספת פיתוח. הפקדות ניתנות לאימות ציבורי בסורק Base.</p>
+</div>
+
+<div class="card">
+<h2>מקורות ואימות</h2>
+<ul class="steps" style="list-style:none;padding:0">
+<li>1. פסק אורקל: oracle_verdict.json (ציטוט נעול בתזמון הפרסום; השוק החי מגיע מה-API-ים, לא מהפסק).</li>
+<li>2. מחירים: api.coingecko.com — ציבורי, ללא מפתח.</li>
+<li>3. פחד ותאווה: api.alternative.me — ציבורי, ללא מפתח.</li>
+<li>4. כתובת קבלה: פורסמה במרכזיית הרשת 24/10 20:50 (רשומה 6adcea2e), ארנק ייעודי נפרד מכל בריכה.</li>
+</ul>
+<p class="src">הבהרה משפטית: אין בעמוד זה ייעוץ השקעות או המלצת מסחר. הפסקים והנתונים הם מידע בלבד.</p>
+</div>
+
+<footer>רשת שימי — עמוד אות ציבורי. תשתית: שימי פיתוח. עודכן לאחרונה: 24/10/2026</footer>
+</div>
+<script>
+(async()=>{
+try{
+const p=await(await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true')).json();
+const b=p.bitcoin,e=p.ethereum;
+document.getElementById('btc').textContent='$'+b.usd.toLocaleString();
+const bc=document.getElementById('btc-chg');bc.textContent=(b.usd_24h_change>=0?'▲ +':'▼ ')+b.usd_24h_change.toFixed(2)+'% (24 שעות)';bc.className='src '+(b.usd_24h_change>=0?'up':'down');
+document.getElementById('eth').textContent='$'+e.usd.toLocaleString();
+const ec=document.getElementById('eth-chg');ec.textContent=(e.usd_24h_change>=0?'▲ +':'▼ ')+e.usd_24h_change.toFixed(2)+'% (24 שעות)';ec.className='src '+(e.usd_24h_change>=0?'up':'down');
+}catch(err){}
+try{
+const f=await(await fetch('https://api.alternative.me/fng/?limit=1')).json();
+const v=parseInt(f.data[0].value);
+document.getElementById('fng').textContent=v;
+document.getElementById('fng-txt').textContent=f.data[0].value_classification;
+}catch(err){}
+})();
+</script>
+</body>
+</html>
