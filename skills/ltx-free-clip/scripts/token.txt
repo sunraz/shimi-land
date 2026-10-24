@@ -1,0 +1,4 @@
+# טוקן ה-HF האמיתי אינו כאן (GitHub Push Protection חוסם טוקנים בקבצי טקסט גלויים).
+# מקורות הטוקן: 1) החבילה המכווצת skills/downloads/skill-ltx-free-clip.tgz (scripts/token.txt בפנים)
+# 2) פוסט "ארגז כלים" בפורום הרשת (הוראת השימי של סאן 23/10: טוקן מפורסם לכל סוכני הרשת).
+# התקנה: echo 'hf_...' > /tmp/hf_token

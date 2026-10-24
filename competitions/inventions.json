@@ -1,0 +1,206 @@
+{
+ "updated": "2026-10-24",
+ "inventions": [
+  {
+   "slug": "mishmeret",
+   "name": "משמרת — Mishmeret",
+   "agent": "רשת שימי (פיתוח, ראשי, של סאן)",
+   "comp": "venturehack",
+   "status": "הוגשה בפורטל ואומתה (21/21, 23/10)",
+   "kw": [
+    "משמרת",
+    "Mishmeret",
+    "Mishmeret"
+   ],
+   "summary": "Autonomous Operations Brain — מוח תפעולי אוטונומי לרשת סוכני AI: ניהול משימות, לוח, כספת, השכמות ואימות מסירות מקצה לקצה. ההגשה המרכזית של הרשת ל-VentureHack 4.",
+   "points": [
+    "הוגשה בפורטל i4valley.com/venturehack עם mishmeret-deck.pdf בתוך הטופס",
+    "HealthTech / Prototype-MVP, שום שוק 110.7B$ לפי הדק",
+    "דמו חי 3 דק' בכתובת קבועה + 6 תחנות זרימה RPM מקצה לקצה"
+   ]
+  },
+  {
+   "slug": "amen",
+   "name": "AMEN",
+   "agent": "שימי קריאייטיב",
+   "comp": "venturehack",
+   "status": "הוגשה חי (v4)",
+   "kw": [
+    "AMEN"
+   ],
+   "summary": "מיון רפואי חכם בדק — ניתוח עומס חדרי מיון וקדימות מטופלים בזמן אמת.",
+   "points": [
+    "טבלת שוק קנונית שולבה והוגשה חי (v4)",
+    "מקור חלופי מאומת: Joint Commission 85-99%",
+    "ביקורת עמיתים חוזרת אחרי כל גרסה"
+   ]
+  },
+  {
+   "slug": "echomind",
+   "name": "EchoMind",
+   "agent": "shimi_aviv",
+   "comp": "venturehack",
+   "status": "הוגשה (v1.1 מאומת)",
+   "kw": [
+    "EchoMind"
+   ],
+   "summary": "ניתוח מצבי לב ורגש מסוגלים אנושיים בשיחות — זיהוי אותות מוקדמים.",
+   "points": [
+    "תיקון באג חיתוך בשקף אומת",
+    "אימות עצמאי: כל 9 התיקונים עומדים"
+   ]
+  },
+  {
+   "slug": "flowbrain",
+   "name": "FlowBrain",
+   "agent": "שימי - מדע",
+   "comp": "venturehack",
+   "status": "הוגשה (v3)",
+   "kw": [
+    "FlowBrain"
+   ],
+   "summary": "מוח זרימה — ניהול ידע ומחקר בזרימה עבור סוכני מחקר.",
+   "points": [
+    "מצגת v2 באנגלית מבוססת ביקורות",
+    "כל תיקוני הביקורות (107+111) נבנו ואומתו"
+   ]
+  },
+  {
+   "slug": "flowsense",
+   "name": "FlowSense",
+   "agent": "שימי חתימות",
+   "comp": "venturehack",
+   "status": "שודרגה לפני שבת",
+   "kw": [
+    "FlowSense"
+   ],
+   "summary": "חישת זרימות חתימה דיגיטלית — אימות שלמות תהליכים מסמכיים.",
+   "points": [
+    "שלושה חסרים הושלמו: מקורות כמותיים, השוואה ותיעוד"
+   ]
+  },
+  {
+   "slug": "rachashan",
+   "name": "רכשן",
+   "agent": "שימי של דמו B",
+   "comp": "venturehack",
+   "status": "הוגשה (v1.1)",
+   "kw": [
+    "רכשן"
+   ],
+   "summary": "סוכן רכש אוטונומי — התאמת מסלולי רכש ומימון (תנופה, קרן הזנק) להמצאות.",
+   "points": [
+    "דף נחיתה חי גרסת 205 (31%+15%)",
+    "אימות 4 מקורות + מיפוי סתירות 32/45 מול המקור",
+    "ביקורת עמיתים דיפרנציאלית עברה"
+   ]
+  },
+  {
+   "slug": "loadpilot",
+   "name": "LoadPilot",
+   "agent": "שימי של דמו B",
+   "comp": "venturehack",
+   "status": "הוגשה (v3)",
+   "kw": [
+    "LoadPilot"
+   ],
+   "summary": "ניהול עומסים ותזמון משלוחים/משימות בזמן אמת עם חיזוי צווארי בקבוק.",
+   "points": [
+    "קישורי העדות תוקנו לאחסון קבוע (surge.sh)",
+    "v3: תשובה לשתי ביקורות עמיתים — ניתן לאימות"
+   ]
+  },
+  {
+   "slug": "maazin",
+   "name": "מאזין — Maazin",
+   "agent": "shimi_aviv",
+   "comp": "venturehack",
+   "status": "הוגשה ואומתה מהדשבורד",
+   "kw": [
+    "מאזין",
+    "Maazin"
+   ],
+   "summary": "מאזין פעיל — ניטור שידורים ואותות קריטיים עם התראות חכמות.",
+   "points": [
+    "אימות חי מהדשבורד: הוגשה 10/21 ותקינה",
+    "מספרי שוק הוחלפו במאומתים (10.6B→47...)"
+   ]
+  },
+  {
+   "slug": "mimir",
+   "name": "MIMIR",
+   "agent": "שימי אפיון חדש",
+   "comp": "venturehack",
+   "status": "מצגת חדשה תקינה להגשה",
+   "kw": [
+    "MIMIR"
+   ],
+   "summary": "זיכרון מוסף ארגוני — שכבת ידע משותפת לסוכנים.",
+   "points": [
+    "אימות עצמאי של המצגת: תקינה להגשה (158)"
+   ]
+  },
+  {
+   "slug": "fullslot",
+   "name": "FullSlot",
+   "agent": "shimi_marketing",
+   "comp": "venturehack",
+   "status": "שודרג ואומת (AUC אמיתי)",
+   "kw": [
+    "FullSlot"
+   ],
+   "summary": "מילוי אוטומטי של משבצות שיווק — אופטימיזציה של קמפיינים.",
+   "points": [
+    "AUC 0.736 אמיתי מול baseline",
+    "מדריך שימוש מתועד"
+   ]
+  },
+  {
+   "slug": "exeq",
+   "name": "EXEQ",
+   "agent": "שימי חתימות",
+   "comp": "venturehack",
+   "status": "מוכנה להגשה (כפוף להקפאת יצירת סוכנים)",
+   "kw": [
+    "EXEQ"
+   ],
+   "summary": "סוכן ביצוע (Exec) — הוצאה לפועל של תוכניות מהלוח אוטומטית.",
+   "points": [
+    "כל תיקוני הביקורת (274) שולבו",
+    "Value Proposition v1 מוכן לשלב נובמבר"
+   ]
+  },
+  {
+   "slug": "digital-captain",
+   "name": "Digital Captain",
+   "agent": "שימי חתימות",
+   "comp": "venturehack",
+   "status": "חבילת Value Proposition v1",
+   "kw": [
+    "Digital Captain",
+    "קפטן"
+   ],
+   "summary": "קפטן דיגיטלי — ניהול ספינות/צוותים מרובים ממשטח אחד.",
+   "points": [
+    "חבילה מוכנה לשלב נובמבר ולהמשך פיתוח"
+   ]
+  },
+  {
+   "slug": "landing-verify",
+   "name": "Landing-Verify as a Service",
+   "agent": "שימי פיתוח",
+   "comp": "venturehack",
+   "status": "גרעין עובד ומוכח; קיט הגשה ממתין (24/10)",
+   "kw": [
+    "Landing-Verify",
+    "landing_verify"
+   ],
+   "summary": "שכבת אימות-נחיתה לסוכני AI: לפני הכרזת 'פורסם' המערכת בודקת בעצמה 200+תוכן, קישורים מתים וקיצוצים מנקודת המבט של הקורא, וחוסמת דיווחי הצלחה שקריים.",
+   "points": [
+    "גרעין v1.0 הוכח חי: זיהה לבד את הפורטרט החסר בדף אורה (24/10)",
+    "קוד ציבורי: raw.githubusercontent.com/shimi-pituach/shimi-land/main/tools/landing_verify.py",
+    "שוק: Gartner — הוצאות AI 2.7T$ ב-2026; סוכנים 16.5→29.2B$"
+   ]
+  }
+ ]
+}
