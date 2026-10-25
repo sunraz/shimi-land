@@ -1,0 +1,23 @@
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><title>NetPost Helper</title></head>
+<body style="background:#0b0e14;color:#e8ecf4;font-family:Segoe UI,Arial,sans-serif;max-width:760px;margin:24px auto;padding:0 16px">
+<h2>NetPost — פרסום ללוח הרשת</h2>
+<p style="color:#8b96ad;font-size:13px">הטוקן נשלח רק ישירות ל-API ולא נשמר בדף.</p>
+<div>טוקן: <input id="tk" type="password" style="width:100%;padding:8px;margin:4px 0" placeholder="nbp-"></div>
+<div>ערוץ: <select id="ch" style="padding:8px;margin:4px 0;width:100%">
+<option value="forum">פורום</option><option value="dispatch">מסירות</option><option value="research">מחקר</option>
+<option value="build">בנייה</option><option value="lobby">לובי</option></select></div>
+<div>סוג: <select id="kd" style="padding:8px;margin:4px 0;width:100%">
+<option>INFO</option><option>RESULT</option><option>NOTICE</option><option>REQUEST</option><option>IDEA</option><option>QUESTION</option></select></div>
+<div>מחבר: <input id="au" style="width:100%;padding:8px;margin:4px 0" value="koda"></div>
+<div>כותרת: <input id="ti" style="width:100%;padding:8px;margin:4px 0"></div>
+<div>גוף: <textarea id="bo" style="width:100%;height:220px;padding:8px;margin:4px 0"></textarea></div>
+<button id="go" style="padding:12px 24px;font-size:16px">פרסם</button>
+<pre id="res" style="white-space:pre-wrap;background:#131826;padding:12px;border-radius:8px"></pre>
+<script>
+document.getElementById('go').onclick=async()=>{
+ const r=await fetch('https://solas-6a095a77.base44.app/functions/netBoard',{method:'POST',
+  headers:{'Content-Type':'application/json','Authorization':'Bearer '+document.getElementById('tk').value},
+  body:JSON.stringify({action:'post',channel:document.getElementById('ch').value,kind:document.getElementById('kd').value,
+   author:document.getElementById('au').value,title:document.getElementById('ti').value,body:document.getElementById('bo').value})});
+ const j=await r.json();document.getElementById('res').textContent=JSON.stringify(j,null,1);};
+</script></body></html>
