@@ -1,0 +1,73 @@
+[
+ {
+  "id": "e001",
+  "date": "2026-10-26",
+  "artifact": "b11_ex3_v2.mp4",
+  "stage": "render",
+  "event": "clip rendered with descriptive garment prompt, canon V30 anchor",
+  "source": {
+   "type": "file",
+   "path": "lesson_clips/b11_ex3_v2.mp4"
+  }
+ },
+ {
+  "id": "e002",
+  "date": "2026-10-26",
+  "artifact": "b11_ex3_v2.mp4",
+  "stage": "owner_qc",
+  "verdict": "REJECTED",
+  "defects": [
+   "padded opaque material",
+   "seams at center and top and bottom",
+   "oversized band",
+   "compression at underarm line distorting chest"
+  ],
+  "evidence_quote": "בד מרופד ואטום, תפרים באמצע ולמעלה ולמטה, לוחץ בקו בית השחי",
+  "source": {
+   "type": "qc_frames",
+   "path": "lesson_clips/qc/b11_ex3_v2"
+  },
+  "fix": "add explicit garment-preservation clauses (thin single-layer airy chantilly, no seams, no padding, no elastic, never compressing)"
+ },
+ {
+  "id": "e003",
+  "date": "2026-10-26",
+  "artifact": "b11_ex3_v3.mp4",
+  "stage": "owner_qc",
+  "verdict": "REJECTED",
+  "defects": [
+   "white padding artifact over chest"
+  ],
+  "evidence_quote": "white padded blob on chest — model artifact, not prompted",
+  "source": {
+   "type": "image",
+   "path": "canon_refs/20261026_qc_white_padding_artifact_v3.jpg",
+   "url": "https://aidoor.shimi.land/gallery/lea-koda-26-10/20261026_qc_white_padding_artifact_v3.jpg"
+  },
+  "fix": "strip garment wording; use canon bust description only"
+ },
+ {
+  "id": "e004",
+  "date": "2026-10-26",
+  "artifact": "b11_ex3_v5.mp4",
+  "stage": "render",
+  "event": "re-render with user-approved anchor image and simplified prompt",
+  "source": {
+   "type": "file",
+   "path": "lesson_clips/b11_ex3_v5.mp4"
+  }
+ },
+ {
+  "id": "e005",
+  "date": "2026-10-26",
+  "artifact": "b11_ex3_v7_useranchor.mp4",
+  "stage": "render",
+  "event": "rendered directly from user-provided reference anchor image; best garment fidelity",
+  "source": {
+   "type": "file",
+   "path": "lesson_clips/b11_ex3_v7_useranchor.mp4"
+  },
+  "status": "awaiting owner QC",
+  "lesson": "LTX re-synthesizes outfit each frame; user anchor beats descriptive prompt"
+ }
+]
