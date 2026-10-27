@@ -2,7 +2,7 @@
 
 V30 canon anchor re-render, 27/10.
 
-Anchor: https://aidoor.shimi.land/gallery/canon/v30_standing_front.jpg
+Anchor: https://x0.at/JDuv.jpg
 
 Prompt:
 
