@@ -1,43 +1,28 @@
-<!DOCTYPE html>
-<html lang="he" dir="rtl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>שיעור קונג פו 3: בעיטות מתקדמות עם לאה</title><style>
-*{box-sizing:border-box}
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#f4f1ec;color:#222;line-height:1.7}
-header{background:#1f2a37;color:#fff;padding:28px 18px;text-align:center}
-header h1{margin:0 0 6px;font-size:1.5rem}
-header p{margin:0;opacity:.8;font-size:.95rem}
-main{max-width:860px;margin:0 auto;padding:16px}
-.card{background:#fff;border-radius:14px;padding:18px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,.07)}
-.card h2{margin:0 0 4px;font-size:1.25rem;color:#1f2a37;border-bottom:3px solid #c9a24d;padding-bottom:6px}
-.sub{color:#666;font-size:.9rem;margin:6px 0 10px}
-.strip{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory}
-.strip figure{flex:0 0 46%;max-width:260px;margin:0;scroll-snap-align:center}
-.strip img{width:100%;border-radius:10px;display:block}
-figcaption{font-size:.85rem;margin-top:6px;text-align:center}
-figcaption .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#c9a24d;color:#fff;font-weight:700;font-size:.8rem;margin-left:4px}
-.note{background:#fff8e6;border-right:4px solid #c9a24d;padding:10px 12px;border-radius:8px;margin-top:10px;font-size:.93rem}
+<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>שיעור קונג פו 3: בעיטות יסוד — קונג פו עם לאה</title><style>*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#f4f1ec;color:#222;line-height:1.75}
+header{background:#1f2a37;color:#fff;padding:30px 18px;text-align:center}
+header h1{margin:0 0 6px;font-size:1.55rem}
+header p{margin:0;opacity:.85;font-size:.95rem}
+.badge{display:inline-block;background:#c9a24d;color:#fff;border-radius:20px;padding:4px 16px;font-size:.82rem;margin-top:12px}
+main{max-width:720px;margin:0 auto;padding:16px}
+.card{background:#fff;border-radius:14px;padding:20px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.card h2{margin:0 0 6px;font-size:1.25rem;color:#1f2a37;border-bottom:3px solid #c9a24d;padding-bottom:6px}
+.sub{color:#666;font-size:.9rem;margin:6px 0 12px}
+.step{display:flex;gap:12px;margin:18px 0;align-items:flex-start}
+.num{flex:0 0 34px;height:34px;border-radius:50%;background:#c9a24d;color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.body{flex:1;min-width:0}
+.body h3{margin:0 0 8px;font-size:1.05rem}
+.body img{width:100%;border-radius:10px;display:block;margin-bottom:8px}
+.body p{margin:0}
+.tip{background:#fff8e6;border-right:4px solid #c9a24d;padding:10px 12px;border-radius:8px;margin-top:10px;font-size:.93rem}
+.warn{background:#fdeeee;border-right:4px solid #c06a6a;padding:10px 12px;border-radius:8px;margin-top:10px;font-size:.93rem}
+.deep{background:#eef3f9;border-right:4px solid #1f2a37;padding:12px 14px;border-radius:8px;margin-top:12px;font-size:.95rem}
+video{width:100%;max-width:720px;border-radius:12px;background:#08080A}
+ol.sum li{margin:6px 0}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+td,th{border:1px solid #e3ddd2;padding:8px;text-align:right}
+th{background:#f7f3ea}
 footer{text-align:center;font-size:.8rem;color:#777;padding:20px 12px 40px}
-</style></head><body>
-<header><h1>שיעור קונג פו 3: בעיטות מתקדמות</h1><p>עם לאה · מחזור בעיטה צדדית ומחזור בעיטה עגולה, מפורקים לפריימים</p></header>
-<main>
-<div class="card"><h2>הרעיון של השיעור</h2>
-<p>בעיטה היא לא תנועה אחת אלא שרשרת שלמה: הכנה, הנפה, נקודת פגיעה, וחזרה מבוקרת. מתחילים נופלים בדיוק בחזרה — ולכן מפרקים כאן כל בעיטה לפריימים ומתרגלים לאט בין פריים לפריים.</p>
-<p>כלל זהב: הכוח בא מהירכיים, לא מהרגל. הרגל רק מעבירה את מה שהירכיים כבר הכינו.</p></div>
-
-<div class="card"><h2>מחזור 1 · בעיטה צדדית</h2><p style="margin:14px 0"><video controls preload="metadata" style="width:100%;max-width:720px;border-radius:12px;background:#08080A" src="https://aidoor.shimi.land/gallery/videos/kungfu-lessons/kungfu_l3_ex1_motionfix.mp4"></video><br><small>קליפ הדגמה · נוצר על ידי קודה — גורם לא רשמי בסטודיו שימי</small></p>
-<div class="sub">ארבעה שלבים: הכנה, ברך מורמת, הנפה מלאה, חזרה</div>
-<div class="strip"><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_canon_stand_f01.jpg" loading="lazy" alt="עמידת יסוד: נקודת המוצא"><figcaption><span class="n">1</span> עמידת יסוד: נקודת המוצא</figcaption></figure><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f02_sidekick_chamber.jpg" loading="lazy" alt="הכנה: הברך נמשכת גבוה"><figcaption><span class="n">2</span> הכנה: הברך נמשכת גבוה</figcaption></figure><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f03_sidekick_full.jpg" loading="lazy" alt="הנפה מלאה: הרגל ישרה בגובה הירך"><figcaption><span class="n">3</span> הנפה מלאה: הרגל ישרה בגובה הירך</figcaption></figure><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f04_sidekick_return.jpg" loading="lazy" alt="חזרה מבוקרת: הברך מתקפלת חזרה"><figcaption><span class="n">4</span> חזרה מבוקרת: הברך מתקפלת חזרה</figcaption></figure></div>
-<p class="note">טיפ בטיחות: בהנפה הגוף זקוף, לא שוכב קדימה. גובה הבעיטה תמיד שני בחשיבותו אחרי יציבות העמידה.</p></div>
-
-<div class="card"><h2>מחזור 2 · בעיטה עגולה</h2><p style="margin:14px 0"><video controls preload="metadata" style="width:100%;max-width:720px;border-radius:12px;background:#08080A" src="https://aidoor.shimi.land/gallery/videos/kungfu-lessons/kungfu_l3_ex2_motion.mp4"></video><br><small>קליפ הדגמה · נוצר על ידי קודה — גורם לא רשמי בסטודיו שימי</small></p>
-<div class="sub">שלושה שלבים: הכנה עם סיבוב, נקודת הפגיעה, חזרה</div>
-<div class="strip"><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f06_roundkick_chamber.jpg" loading="lazy" alt="הכנה: הירכיים מתחילות להסתובב"><figcaption><span class="n">1</span> הכנה: הירכיים מתחילות להסתובב</figcaption></figure><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f07_roundkick_full.jpg" loading="lazy" alt="הפגיעה: הרגל חוצה בקשת בגובה הירך"><figcaption><span class="n">2</span> הפגיעה: הרגל חוצה בקשת בגובה הירך</figcaption></figure><figure><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f08_roundkick_return.jpg" loading="lazy" alt="חזרה: הרגל נקלטת חזרה לעמידה"><figcaption><span class="n">3</span> חזרה: הרגל נקלטת חזרה לעמידה</figcaption></figure></div>
-<p class="note">טיפ: כף הרגל הקרקעית מסתובבת על כרית כף הרגל. בלי הסיבוב הזה הברך סובלת.</p></div>
-
-<div class="card"><h2>תרגיל סיום · שרשרת שתי הבעיטות</h2>
-<p>מחברים: עמידת יסוד ← מחזור בעיטה צדדית שלם ← שתי נשימות ← מחזור בעיטה עגולה שלם ← חזרה לעמידה. שש חזרות בכל צד.</p>
-<p class="note">מדד ההצלחה: אחרי כל מחזור אתם חוזרים לאותה עמידת יסוד מדויקת. אם העמידה מתעוותת, האטו.</p></div>
-</main>
-<footer>נוצר על ידי קודה, גורם לא רשמי בסטודיו שימי</footer>
-</body></html>
+.next{display:block;text-align:center;margin:18px 0}
+.next a{background:#1f2a37;color:#fff;padding:10px 22px;border-radius:24px;text-decoration:none;font-size:.9rem}
+</style></head><body><header><h1>שיעור קונג פו 3: בעיטות יסוד</h1><p>עם לאה · בעיטה צדדית ובעיטה עגולה</p><span class="badge">שיעור 3 מתוך 12 · רמה: מתחילים+</span></header><main><div class="card"><h2>מה לומדים בשיעור הזה ולמה</h2><p>בעיטה היא המכה החזקה בגוף, אבל גם המסוכנת ביותר למבצע: לרגע אחד כל המשקל שלכם על רגל אחת. לכן לומדים בעיטות בשלושה כללים: לבעוט רק מגובה המותן ומטה, לחזור מהר יותר משיצאתם, ולעולם לא לבעוט בלי משהו מאחוריכם (קיר, עמידה, זמן). בשיעור נלמד את שתי הבעיטות הבסיסיות והשימושיות ביותר.</p></div><div class="card"><h2>חימום · 4-5 דקות</h2><p>הרמות ברך 10 לכל רגל, סיבובי אגן 10 לכל כיוון, מתיחת ירך קדמית ואחורית כל צד 20 שניות. עמידת עגור 15 שניות לכל רגל — בעיטה טובה מתחילה בשיווי משקל.</p></div><div class="card"><h2>תרגיל 1 · בעיטה צדדית (יוקו גרי)</h2><p style="margin:14px 0"><video controls preload="metadata" src="https://aidoor.shimi.land/gallery/videos/kungfu-lessons/kungfu_l3_ex1_motionfix.mp4"></video><br><small>קליפ הדגמה · נוצר על ידי קודה — גורם לא רשמי בסטודיו שימי</small></p><div class="sub">דחיפה ישרה — הבעיטה החזקה ביותר</div><section class="step"><div class="num">1</div><div class="body"><h3>הצ'מבר</h3><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_canon_stand_f01.jpg" alt="הצ'מבר" loading="lazy"><p>מעמידת יסוד מרימים את הברך מול הגוף ומקרבים אותה חוצה כלפי המטרה, כף הרגל נמשכת לכיוון הישבן. העקב של כף הבעיטה מצביע על המטרה — זה מכוון את הבעיטה.</p><div class="tip">הברך קודם, הרגל אחר כך. בלי ברך גבוהה אין בעיטה — יש נפנוף.</div></div></section><section class="step"><div class="num">2</div><div class="body"><h3>הדחיפה</h3><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f02_sidekick_chamber.jpg" alt="הדחיפה" loading="lazy"><p>דוחפים את הרגל החוצה בקו ישר לצד, בגובה הירך, כשצד הכף (הסוקוטו) מוביל. הגוף נוטה מעט לכיוון ההפוך מהבעיטה לאיזון — המשקל נשאר על רגל העמידה.</p><div class="tip">דמיינו שאתם דוחפים דלת כבדה עם עקב הרגל — לא מצליפים, דוחפים.</div></div></section><section class="step"><div class="num">3</div><div class="body"><h3>החזרה</h3><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f03_sidekick_full.jpg" alt="החזרה" loading="lazy"><p>מקפלים את הרגל חזרה לברך מהיר כפי שיצאה, ומניחים בשליטה. 8-10 חזרות לכל רגל.</p><div class="warn">גובה מקסימלי: הירך. בעיטה צדדית גבוהה היא תרגיל גמישות, לא לחימה.</div></div></section><div class="deep"><b>מה מאחורי התנועה:</b> הבעיטה הצדדית היא דחיפה, לא הצלפה: הכוח בא משרשרת הישבן-ירך-ברך שנמתחת ומשחררת. דחיפה עובדת גם על גוף כבד וגם על יריב שמתקרב — היא עוצרת מומנטום במקום להתנגש איתו. זו הבעיטה שרוב הסגנונות שומרים לרגעים החשובים.</div></div><div class="card"><h2>תרגיל 2 · בעיטה עגולה (מאוואשי גרי)</h2><p style="margin:14px 0"><video controls preload="metadata" src="https://aidoor.shimi.land/gallery/videos/kungfu-lessons/kungfu_l3_ex2_motion.mp4"></video><br><small>קליפ הדגמה · נוצר על ידי קודה — גורם לא רשמי בסטודיו שימי</small></p><div class="sub">מכה מסתובבת — עוקפת שמירה</div><section class="step"><div class="num">1</div><div class="body"><h3>הפיווט</h3><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f04_sidekick_return.jpg" alt="הפיווט" loading="lazy"><p>מסובבים על כרית כף הרגל התומכת ופותחים את האגן לכיוון המטרה. הסיבוב של כף הרגל והאגן קודם לבעיטה — הבעיטה רק רוכבת עליו.</p><div class="tip">בלי פיווט אין עוצמה ויש עומס על הברך. אם הברך כואבת — לא סובבתם מספיק את הרגל התומכת.</div></div></section><section class="step"><div class="num">2</div><div class="body"><h3>הסיבוב והפגיעה</h3><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f06_roundkick_chamber.jpg" alt="הסיבוב והפגיעה" loading="lazy"><p>הברך עולה באלכסון לכיוון המטרה והרגל נפרשת בקשת אופקית בגובה המותן, גב הכף או הסוקוטו מובילים. הידיים שומרות על הפנים לאורך כל התנועה.</p><div class="warn">הבעיטה העגולה מגיעה מבחוץ פנימה — היא עוקפת שמירה של ידיים. אבל היא גם הבעיטה שהכי קל לתפוס. תרגלו חזרה מהירה.</div></div></section><section class="step"><div class="num">3</div><div class="body"><h3>נחיתה מוכנה</h3><img src="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_lesson3_f07_roundkick_full.jpg" alt="נחיתה מוכנה" loading="lazy"><p>מחזירים את הרגל באותה קשת ונוחתים לעמידת יסוד מוכנה — לא להסתובב ולא להפות את הגב. 8-10 לכל רגל.</p><div class="tip">סיום הבעיטה = התחלת הבעיטה הבאה. עמידה מסיימת טובה חוסכת חצי שנייה, וחצי שנייה זה ההבדל בין קונטרה לספיגה.</div></div></section><div class="deep"><b>מה מאחורי התנועה:</b> הבעיטה העגולה מנצלת את מומנט הסיבוב: הפיווט הופך את כל הגוף לקפיץ מסתובב. יש בה פשרה — היא איטית יותר מהצדדית וחושפת אתכם רגע אחד יותר — אבל היא מגיעה מזווית שהידיים לא מכסות. בחירה בין בעיטות היא בחירה בין עוצמה, מהירות וזווית: זו החשיבה שמתחת לכל הקורס.</div></div><div class="card"><h2>תוכנית אימון השבוע</h2><table><tr><th>מה</th><th>כמה</th></tr><tr><td>הרמות ברך</td><td>3×10 לכל רגל</td></tr><tr><td>צ'מבר צדדי (בלי בעיטה)</td><td>3×10</td></tr><tr><td>בעיטה צדדית</td><td>3×8 לכל רגל</td></tr><tr><td>פיווטים במקום</td><td>2×10 לכל צד</td></tr><tr><td>בעיטה עגולה</td><td>3×8 לכל רגל</td></tr></table><div class="tip">ידיים תמיד בשמירה גם באימון — הרגל שמוגנת באימון תישאר מוגנת בקרב.</div></div><div class="card"><h2>סיכום השיעור</h2><ol class="sum"><li>בעיטה צדדית: ברך חוצה, דחיפה ישרה, חזרה מהירה.</li><li>בעיטה עגולה: פיווט קודם, קשת אופקית, נחיתה מוכנה.</li><li>גובה בעיטות: מותן ומטה. תמיד.</li><li>בלי שמירת ידיים אין בעיטה — יש הימור.</li></ol><div class="tip">בשיעור הבא: ידיים — שרשראות אגרופים והחלפות.</div></div><p class="next"><a href="https://aidoor.shimi.land/gallery/lea-koda-20-10/20261021_lea_kungfu_lesson4_hand_chains.html">לשיעור 4: שרשראות ידיים ←</a></p></main><footer>נוצר על ידי קודה, גורם לא רשמי בסטודיו שימי</footer></body></html>
