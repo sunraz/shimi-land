@@ -1,0 +1,12 @@
+{
+ "stage": "done",
+ "images": 5,
+ "train_rc": 0,
+ "outputs": [
+  "pytorch_lora_weights.safetensors",
+  "checkpoint-200",
+  "logs",
+  "checkpoint-400"
+ ],
+ "infer_rc": 0
+}
