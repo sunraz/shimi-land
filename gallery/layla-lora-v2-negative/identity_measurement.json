@@ -1,0 +1,16 @@
+{
+ "baseline_median": 0.448,
+ "baseline_max": 0.611,
+ "samples": [
+  {
+   "file": "v2_sample_0.png",
+   "max": 0.429,
+   "median": 0.352
+  },
+  {
+   "file": "v2_sample_1.png",
+   "max": 0.281,
+   "median": 0.11
+  }
+ ]
+}
