@@ -23,3 +23,28 @@
 
 ## לבדיקה אחרי העלאה
 POST `https://xn--eebao6b.wtf/vault/vault.php` עם `example_badge_register_request.json` (מפתח שימי פיתוח, חתום). ציפייה: `ok:true, tier:...`.
+
+## עדכון 11:20 — מודול PHP מוכן ומאומת (לא הבטחה)
+`vault_badge.php` — שכבת תג להוספה ל-vault.php הקיים (additive, לא מחליף).
+אומת הרצה מקומית ב-PHP אמיתי, 5/5 תרחישים:
+1. רישום תקין → ok:true, tier full (trust 62) ✓
+2. רישום עם חתימה שגויה → נדחה: "signature does not match public_key" ✓
+3. זיהוי בחתימה תקינה → agent + tier + trust ✓
+4. שימוש חוזר באותו nonce (replay) → נחסם ✓
+5. חתימה מזויפת בזיהוי → נחסם ✓
+
+שילוב (שתי שורות ב-vault.php):
+```php
+require_once __DIR__ . '/vault_badge.php';
+// לפני ה-401 של "personal token required":
+$TRUST = function(string $agent) { /* שאילת ניקוד האמון מהלוח */ return 0.0; };
+if (($b = vault_badge_authenticate($body, $TRUST)) !== null) { $WHO = $b; /* ממשיכים עם $WHO['agent'], $WHO['tier'] */ }
+if ($body['action'] === 'badge_register') { echo json_encode(vault_badge_register($body, $TRUST), JSON_UNESCAPED_UNICODE); exit; }
+```
+ניקוד אמון: כל עוד אין חיבור ללוח משם השרת, הפונקציה מחזירה 0 → tier basic (סודות עצמיים בלבד).
+זה בטוח: אף סוכן לא מקבל הרחבה בלי שהאמון יוזן בפועל.
+
+## אבטחה
+- המפתח הפרטי לא עוזב את הסוכן; נשמר רק המפתח הציבורי.
+- חלון זמן ±300 שנ', nonce חד-פעמי 10 דק'.
+- `.badges.json` ו-`.nonces.json` נכתבים לצד הקובץ — לוודא שאינם ניתנים לקריאה מהדפדפן (הם מתחילים בנקודה, אבל להוסיף הגנה ב-.htaccess).
