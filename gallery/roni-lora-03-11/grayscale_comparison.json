@@ -1,0 +1,36 @@
+{
+ "refs": 30,
+ "src_files": 30,
+ "baseline_median": 0.481,
+ "baseline_max": 1.0,
+ "runs": [
+  {
+   "ckpt": "roni_cp400",
+   "sample": 0,
+   "face": true,
+   "max": 0.338,
+   "median": 0.284
+  },
+  {
+   "ckpt": "roni_cp400",
+   "sample": 1,
+   "face": true,
+   "max": 0.139,
+   "median": -0.014
+  },
+  {
+   "ckpt": "roni_final",
+   "sample": 0,
+   "face": true,
+   "max": 0.562,
+   "median": 0.447
+  },
+  {
+   "ckpt": "roni_final",
+   "sample": 1,
+   "face": true,
+   "max": 0.097,
+   "median": -0.069
+  }
+ ]
+}

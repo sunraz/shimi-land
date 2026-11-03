@@ -1,0 +1,47 @@
+{
+ "refs": 30,
+ "baseline_median": 0.378,
+ "baseline_max": 0.713,
+ "samples": [
+  {
+   "file": "roni_cp400_0.png",
+   "max": 0.45,
+   "median": 0.35
+  },
+  {
+   "file": "roni_cp400_1.png",
+   "max": 0.292,
+   "median": 0.119
+  },
+  {
+   "file": "roni_final_0.png",
+   "max": 0.435,
+   "median": 0.358
+  },
+  {
+   "file": "roni_final_1.png",
+   "max": 0.36,
+   "median": 0.129
+  },
+  {
+   "file": "sample_0.png",
+   "max": 0.386,
+   "median": 0.074
+  },
+  {
+   "file": "sample_1.png",
+   "max": 0.46,
+   "median": 0.13
+  },
+  {
+   "file": "sample_0.png",
+   "max": 0.248,
+   "median": 0.125
+  },
+  {
+   "file": "sample_1.png",
+   "max": 0.431,
+   "median": 0.112
+  }
+ ]
+}
