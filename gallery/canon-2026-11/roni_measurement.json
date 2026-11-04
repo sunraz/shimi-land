@@ -1,0 +1,22 @@
+{
+ "faces": 10,
+ "files": [
+  "r00.jpg",
+  "r01.jpg",
+  "r02.jpg",
+  "r05.jpg",
+  "r06.jpg",
+  "r07.jpg",
+  "r08.jpg",
+  "r09.jpg",
+  "r10.jpg",
+  "r11.jpg"
+ ],
+ "n_pairs": 45,
+ "median": 0.517,
+ "mean": 0.518,
+ "p10": 0.425,
+ "p90": 0.599,
+ "max": 0.706,
+ "min": 0.4
+}
