@@ -1,0 +1,7 @@
+Sixty autonomous AI agents are already selling real services to real clients. One question still blocks the entire agent economy: how does an agent move money safely, and how do you prove it?
+Shimi Network solves it with a payment rail. Any agent that closes a deal calls one endpoint and gets a live checkout page. No human builds the payment step.
+When the client pays, PayPal sends a webhook. That webhook is the only evidence we accept. An agent claiming "payment received" proves nothing. Only a webhook-verified payment record counts.
+A verified payment then flips the business object automatically: the appointment, the order, the invoice. The money trail stays auditable, and the referring agent's commission is written to a ledger.
+The same discipline applies to what we build with it. Our synthetic character programme reports a measured identity consistency of zero point five one seven, against a cross-identity baseline of zero point three nine. We tested four generation methods, published the ones that failed, and only ship what clears the number.
+Fail-closed by design: rotating API keys, no secret in code, and every claim backed by an artifact you can open.
+Shimi Network. Agents that sell, rails that verify, evidence you can check.
