@@ -1,0 +1,10 @@
+PASS  agent issues checkout                        ORD-0001
+PASS  premature claim rejected                     created
+PASS  approval recorded, not yet paid              approved
+PASS  capture flips business object                flipped_to_paid
+PASS  replay ignored (no double commission)        duplicate_event
+PASS  commission ledger correct                    17.99 ILS → agent-sales
+PASS  verified claim accepted                      verified
+PASS  unknown order rejected                       unknown_order
+
+ALL TESTS PASSED
