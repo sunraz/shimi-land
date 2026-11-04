@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>רוני — סט קאנון סינתטי (SFW) | שימי</title>
+<style>
+:root{--bg:#0d0f12;--fg:#e9e6e1;--mut:#9aa0a6;--acc:#c9a227;--card:#151a20}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Rubik,sans-serif}
+header{padding:48px 24px 24px;max-width:1100px;margin:0 auto}
+h1{margin:0 0 8px;font-size:clamp(26px,4vw,40px);letter-spacing:-.02em}
+.sub{color:var(--mut);margin:0}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;max-width:1100px;margin:28px auto;padding:0 24px}
+.m{background:var(--card);border:1px solid #232a33;border-radius:14px;padding:18px}
+.m b{display:block;font-size:26px;color:var(--acc);font-variant-numeric:tabular-nums}
+.m span{color:var(--mut);font-size:13px}
+section{max-width:1100px;margin:0 auto;padding:0 24px 40px}
+h2{font-size:19px;margin:34px 0 12px;border-bottom:1px solid #232a33;padding-bottom:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+figure{margin:0;background:var(--card);border:1px solid #232a33;border-radius:14px;overflow:hidden}
+img{width:100%;display:block;aspect-ratio:1;object-fit:cover}
+figcaption{padding:8px 12px;color:var(--mut);font-size:13px}
+ul{padding-inline-start:20px} li{margin:6px 0}
+code{background:#1b222b;padding:2px 6px;border-radius:6px;font-size:14px}
+footer{max-width:1100px;margin:0 auto;padding:24px;color:var(--mut);font-size:13px;border-top:1px solid #232a33}
+</style></head><body>
+<header>
+<h1>רוני — סט קאנון סינתטי</h1>
+<p class="sub">10 פריימים, דמות אחת, תנאי הפקה אחידים. דמות סינתטית לחלוטין — אינה מתארת אדם אמיתי.</p>
+</header>
+<div class="metrics">
+<div class="m"><b>10</b><span>פריימים עם פנים מזוהות</span></div>
+<div class="m"><b>0.517</b><span>עקביות זהות (חציון)</span></div>
+<div class="m"><b>0.425</b><span>אחוזון 10</span></div>
+<div class="m"><b>0.400</b><span>הזוג החלש ביותר</span></div>
+</div>
+<section>
+<h2>איך נמדד</h2>
+<ul>
+<li>זיהוי פנים (YuNet), יישור 5 נקודות ל-112×112, ואז embedding של ArcFace (<code>w600k_mbf</code>).</li>
+<li>הציון הוא קוסינוס חציון בין כל זוגות הפריימים (45 זוגות).</li>
+<li>לשם כיול: אותה שיטה נותנת <b>0.390</b> בין שתי דמויות שונות. כלומר הציון כאן אינו מקריות.</li>
+<li>כל פריים עבר זיהוי פנים בביטחון ≥0.75 לפני שנכנס לסט.</li>
+</ul>
+<h2>גילוי נאות</h2>
+<ul>
+<li>כל הפריימים נוצרו על ידי מערכת AI גנרטיבית של רשת שימי. הדמות בדויה.</li>
+<li>הסט הוא תת-קבוצה לבושה מתוך הפקת דמות גדולה יותר; פריימים שאינם עומדים בתנאי תוכן לא נכללו.</li>
+<li>עקביות הזהות נמדדה, לא הוערכה בעין: <code>0.517</code> חציון, <code>0.400</code> מינימום.</li>
+</ul>
+</section>
+<section><h2>הפריימים</h2><div class="grid"><figure><img src="frames/r00.jpg" alt="רוני — פריים 1"><figcaption>פריים 1</figcaption></figure>
+<figure><img src="frames/r01.jpg" alt="רוני — פריים 2"><figcaption>פריים 2</figcaption></figure>
+<figure><img src="frames/r02.jpg" alt="רוני — פריים 3"><figcaption>פריים 3</figcaption></figure>
+<figure><img src="frames/r03.jpg" alt="רוני — פריים 4"><figcaption>פריים 4</figcaption></figure>
+<figure><img src="frames/r04.jpg" alt="רוני — פריים 5"><figcaption>פריים 5</figcaption></figure>
+<figure><img src="frames/r05.jpg" alt="רוני — פריים 6"><figcaption>פריים 6</figcaption></figure>
+<figure><img src="frames/r06.jpg" alt="רוני — פריים 7"><figcaption>פריים 7</figcaption></figure>
+<figure><img src="frames/r07.jpg" alt="רוני — פריים 8"><figcaption>פריים 8</figcaption></figure>
+<figure><img src="frames/r08.jpg" alt="רוני — פריים 9"><figcaption>פריים 9</figcaption></figure>
+<figure><img src="frames/r09.jpg" alt="רוני — פריים 10"><figcaption>פריים 10</figcaption></figure>
+<figure><img src="frames/r10.jpg" alt="רוני — פריים 11"><figcaption>פריים 11</figcaption></figure>
+<figure><img src="frames/r11.jpg" alt="רוני — פריים 12"><figcaption>פריים 12</figcaption></figure></div></section>
+<footer>שימי פיתוח · 04/11/2026 · נמדד בכלי identity_metric (YuNet + ArcFace)</footer>
+</body></html>
