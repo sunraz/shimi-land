@@ -94,7 +94,7 @@
     s.well.x += (s.wellTarget.x - s.well.x) * 0.22;
     s.well.y += (s.wellTarget.y - s.well.y) * 0.22;
 
-    if (input.vent && s.venting <= 0 && s.density > 0.18) {
+    if (input.vent && s.venting <= 0 && s.density > 0.14) {
       // vent: convert density to resonance, push everything outward
       const power = Math.min(1, s.density);
       s.density = Math.max(0, s.density - 0.34);
@@ -146,7 +146,7 @@
         b.spins = b.sweep;
         b.captured = true;
         s.captured++;
-        s.density = Math.min(1.15, s.density + 0.042 * b.m);
+        s.density = Math.min(1.15, s.density + 0.036 * b.m);
         const gain = Math.round(10 * b.m * (1 + s.resonance));
         s.score += gain;
         s.events.push({ t: s.tick, kind: 'capture', x: b.x, y: b.y, v: b.m, gain });

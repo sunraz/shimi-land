@@ -129,11 +129,21 @@ const gl = glc.getContext('webgl', {antialias:false, alpha:false, powerPreferenc
 let DPR = Math.min(window.devicePixelRatio || 1, 2);
 let W = 0, H = 0, CX = 0, CY = 0, RAD = 0;
 
+const IS_SMALL = () => Math.min(window.innerWidth, window.innerHeight) < 720;
+let GL_SCALE = IS_SMALL() ? 0.92 : 1.0;   // nebula+stars are smooth: render fewer pixels than CSS
+let FX_DPR   = Math.min(window.devicePixelRatio || 1, IS_SMALL() ? 1.5 : 2);
+
 function resize(){
   W = window.innerWidth; H = window.innerHeight;
   DPR = Math.min(window.devicePixelRatio || 1, 2);
-  for (const c of [glc, fxc]) { c.width = Math.floor(W*DPR); c.height = Math.floor(H*DPR); }
-  ctx.setTransform(DPR,0,0,DPR,0,0);
+  FX_DPR = Math.min(window.devicePixelRatio || 1, IS_SMALL() ? 1.5 : 2);
+
+  // crisp-ish overlay, cheap background
+  fxc.width = Math.floor(W*FX_DPR); fxc.height = Math.floor(H*FX_DPR);
+  ctx.setTransform(FX_DPR,0,0,FX_DPR,0,0);
+  glc.width  = Math.max(300, Math.floor(W*GL_SCALE));
+  glc.height = Math.max(300, Math.floor(H*GL_SCALE));
+
   CX = W/2; CY = H/2; RAD = Math.min(W,H) * 0.46;
   if (gl) gl.viewport(0,0,glc.width, glc.height);
 }
@@ -160,7 +170,7 @@ float noise(vec2 p){
 }
 float fbm(vec2 p){
   float v = 0.0, a = 0.5;
-  for(int i=0;i<6;i++){ v += a*noise(p); p = p*2.02 + vec2(11.7, 5.3); a *= 0.5; }
+  for(int i=0;i<4;i++){ v += a*noise(p); p = p*2.03 + vec2(11.7, 5.3); a *= 0.5; }
   return v;
 }
 void main(){
@@ -382,9 +392,18 @@ function spawnBurst(x, y, n, hue, speed){
   }
 }
 
+let slowFrames = 0, degraded = false;
 function frame(now){
   requestAnimationFrame(frame);
-  const dt = Math.min(0.05, (now - S.last) / 1000); S.last = now;
+  const rawDt = (now - S.last) / 1000;
+  const dt = Math.min(0.05, rawDt); S.last = now;
+  // if the device struggles, drop the background resolution once - smoothness beats sharpness
+  if (!degraded && S.state === 'playing' && rawDt > 0.045) {
+    if (++slowFrames > 45) {
+      degraded = true; GL_SCALE = Math.max(0.34, GL_SCALE * 0.62);
+      resize();
+    }
+  } else if (slowFrames > 0) { slowFrames = Math.max(0, slowFrames - 1); }
   const s = S.sim;
 
   if (S.state === 'playing' && s) {
@@ -458,7 +477,7 @@ function frame(now){
 
   // --- draw FX layer ---
   const shakeX = (Math.random()-0.5) * S.shake, shakeY = (Math.random()-0.5) * S.shake;
-  ctx.setTransform(DPR,0,0,DPR,shakeX*DPR,shakeY*DPR);
+  ctx.setTransform(FX_DPR,0,0,FX_DPR,shakeX*FX_DPR,shakeY*FX_DPR);
   ctx.clearRect(-40,-40,W+80,H+80);
   ctx.globalCompositeOperation = 'lighter';
 
