@@ -37,6 +37,7 @@
     <div class="cell"><span>ניקוד שנטען</span><b id="claimed">—</b></div>
     <div class="cell"><span>ניקוד ששוחזר</span><b id="replayed">—</b></div>
     <div class="cell"><span>פריימים</span><b id="frames">—</b></div>
+    <div class="cell"><span>חוקים</span><b id="rules" style="font-size:13px">—</b></div>
     <div class="cell"><span>זרע</span><b id="seed" style="font-size:13px">—</b></div>
   </div>
   <div id="dg"></div>
@@ -64,6 +65,7 @@
   $('claimed').textContent = (data.sc||0).toLocaleString('he-IL');
   $('frames').textContent = (data.t && data.t.n) || 0;
   $('seed').textContent = data.s || '—';
+  $('rules').textContent = (data.v || '—') + ' / ' + (window.SINGULARITY.RULES);
 
   let res;
   try { res = E.replay(data.s, data.t); }
@@ -74,9 +76,16 @@
   $('dg').innerHTML = '<code>חתימה מחושבת: ' + expected + '</code>' +
     (data.d ? '<code>חתימה שנטענה: ' + data.d + '</code>' : '');
 
+  const versionOk = !data.v || data.v === E.RULES;
   const match = res.score === data.sc && (!data.d || expected === data.d);
-  if (match) setVerdict('ok', 'מאומת', 'הסימולציה שוחזרה במלואה — הניקוד אמיתי.');
-  else setVerdict('bad', 'לא תואם', 'הניקוד שנטען שונה ממה שהפיזיקה מפיקה. ההוכחה לא עומדת.');
+  if (!versionOk) {
+    setVerdict('wait', 'גרסת חוקים אחרת', 'הריצה נוצרה בחוקים ' + data.v + ', והמנוע הנוכחי הוא ' + E.RULES +
+      '. הכיול השתנה — זה לא זיוף, אבל ההוכחה תקפה רק לגרסה שבה נוצרה.');
+  } else if (match) {
+    setVerdict('ok', 'מאומת', 'הסימולציה שוחזרה במלואה — הניקוד אמיתי.');
+  } else {
+    setVerdict('bad', 'לא תואם', 'הניקוד שנטען שונה ממה שהפיזיקה מפיקה. ההוכחה לא עומדת.');
+  }
 })();
 </script>
 </body>

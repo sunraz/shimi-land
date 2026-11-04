@@ -361,12 +361,12 @@ function endRun(){
   const score = S.sim.score;
   const trace = E.packTrace(S.frames);
   const dg = E.digest(S.seedStr, trace, score);
-  const packed = JSON.stringify({ s:S.seedStr, t:trace, sc:score, d:dg });
+  const packed = JSON.stringify({ v:E.RULES, s:S.seedStr, t:trace, sc:score, d:dg });
   const b64 = btoa(unescape(encodeURIComponent(packed)));
   el('oScore').textContent = score.toLocaleString('he-IL');
   el('oCap').textContent = S.sim.captured;
   el('oConst').textContent = S.sim.constellations;
-  el('proof').textContent = dg + '\n' + S.frames.length + ' פריימים · ' + (S.sim.tick*E.DT).toFixed(1) + ' שנ׳';
+  el('proof').textContent = dg + '\n' + S.frames.length + ' פריימים · ' + (S.sim.tick*E.DT).toFixed(1) + ' שנ׳ · חוקים ' + E.RULES;
   el('proof').dataset.payload = b64;
   if (score > S.best) { S.best = score; try{ localStorage.setItem('singularity_best', score); }catch(e){} }
   el('overScreen').classList.remove('hide');

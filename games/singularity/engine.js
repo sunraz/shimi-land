@@ -7,6 +7,7 @@
   const G = 2.0;                   // gravitational constant
   const EPS = 0.0009;              // softening, keeps forces finite at r->0
   const MAX_BODIES = 900;
+  const RULES = '1.2';           // bump when physics/balance changes: proofs are version-bound
   const DRAG = 7.5;             // energy loss near the core (the disk)
 
   function mulberry32(a) {
@@ -225,7 +226,7 @@
   }
 
   function digest(seedStr, trace, score) {
-    const payload = seedStr + '|' + trace.xy + '|' + (trace.flags || []).join(',') + '|' + score;
+    const payload = RULES + '|' + seedStr + '|' + trace.xy + '|' + (trace.flags || []).join(',') + '|' + score;
     let h = 2166136261 >>> 0;
     for (let i = 0; i < payload.length; i++) { h ^= payload.charCodeAt(i); h = Math.imul(h, 16777619); }
     let h2 = 5381 >>> 0;
@@ -233,7 +234,7 @@
     return (h >>> 0).toString(36).padStart(7, '0') + (h2 >>> 0).toString(36).padStart(7, '0');
   }
 
-  const api = { WORLD, DT, createState, step, replay, packTrace, unpackTrace, digest, hashSeed, mulberry32, quantizeInput };
+  const api = { RULES, WORLD, DT, createState, step, replay, packTrace, unpackTrace, digest, hashSeed, mulberry32, quantizeInput };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   root.SINGULARITY = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this);
