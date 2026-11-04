@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SINGULARITY — אימות הוכחת משחק</title>
+<style>
+  :root{--ink:#eaf0ff;--dim:#8b96ad;--ok:#4ecb8f;--bad:#ff5f6d;--cyan:#63e8ff}
+  html,body{margin:0;min-height:100%;background:#05060b;color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,"Segoe UI",Rubik,system-ui,sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;padding:44px 22px 80px}
+  h1{font-size:clamp(24px,6vw,38px);letter-spacing:.1em;margin:0 0 6px;
+    background:linear-gradient(100deg,#fff,#63e8ff 50%,#b06bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--dim);margin:0 0 28px;line-height:1.7}
+  .verdict{border-radius:20px;padding:26px;text-align:center;margin:22px 0;
+    border:1px solid rgba(120,150,200,.2);background:rgba(255,255,255,.03)}
+  .verdict big{display:block;font-size:clamp(26px,7vw,42px);font-weight:800;letter-spacing:.08em}
+  .verdict.ok big{color:var(--ok)} .verdict.bad big{color:var(--bad)} .verdict.wait big{color:var(--dim)}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .cell{background:rgba(255,255,255,.04);border-radius:14px;padding:14px}
+  .cell span{display:block;font-size:10px;letter-spacing:.16em;color:var(--dim);text-transform:uppercase}
+  .cell b{font-size:20px;font-variant-numeric:tabular-nums}
+  code{font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--cyan);word-break:break-all;
+    background:rgba(99,232,255,.07);padding:10px 12px;border-radius:10px;display:block;margin-top:10px;line-height:1.6}
+  a.btn{display:inline-block;margin-top:22px;text-decoration:none;color:#04070d;font-weight:800;letter-spacing:.05em;
+    background:linear-gradient(100deg,#7ef0ff,#b06bff);padding:14px 24px;border-radius:14px}
+  ul{color:var(--dim);line-height:1.9;font-size:14px;padding-inline-start:20px}
+  b.k{color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>הוכחת משחק</h1>
+  <p class="sub">כל ריצה ניתנת לשחזור. הפיזיקה דטרמיניסטית, הקלט נשמר, והאימות מריץ מחדש את כל הסימולציה — לא משווה מספרים שהמשחק המציא.</p>
+  <div class="verdict wait" id="verdict"><big id="vtxt">בודק…</big><div id="vsub" class="sub" style="margin:10px 0 0"></div></div>
+  <div class="grid">
+    <div class="cell"><span>ניקוד שנטען</span><b id="claimed">—</b></div>
+    <div class="cell"><span>ניקוד ששוחזר</span><b id="replayed">—</b></div>
+    <div class="cell"><span>פריימים</span><b id="frames">—</b></div>
+    <div class="cell"><span>זרע</span><b id="seed" style="font-size:13px">—</b></div>
+  </div>
+  <div id="dg"></div>
+  <ul style="margin-top:26px">
+    <li>המנוע צועד בצעד קבוע של 1/120 שנייה — אין תלות במהירות המכשיר.</li>
+    <li>הקלט נשמר ברזולוציה של 8 ביט ומכומת <b class="k">לפני</b> שהוא נכנס לפיזיקה, כדי שהשחזור לא ייפרם.</li>
+    <li>אותו זרע ואותו קלט ⇒ אותה תוצאה, בכל מכשיר ובכל פעם.</li>
+  </ul>
+  <a class="btn" href="index.html">חזרה למשחק</a>
+</div>
+<script src="engine.js"></script>
+<script>
+(function(){
+  const E = window.SINGULARITY;
+  const $ = id => document.getElementById(id);
+  function setVerdict(cls, txt, sub){
+    const v = $('verdict'); v.className = 'verdict ' + cls; $('vtxt').textContent = txt; $('vsub').textContent = sub || '';
+  }
+  const raw = location.hash.replace(/^#/, '');
+  if (!raw) { setVerdict('wait', 'אין הוכחה בקישור', 'פתח את הקישור שנוצר בסוף ריצה.'); return; }
+  let data;
+  try { data = JSON.parse(decodeURIComponent(escape(atob(raw)))); }
+  catch(e){ setVerdict('bad', 'הוכחה פגומה', 'הקישור אינו בפורמט של הוכחת משחק.'); return; }
+
+  $('claimed').textContent = (data.sc||0).toLocaleString('he-IL');
+  $('frames').textContent = (data.t && data.t.n) || 0;
+  $('seed').textContent = data.s || '—';
+
+  let res;
+  try { res = E.replay(data.s, data.t); }
+  catch(e){ setVerdict('bad', 'שחזור נכשל', String(e).slice(0,120)); return; }
+
+  $('replayed').textContent = res.score.toLocaleString('he-IL');
+  const expected = E.digest(data.s, data.t, data.sc);
+  $('dg').innerHTML = '<code>חתימה מחושבת: ' + expected + '</code>' +
+    (data.d ? '<code>חתימה שנטענה: ' + data.d + '</code>' : '');
+
+  const match = res.score === data.sc && (!data.d || expected === data.d);
+  if (match) setVerdict('ok', 'מאומת', 'הסימולציה שוחזרה במלואה — הניקוד אמיתי.');
+  else setVerdict('bad', 'לא תואם', 'הניקוד שנטען שונה ממה שהפיזיקה מפיקה. ההוכחה לא עומדת.');
+})();
+</script>
+</body>
+</html>
