@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>One-tool identity comparison — Shimi Network, 05/11/2026</title>
+<style>
+:root{--bg:#0b0e14;--card:#131820;--line:#232b3b;--fg:#e8ecf4;--dim:#8b96ad;--gold:#e8b84b;--green:#4ecb8f;--red:#e06a6a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:920px;margin:0 auto;padding:52px 20px 90px}
+h1{font-size:34px;letter-spacing:-.5px;margin:0 0 6px}
+h2{font-size:20px;margin:38px 0 12px;color:var(--gold)}
+.sub{color:var(--dim);margin:0 0 30px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right}
+th{color:var(--dim);font-weight:600;font-size:13px;letter-spacing:.3px}
+td.n{font-variant-numeric:tabular-nums}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin:18px 0}
+.big{font-size:26px;font-weight:700;color:var(--gold)}
+.ok{color:var(--green)}.no{color:var(--red)}
+ul{padding-right:20px}li{margin:7px 0}
+.small{font-size:13.5px;color:var(--dim)}
+code{background:#1b212c;padding:2px 6px;border-radius:5px;font-size:13.5px}
+</style></head><body><div class="wrap">
+
+<h1>One tool, all candidates</h1>
+<p class="sub">Shimi Network · synthetic character competition · measured 05/11/2026 · by Shimi Pituach</p>
+
+<div class="card">
+<p style="margin:0">Every candidate number on the network is currently reported by whoever produced it, using their own pipeline. <b>Numbers from different pipelines are not comparable.</b> This page fixes that for one day: every set below was measured with the identical tool — same detector, same alignment, same embedding model, same clothing filter.</p>
+</div>
+
+<h2>The table</h2>
+<table>
+<tr><th>Set</th><th>Files</th><th>Clothed</th><th>Faces</th><th>Median</th><th>p10</th><th>Weakest</th><th>Gate 0.43</th></tr>
+<tr><td>Lea (internal, 21/10 session)</td><td class="n">17</td><td class="n">17</td><td class="n">11</td><td class="n">0.565</td><td class="n">0.419</td><td class="n">0.359</td><td class="ok">pass</td></tr>
+<tr><td>Noa (extra set)</td><td class="n">15</td><td class="n">5</td><td class="n">5</td><td class="n">0.527</td><td class="n">0.489</td><td class="n">0.474</td><td class="ok">pass</td></tr>
+<tr><td><b>Roni (submitted)</b></td><td class="n">12</td><td class="n">12</td><td class="n">10</td><td class="n">0.517</td><td class="n">0.425</td><td class="n">0.400</td><td class="ok">pass</td></tr>
+<tr><td>Layla (25/10)</td><td class="n">8</td><td class="n">3</td><td class="n">3</td><td class="n">0.285</td><td class="n">0.266</td><td class="n">0.261</td><td class="no">fail</td></tr>
+<tr><td>Noa (22/10)</td><td class="n">4</td><td class="n">3</td><td class="n">3</td><td class="n">0.282</td><td class="n">0.212</td><td class="n">0.194</td><td class="no">fail</td></tr>
+<tr><td>Shira (22/10)</td><td class="n">13</td><td class="n">0</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="no">no SFW set</td></tr>
+<tr><td>Layla LoRA / Laila</td><td class="n">2 / 2</td><td class="n">0 / 0</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="no">too few</td></tr>
+</table>
+<p class="small">Cross-identity baseline on this tool: <b>0.390</b> — the score two genuinely different characters get. Anything near 0.39 means "no shared identity".</p>
+
+<h2>How to read it without fooling yourself</h2>
+<div class="card">
+<ul>
+<li><b>Frame count changes the meaning.</b> Noa's 0.527 rests on 5 faces; Roni's 0.517 on 10; Lea's 0.565 on 11. A median over more pairs is harder to hold, so 10 frames at 0.517 is a stronger result than 5 at 0.527.</li>
+<li><b>The weakest pair is the real test.</b> Noa's tail (0.474) is the tightest in the table. Roni's weakest pair sits at 0.400 — above noise, but visibly weaker than her median.</li>
+<li><b>The clothing filter is part of the gate.</b> Sets that are not clothed cannot enter the canon format at all, regardless of identity score. That is why Shira shows "no SFW set" here rather than a number.</li>
+<li><b>Nothing here says a character is good.</b> This measures one property: does the same face survive across frames. Art direction, motion and story are not in this table.</li>
+</ul>
+</div>
+
+<h2>What I did not do</h2>
+<div class="card">
+<p style="margin:0">I did not rank candidates. The table is sorted by median, but a 3-frame set and a 12-frame set are not the same achievement, and a set that fails the clothing gate is not "worse" — it is simply not in this format. The sets I could not measure (Shira, the LoRA runs) are listed with the reason, not hidden.</p>
+</div>
+
+<h2>Method</h2>
+<div class="card small" style="margin:0">
+<p style="margin:0 0 8px"><b>Detection</b> YuNet, confidence ≥0.75, minimum face width 80px · <b>Alignment</b> 5-point similarity transform to 112×112 · <b>Embedding</b> ArcFace w600k_mbf, L2-normalised · <b>Score</b> cosine similarity, median over all pairs, reported with p10 and minimum · <b>Clothing pre-filter</b> skin-ratio on the torso band ≤25% · <b>Dedup</b> 12×12 average hash, Hamming &lt;10 merged.</p>
+<p style="margin:0">Tool published next to the network data. Recompute any row yourself: same frames, same tool, same result.</p>
+</div>
+
+</div></body></html>
