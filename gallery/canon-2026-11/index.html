@@ -145,17 +145,22 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
 <footer>Shimi Network · Shimi Pituach · 05/11/2026 · measurement: identity_metric (YuNet + ArcFace)</footer>
 </body></html>
 <section class="motion">
-<h2>Motion</h2>
-<p class="dim">Stills alone are not the whole story. Two motion assets were produced from the same canonical frame; only one is submitted, and the reason is measured.</p>
-
-<div class="grid2">
-  <figure>
-    <video src="media/roni_cinemagraph.mp4" autoplay muted loop playsinline width="100%"></video>
-    <figcaption><b>Submitted: cinemagraph</b> — 4.0s, 704x1216. Camera-only motion on the canonical frame, so identity cannot drift. Measured across the clip: 0.450 / 0.457 / 0.454 / 0.463 (swing 0.013).</figcaption>
-  </figure>
-  <figure>
-    <video src="media/ltx_i2v_test.mp4" autoplay muted loop playsinline width="100%"></video>
-    <figcaption><b>Not submitted: generative i2v</b> — LTX-Video across the same frame. Identity holds at 0.470 for the first half second, then collapses to 0.338 / 0.363 / 0.339. Published as a negative result, not hidden.</figcaption>
-  </figure>
+<h2>Motion set — four clips, identity-verified frame by frame</h2>
+<p class="dim">Each clip is a cinemagraph built from a different canonical frame of the same shoot: camera-only motion, no generative pass, so identity <em>cannot</em> drift structurally. Every clip was sampled at 0.3 / 1.5 / 2.7 / 3.7s and scored against the 10-frame canon set. A clip is accepted only if <b>every</b> sampled frame clears the 0.43 gate.</p>
+<div class="grid">
+<figure><video src="media/m1_pushin.mp4" autoplay muted loop playsinline width="100%"></video>
+<figcaption><b>01 — slow push-in</b> · median 0.474 · worst frame 0.470</figcaption></figure>
+<figure><video src="media/m3_panleft.mp4" autoplay muted loop playsinline width="100%"></video>
+<figcaption><b>02 — lateral drift</b> · median 0.480 · worst frame 0.475</figcaption></figure>
+<figure><video src="media/m4_panright.mp4" autoplay muted loop playsinline width="100%"></video>
+<figcaption><b>03 — reverse drift</b> · median 0.465 · worst frame 0.459</figcaption></figure>
+<figure><video src="media/m6_breathe.mp4" autoplay muted loop playsinline width="100%"></video>
+<figcaption><b>04 — breathing zoom</b> · median 0.525 · worst frame 0.513</figcaption></figure>
 </div>
+<h3>What we rejected, and why</h3>
+<p class="dim">Two of six clips did not clear the bar and are not in the set. A tilt-up crop lost the face entirely in every sampled frame (no detection at 0.75). A tighter crop scored 0.404 at its weakest frame — above the 0.390 cross-identity baseline, but below our own gate, so it was dropped rather than shipped. The generative image-to-video test below is published for the same reason: it measured 0.470 at 0.3s and 0.338–0.363 after, so motion from a generative pass does not preserve this identity, while camera-only motion does.</p>
+<figure style="margin-top:18px;max-width:420px">
+<video src="media/ltx_i2v_test.mp4" autoplay muted loop playsinline width="100%"></video>
+<figcaption><b>Negative result — generative i2v (LTX)</b> · 0.470 → 0.338 / 0.363 / 0.339. Identity leaves the character inside one second.</figcaption>
+</figure>
 </section>
