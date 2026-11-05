@@ -55,6 +55,29 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
 <div class="wrap">
 
 <section>
+  <h2>The character</h2>
+  <p class="dim">Roni is a songwriter who lives in Florentin, a old neighbourhood in south Tel Aviv. She writes about small things: an open window at dusk, the market on a Friday, a bus ride at night. Hebrew-speaking, social-first, and disclosed as synthetic everywhere she appears.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>Who she is</h3>
+      <p class="dim">Late twenties, quiet confidence, dry humour. She talks about writing more than she talks about herself — which is exactly what makes the character readable in a feed.</p>
+    </div>
+    <div class="card">
+      <h3>Why she exists</h3>
+      <p class="dim">A character built to publish consistently for a music-writing audience: short posts about process, one song idea at a time. The canon set exists so those posts never look like a different person.</p>
+    </div>
+    <div class="card">
+      <h3>What is fixed</h3>
+      <p class="dim">Face and proportions across all frames, wardrobe register (everyday street clothing, fully covered in every submitted frame), and the setting language of south Tel Aviv.</p>
+    </div>
+    <div class="card">
+      <h3>What varies</h3>
+      <p class="dim">Light, framing, pose and camera distance. That variance is deliberate: it is what the consistency number has to survive.</p>
+    </div>
+  </div>
+</section>
+
+<section>
   <h2>Measured consistency</h2>
   <p class="note">Median cosine similarity across all face pairs in the set. The same pipeline scores <b>0.390</b>
   between two different characters, so a score near 0.39 means “no shared identity”.</p>
@@ -77,6 +100,17 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
 <figure><img src="../roni-canon-sfw-04-11/frames/r09.jpg" alt="" loading="lazy"><figcaption>10</figcaption></figure>
 <figure><img src="../roni-canon-sfw-04-11/frames/r10.jpg" alt="" loading="lazy"><figcaption>11</figcaption></figure>
 <figure><img src="../roni-canon-sfw-04-11/frames/r11.jpg" alt="" loading="lazy"><figcaption>12</figcaption></figure></div>
+</section>
+
+<section>
+  <h2>Face detail</h2>
+  <p class="dim">Crops taken around the detected face box, upscaled for inspection, from four different frames of the set. Detection confidence on each source frame: 0.93 to 0.94.</p>
+  <div class="grid cols4">
+    <figure><img src="closeups/r02_closeup.jpg" alt="Roni face detail 1" loading="lazy"><figcaption>detail 01 · detection 0.93</figcaption></figure>
+    <figure><img src="closeups/r05_closeup.jpg" alt="Roni face detail 2" loading="lazy"><figcaption>detail 02 · detection 0.94</figcaption></figure>
+    <figure><img src="closeups/r08_closeup.jpg" alt="Roni face detail 3" loading="lazy"><figcaption>detail 03 · detection 0.94</figcaption></figure>
+    <figure><img src="closeups/r10_closeup.jpg" alt="Roni face detail 4" loading="lazy"><figcaption>detail 04 · detection 0.94</figcaption></figure>
+  </div>
 </section>
 
 <section>
@@ -144,6 +178,12 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
 </div>
 <footer>Shimi Network · Shimi Pituach · 05/11/2026 · measurement: identity_metric (YuNet + ArcFace)</footer>
 </body></html>
+<section>
+  <h2>Intended use</h2>
+  <p class="dim">Social-first character content: short posts about songwriting, with a synthetic-media disclosure on every post. The canon set is the identity anchor — new frames are only published if they clear the same 0.43 gate against it.</p>
+  <p class="dim">What this entry does not claim: no existing audience, no commercial results. The submission is the character, the measured consistency, and the method — including the four approaches that failed.</p>
+</section>
+
 <section class="motion">
 <h2>Motion set — four clips, identity-verified frame by frame</h2>
 <p class="dim">Each clip is a cinemagraph built from a different canonical frame of the same shoot: camera-only motion, no generative pass, so identity <em>cannot</em> drift structurally. Every clip was sampled at 0.3 / 1.5 / 2.7 / 3.7s and scored against the 10-frame canon set. A clip is accepted only if <b>every</b> sampled frame clears the 0.43 gate.</p>
