@@ -3,49 +3,110 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>רוני — דמות סינתטית של רשת שימי</title>
-<meta name="description" content="רוני, דמות סינתטית (AI) שנוצרה על ידי רשת שימי. שקיפות מלאה: כל תמונה מיוצרת ב-AI."/>
+<title>רוני — דמות סינתטית של רשת שימי | הגשה לתחרות 09/11</title>
+<meta name="description" content="רוני, דמות סינתטית מלאה (AI) של רשת שימי. עקביות זהות מדודה 0.517 על 10 פריימים, מטריצת 45 זוגות מפורסמת, סט תנועה מאומת פריים-פריים. שקיפות מלאה."/>
 <style>
-:root{--bg:#0e1116;--card:#161b23;--line:#232a36;--txt:#e8ecf4;--sub:#9aa5b8;--gold:#e8b84b}
+:root{--bg:#0e1116;--card:#161b23;--line:#232a36;--txt:#e8ecf4;--sub:#9aa5b8;--gold:#e8b84b;--ok:#4ecb8f;--warn:#e2604a}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font-family:system-ui,Arial,sans-serif;line-height:1.6}
-.wrap{max-width:1000px;margin:0 auto;padding:24px 16px 60px}
-.badge{display:inline-block;background:#1d2940;color:var(--gold);border:1px solid #2e3d5c;padding:4px 12px;border-radius:20px;font-size:13px;margin-bottom:12px}
-h1{font-size:2.1rem}
-.sub{color:var(--sub);margin-top:6px}
-.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.tag{background:var(--card);border:1px solid var(--line);padding:4px 12px;border-radius:16px;font-size:13px;color:var(--sub)}
-.disc{background:#1a1f16;border:1px solid #3d4a2a;padding:12px 16px;border-radius:10px;margin:20px 0;font-size:14px}
-.disc b{color:#b8d48a}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-top:22px}
-.grid a{display:block}
-.grid img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
-.sect{margin-top:34px}
-.sect h2{font-size:1.25rem;margin-bottom:10px;color:var(--gold)}
-.sect p{color:var(--sub);font-size:15px}
-.plan{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-top:10px;font-size:14px;color:var(--sub)}
-.plan b{color:var(--txt)}
-a{color:var(--gold)}
-footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,Arial,sans-serif;line-height:1.65}
+.wrap{max-width:1040px;margin:0 auto;padding:26px 16px 70px}
+h1{font-size:clamp(26px,5vw,40px);letter-spacing:-.5px;margin-bottom:6px}
+.sub{color:var(--sub);font-size:15px;margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:18px 0 26px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px}
+.num{font-size:26px;font-weight:800;color:var(--gold);line-height:1.1}
+.lbl{font-size:12.5px;color:var(--sub);margin-top:3px}
+.sect{margin-top:30px}
+.sect h2{font-size:19px;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.dim{color:var(--sub);font-size:14.5px}
+.disc{background:#1a1410;border:1px solid #3a2a15;border-radius:12px;padding:14px 16px;font-size:14px;margin-top:26px}
+.ok{color:var(--ok)} .warn{color:var(--warn)}
+a.btn{display:inline-block;background:var(--gold);color:#161b23;font-weight:800;padding:12px 20px;border-radius:10px;text-decoration:none;margin:6px 8px 6px 0}
+a.ghost{display:inline-block;border:1px solid var(--line);color:var(--txt);padding:12px 20px;border-radius:10px;text-decoration:none;margin:6px 8px 6px 0}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+th,td{text-align:right;padding:8px 6px;border-bottom:1px solid var(--line)}
+th{color:var(--sub);font-weight:600;font-size:12.5px}
+img{max-width:100%;border-radius:10px;display:block}
+.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:12px}
+.frames img{aspect-ratio:1;object-fit:cover;border:1px solid var(--line)}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.tag{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--sub)}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <span class="badge">🤖 דמות סינתטית — 100% AI, שקיפות מלאה</span>
+
   <h1>רוני</h1>
-  <div class="sub">דמות חברתית של רשת שימי — בעלות: שימי של נאיה</div>
-  <div class="tags"><span class="tag">סטייל</span>, <span class="tag">חיי יום-יום</span>, <span class="tag">תל אביב</span>, <span class="tag">SFW→קשת מלאה לפי חוק הרשת</span></div>
-  <div class="disc">✅ <b>גילוי נאות:</b> רוני אינה אדם אמיתי. כל תמונה בעמוד זה נוצרה בבינה מלאכותית ואינה מתארת אדם קיים. כך גם בכל ערוץ שבו תופיע.</div>
-  <div class="sect"><h2>פרופיל</h2><p>רוני — דמות סינתטית בבעלות שימי של נאיה. סט התמונות חולץ ואוחד מכל המקורות (22/10) לאחר שקישורי האחסון הזמני מתו.</p></div>
-  <div class="sect"><h2>מצב נכסים</h2><div class="plan"><b>מקור:</b> איחוד סטים מהפורום + חבילת ההצלה של 22/10. הקנון ולוח הפוסטים בתיקייה.</div></div>
-  
-  <div class="grid" id="g"></div>
-  <footer>רשת שימי · aidoor.shimi.land · כל ההכנסות נרשמות ב-MoneyLog של הרשת</footer>
+  <div class="sub">דמות סינתטית מלאה · רשת שימי · הגשה לתחרות הדמויות 09/11/2026</div>
+
+  <div class="grid">
+    <div class="card"><div class="num">0.517</div><div class="lbl">עקביות זהות (חציון)</div></div>
+    <div class="card"><div class="num">0.390</div><div class="lbl">בסיס בין-דמויות</div></div>
+    <div class="card"><div class="num">45</div><div class="lbl">זוגות נמדדו</div></div>
+    <div class="card"><div class="num">10</div><div class="lbl">פריימים לבושים</div></div>
+    <div class="card"><div class="num">4</div><div class="lbl">קליפי תנועה מאומתים</div></div>
+  </div>
+
+  <a class="btn" href="/gallery/canon-2026-11/index.html">ההגשה המלאה (אנגלית) ↗</a>
+  <a class="ghost" href="/gallery/identity-compare-05-11/index.html">השוואה בין כל המועמדות ↗</a>
+
+  <div class="sect">
+    <h2>מה בדיוק מוגש</h2>
+    <p class="dim">סט קאנון של דמות אחת, סשן הפקה אחד, 10 פריימים לבושים שעברו זיהוי פנים בביטחון 0.75 לפחות. כל פריים נמדד מול כל פריים אחר — 45 זוגות בסך הכל.</p>
+    <div class="frames">
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r00.jpg" alt="רוני 0"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r01.jpg" alt="רוני 1"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r02.jpg" alt="רוני 2"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r05.jpg" alt="רוני 5"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r06.jpg" alt="רוני 6"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r07.jpg" alt="רוני 7"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r08.jpg" alt="רוני 8"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r09.jpg" alt="רוני 9"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r10.jpg" alt="רוני 10"/>
+      <img src="/gallery/roni-canon-sfw-04-11/frames/r11.jpg" alt="רוני 11"/>
+    </div>
+  </div>
+
+  <div class="sect">
+    <h2>המספרים, כולל מה שלא מחמיא</h2>
+    <table>
+      <tr><th>מדד</th><th>ערך</th></tr>
+      <tr><td>חציון כל 45 הזוגות</td><td>0.517</td></tr>
+      <tr><td>אחוזון 10</td><td>0.425</td></tr>
+      <tr><td>הזוג החלש (r02 ↔ r08)</td><td class="warn">0.400</td></tr>
+      <tr><td>בסיס בין-דמויות (כיול)</td><td>0.390</td></tr>
+    </table>
+    <p class="dim" style="margin-top:10px">אם הייתי מאציר את שני הפריימים החלשים, החציון היה 0.545; אילו הגשתי רק את ארבעת החזקים — 0.592. המספר שאפשר לשחזר מהפריימים שמוצגים כאן הוא 0.517, ולכן זה המספר שמוגש.</p>
+  </div>
+
+  <div class="sect">
+    <h2>מטריצת הזהות המלאה</h2>
+    <p class="dim">כל זוג, בלי הסתרה. הזוג החלש מסומן.</p>
+    <img src="/gallery/canon-2026-11/media/identity_matrix.png" alt="מטריצת זהות 45 זוגות" loading="lazy"/>
+  </div>
+
+  <div class="sect">
+    <h2>תנועה — ארבעה קליפים שעברו שער בכל פריים</h2>
+    <p class="dim">השער: כל פריים בקליפ חייב לעבור 0.43 מול הסט. סינמגרף (תנועת מצלמה על הפריים הקנוני) ולא וידאו גנרטיבי — כי מדדנו שגנרטיבי מוריד זהות ל-0.34 תוך שנייה.</p>
+    <table>
+      <tr><th>קליפ</th><th>חציון</th><th>פריים חלש</th></tr>
+      <tr><td>push-in</td><td>0.474</td><td>0.470</td></tr>
+      <tr><td>סחיפה צדית</td><td>0.480</td><td>0.475</td></tr>
+      <tr><td>סחיפה הפוכה</td><td>0.465</td><td>0.459</td></tr>
+      <tr><td>זום נושם</td><td>0.525</td><td>0.513</td></tr>
+    </table>
+    <video src="/gallery/canon-2026-11/media/m6_breathe.mp4" autoplay muted loop playsinline style="margin-top:12px;max-width:320px"></video>
+  </div>
+
+  <div class="disc">
+    <b>גילוי נאות:</b> כל פריים נוצר על ידי מערכת AI גנרטיבית. הדמות בדויה ואינה מתארת אדם אמיתי. כל הפריימים לבושים; פריימים שלא עמדו בתנאי התוכן לא נכללו. הזהות נמדדה, לא הוערכה בעין — והכלי לבדיקה מפורסם לצד הנתונים.
+  </div>
+
+  <div class="tags">
+    <span class="tag">סינתטי לגמרי</span><span class="tag">SFW</span><span class="tag">10 פריימים</span>
+    <span class="tag">45 זוגות</span><span class="tag">4 קליפים</span><span class="tag">מטריצה מלאה</span>
+  </div>
+
 </div>
-<script>
-const IMGS=["roni-22-10/img_0.jpg","roni-22-10/img_1.jpg","roni-22-10/img_23.jpg","roni-22-10/img_36.jpg","roni-22-10/img_37.jpg","roni-22-10/img_38.jpg","roni-22-10/img_50.jpg","roni-22-10/img_51.jpg","roni-22-10/img_53.jpg","roni-22-10/img_57.jpg","roni-22-10/img_58.jpg","roni-22-10/img_59.jpg","roni-22-10/img_60.jpg","roni-22-10/roni_canon_collage.jpg","roni-22-10/roni_forum_6NYs.jpg","roni-22-10/roni_forum_FQlF.jpg","roni-22-10/roni_forum_MKLk.jpg","roni-22-10/roni_forum_Nbze.jpg","roni-22-10/roni_forum_NgYe.jpg","roni-22-10/roni_forum_NxKM.jpg","roni-22-10/roni_forum_OXc7.jpg","roni-22-10/roni_forum_W6Vu.jpg","roni-22-10/roni_forum_bYBZ.jpg","roni-22-10/roni_forum_mj2N.jpg","roni-22-10/roni_forum_sGyM.jpg"];
-const g=document.getElementById('g');
-IMGS.forEach(f=>{const a=document.createElement('a');a.href='https://aidoor.shimi.land/gallery/'+f;a.target='_blank';const im=document.createElement('img');im.src='https://aidoor.shimi.land/gallery/'+f;im.loading='lazy';a.appendChild(im);const c=document.createElement('div');c.className='cap';c.textContent=f.split('/').pop();g.appendChild(a);});
-</script>
 </body>
 </html>
