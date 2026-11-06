@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ערכת הגשה — PayPal AI Hackathon</title>
+<style>
+:root{--bg:#0d1017;--card:#151a24;--line:#222b3a;--txt:#e9edf5;--sub:#98a3b6;--ok:#3ddc97;--warn:#f0b429}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.65}
+.wrap{max-width:820px;margin:0 auto;padding:28px 18px 70px}
+h1{font-size:26px;margin-bottom:6px}
+.lead{color:var(--sub);margin-bottom:26px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+.step h2{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.num{background:#233; color:var(--ok); border:1px solid #2c4a3c; width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:0 0 auto}
+.btn{display:inline-block;background:var(--ok);color:#06231a;font-weight:700;padding:12px 20px;border-radius:10px;text-decoration:none;margin:8px 0}
+.btn.alt{background:transparent;color:var(--txt);border:1px solid var(--line)}
+.copy{background:#0b0f16;border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:10px;white-space:pre-wrap;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;direction:ltr;text-align:left;color:#cfd8e6}
+.note{color:var(--sub);font-size:13.5px;margin-top:8px}
+.tag{display:inline-block;background:#1b2432;border:1px solid var(--line);border-radius:999px;padding:3px 10px;font-size:12.5px;margin:3px 4px 3px 0;color:#c3cddd}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:12px}
+.grid a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none}
+.grid img{width:100%;display:block}
+.blocker{border-color:#4a3a16;background:#1c1710}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>ערכת הגשה — PayPal AI Hackathon</h1>
+<p class="lead">כל מה שנשאר להגשה מרוכז כאן. ארבעה צעדים, כולם מהטלפון.</p>
+
+<div class="step blocker">
+  <h2>למה זה כאן ולא אוטומטי</h2>
+  <p>Devpost דורש <b>YouTube בלבד</b> לשדה הווידאו, והרשאת העלאת וידאו חסומה בסביבת הסוכנים שלי (הפלטפורמה חוסמת <code>youtube.upload</code> בסקאופים של החיבור). בדקתי את זה ישירות, לא הערכתי. לכן ההעלאה היא פעולה אנושית — השני דקות האלה הן היחידות שדורשות אותך.</p>
+</div>
+
+<div class="step">
+  <h2><span class="num">1</span> הורד את הווידאו</h2>
+  <p>1080p, <b>1:59 דקות</b>, עם אודיו. מתחת למגבלת שלוש הדקות.</p>
+  <a class="btn" href="https://aidoor.shimi.land/gallery/paypal-hackathon/shimi_paypal_hackathon.mp4" download>הורד את הווידאו (11MB)</a>
+  <p class="note">נבדק עכשיו: אודיו נוכח (mean −20.9dB), פריימים עם תוכן לאורך כל הסרטון.</p>
+</div>
+
+<div class="step">
+  <h2><span class="num">2</span> העלה ל-YouTube</h2>
+  <p>כותרת, תיאור ותגיות מוכנים להעתקה:</p>
+  <div class="copy">TITLE:
+Shimi Network — Agent Economy on PayPal (2 minute demo)
+
+DESCRIPTION:
+A live network of autonomous AI agents that earn real revenue and move money, with PayPal as the trusted rail between agents and their human clients.
+
+In this demo:
+00:00 What the network is
+00:18 Agents transacting through a single payment rail
+00:52 Agent-issued checkout, webhook-verified capture
+01:20 The commission ledger that settles between agents
+01:38 Identity-verified character production (measured, not claimed)
+
+Every payment claim in this video is backed by a verified webhook capture, not a screenshot. Where something did not work, it is shown too.
+
+Built for the PayPal AI Hackathon 2026.
+
+#PayPal #AIAgents #AgentEconomy</div>
+  <p class="note"><b>חשוב:</b> הגדר את הסרטון ל-Public או Unlisted בלי סיסמה. פרטי = נפסל.</p>
+</div>
+
+<div class="step">
+  <h2><span class="num">3</span> הכנס את הקישור ב-Devpost</h2>
+  <p>הטיוטה קיימת ועומדת על 2 מתוך 5 שלבים. הקישור היחיד שחסר:</p>
+  <a class="btn alt" href="https://devpost.com/submit-to/31302-paypal-ai-hackathon/manage/submissions/1264380-shimi-network-agent-economy-on-paypal/project_details/edit" target="_blank" rel="noopener">פתח את עריכת הפרויקט</a>
+  <p class="note">הדבק את קישור ה-YouTube בשדה "Video demo link" ולחץ Save &amp; continue.</p>
+</div>
+
+<div class="step">
+  <h2><span class="num">4</span> הוסף את תמונות הגלריה</h2>
+  <p>שבע תמונות, יחס 3:2, מתחת ל-5MB כל אחת. לחץ על תמונה כדי לפתוח ואז שמור.</p>
+  <div class="grid">
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/01_title.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/01_title.jpg" alt="כותרת"></a>
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/02_agents.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/02_agents.jpg" alt="סוכנים"></a>
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/03_rail.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/03_rail.jpg" alt="מסלול תשלום"></a>
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/04_proof.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/04_proof.jpg" alt="הוכחה"></a>
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/05_flip.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/05_flip.jpg" alt="היפוך"></a>
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/06_measured.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/06_measured.jpg" alt="מדידה"></a>
+    <a href="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/07_close.jpg" target="_blank" rel="noopener"><img src="https://aidoor.shimi.land/gallery/paypal-hackathon/gallery-3x2/07_close.jpg" alt="סיום"></a>
+  </div>
+</div>
+
+<div class="step">
+  <h2>התגיות שכבר קיימות בטיוטה</h2>
+  <span class="tag">ai</span><span class="tag">paypal</span><span class="tag">autonomous</span><span class="tag">javascript</span>
+  <p class="note">אם תרצה להוסיף: <code>agents</code>, <code>payments</code>, <code>webhooks</code>.</p>
+</div>
+
+<div class="step">
+  <h2>מה נשאר מהדדליין</h2>
+  <p>12/11 בשעה 22:00 לפי שעון ישראל. שבעה ימים.</p>
+</div>
+
+</div>
+</body>
+</html>
