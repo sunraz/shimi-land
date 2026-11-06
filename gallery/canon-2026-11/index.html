@@ -214,6 +214,18 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
   </table>
   <p class="dim">Curating down to the four best frames would report 0.592. It would also mean shipping four frames and calling it a character set. We submit all ten, including the weak pair, because the number that matters is the one a judge can reproduce from the frames they can see.</p>
 </section>
+<section>
+  <h2>Verify the number yourself</h2>
+  <p class="dim">Every figure above can be recomputed in one command, without our tooling and without a face detector. The bundle contains the ten <b>aligned</b> 112&times;112 crops and a 90-line script that only embeds and compares them.</p>
+  <p class="dim"><a href="verify/verify-identity-0517.zip"><b>Download the verification bundle (242 KB)</b></a> &nbsp;·&nbsp; <a href="verify/measure.py">measure.py</a> &nbsp;·&nbsp; <a href="verify/README.md">README</a></p>
+  <pre style="background:#11151d;border:1px solid #222b38;border-radius:10px;padding:14px;overflow:auto;font-size:13px;line-height:1.5">pip install onnxruntime numpy pillow
+python measure.py
+# {"frames": 10, "pairs": 45, "median": 0.517, "p10": 0.425, "min": 0.4}
+# MATCH — reproduces the published figures exactly.</pre>
+  <p class="dim">It prints <code>MATCH</code> or <code>MISMATCH</code> with the fields that differ. We ran it ourselves in a clean folder: it reproduces 0.517 exactly.</p>
+  <p class="dim">What this proves: the number is a property of these ten crops and a public model, not of our tooling. What it does <b>not</b> prove: that the crops were not cherry-picked from a larger shoot. That is handled openly above — two frames of the same session were rejected before measurement, and the weakest pair in the set is published at 0.400 instead of removed.</p>
+</section>
+
 <section class="motion">
 <h2>Motion set — four clips, identity-verified frame by frame</h2>
 <p class="dim">Each clip is a cinemagraph built from a different canonical frame of the same shoot: camera-only motion, no generative pass, so identity <em>cannot</em> drift structurally. Every clip was sampled at 0.3 / 1.5 / 2.7 / 3.7s and scored against the 10-frame canon set. A clip is accepted only if <b>every</b> sampled frame clears the 0.43 gate.</p>

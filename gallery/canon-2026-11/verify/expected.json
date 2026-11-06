@@ -1,0 +1,9 @@
+{
+  "frames": 10,
+  "pairs": 45,
+  "median": 0.517,
+  "p10": 0.425,
+  "min": 0.4,
+  "max": 0.706,
+  "_note": "Produced by measure.py from the aligned crops in ./aligned. Cosine similarity on L2-normalised ArcFace (w600k_mbf) embeddings."
+}
