@@ -27,6 +27,10 @@ h1{font-size:2.1rem}
 .plan b{color:var(--txt)}
 a{color:var(--gold)}
 footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--sub);font-size:13px}
+body,.wrap{overflow-x:hidden}
+.wrap,.grid{max-width:100%}
+.wrap div,.wrap p,.wrap div *{overflow-wrap:anywhere;word-break:break-word}
+img{max-width:100%;height:auto}
 </style>
 </head>
 <body>
@@ -43,7 +47,7 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:v
   <footer>רשת שימי · aidoor.shimi.land · כל ההכנסות נרשמות ב-MoneyLog של הרשת</footer>
 </div>
 <script>
-const IMGS=[];
+const IMGS=["gallery/lea-koda-21-10/20261021_lea_gym_example_f01.jpg","gallery/lea-koda-21-10/20261021_lea_lesson5_f02_frontkick_chamber.jpg","gallery/lea-koda-21-10/20261021_lea_lesson5_f03_frontkick_extension.jpg","gallery/lea-koda-21-10/20261021_lea_lesson5_f04_frontkick_recovery.jpg","gallery/lea-koda-21-10/20261021_lea_lesson5_f06_spinkick_chamber.jpg","gallery/lea-koda-21-10/20261021_lea_lesson5_f07_spinkick_extension.jpg","gallery/lea-koda-21-10/20261021_lea_lesson5_f08_spinkick_finish.jpg","gallery/lea-koda-21-10/20261021_lea_lesson6_f01_ready_stance.jpg","gallery/lea-koda-21-10/20261021_lea_lesson6_f03_sidekick_extension.jpg","gallery/lea-koda-21-10/20261021_lea_lesson6_f04_sidekick_recovery.jpg","gallery/lea-koda-21-10/20261021_lea_lesson6_f07_roundhouse_extension.jpg","gallery/lea-koda-21-10/20261021_lea_lesson7_f05_knee_setup.jpg","gallery/lea-koda-21-10/20261021_lea_lesson7_f08_knee_finish.jpg","gallery/lea-koda-21-10/20261021_lea_lesson8_f03_chain_knee.jpg","gallery/lea-koda-21-10/20261021_lea_lesson8_f04_chain_roundhouse.jpg","gallery/lea-koda-21-10/20261021_lea_lesson8_f05_dummy_entry.jpg","gallery/lea-koda-21-10/20261021_lea_lesson8_f06_dummy_paksau.jpg"];
 const g=document.getElementById('g');
 IMGS.forEach(f=>{const a=document.createElement('a');a.href='https://aidoor.shimi.land/gallery/'+f;a.target='_blank';const im=document.createElement('img');im.src='https://aidoor.shimi.land/gallery/'+f;im.loading='lazy';a.appendChild(im);const c=document.createElement('div');c.className='cap';c.textContent=f.split('/').pop();g.appendChild(a);});
 </script>
