@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111b21">
+<title>WABA — מרכזיית וואטסאפ</title>
+<style>
+:root{
+  --bg:#111b21; --panel:#202c33; --panel2:#2a3942; --line:#2a3942;
+  --txt:#e9edef; --dim:#8696a0; --accent:#00a884; --accent2:#005c4b;
+  --bubbleIn:#202c33; --bubbleOut:#005c4b; --hover:#202c33;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  font-size:14.5px;overflow:hidden;display:flex;height:100dvh}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea{font-family:inherit;font-size:inherit;color:inherit}
+
+/* ── gate ── */
+#gate{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+#gate .box{width:100%;max-width:380px;background:var(--panel);border-radius:14px;padding:26px;text-align:center}
+#gate h1{font-size:19px;margin-bottom:6px}
+#gate p{color:var(--dim);font-size:13px;line-height:1.6;margin-bottom:16px}
+#gate input{width:100%;padding:13px;border-radius:9px;background:var(--panel2);border:1px solid #374248;margin-bottom:12px;text-align:center;letter-spacing:.06em}
+#gate button{width:100%;padding:13px;border-radius:9px;background:var(--accent);color:#04110c;font-weight:800}
+#gErr{color:#ff8b8b;font-size:12.5px;min-height:18px;margin-top:8px}
+
+/* ── sidebar ── */
+#side{width:420px;min-width:300px;max-width:38vw;border-left:1px solid var(--line);display:flex;flex-direction:column;background:var(--bg)}
+.top{height:60px;display:flex;align-items:center;gap:8px;padding:0 14px;background:var(--panel);flex:0 0 auto}
+.avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#00a884,#00695c);display:flex;
+  align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#04110c;flex:0 0 auto}
+.who{flex:1;min-width:0}
+.who b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.who span{display:block;font-size:11.5px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#aebac1}
+.icon:active{background:var(--panel2)}
+#q{height:44px;margin:8px 12px;border-radius:9px;background:var(--panel);border:none;padding:0 14px;flex:0 0 auto}
+#q::placeholder{color:#6c7a83}
+#list{flex:1;overflow-y:auto;overscroll-behavior:contain}
+.chat{display:flex;gap:12px;padding:11px 14px;border-bottom:1px solid #1c272e;align-items:center}
+.chat:hover{background:var(--hover)}
+.chat.on{background:var(--panel2)}
+.chat .av{width:44px;height:44px;border-radius:50%;background:var(--panel2);display:flex;align-items:center;justify-content:center;color:#8696a0;font-size:16px;flex:0 0 auto}
+.chat .mid{flex:1;min-width:0}
+.chat .mid b{display:block;font-size:14.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat .mid p{font-size:12.8px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.chat .rt{text-align:left;flex:0 0 auto}
+.chat .rt time{font-size:11px;color:var(--dim)}
+.badge{display:inline-block;min-width:19px;text-align:center;background:var(--accent);color:#04110c;border-radius:10px;font-size:11px;font-weight:800;padding:1px 6px;margin-top:5px}
+
+/* ── conversation ── */
+#main{flex:1;display:flex;flex-direction:column;min-width:0;background:
+  radial-gradient(circle at 30% 20%,#0f1a20,#0b141a 70%)}
+#empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--dim);text-align:center;padding:30px;gap:8px}
+#empty h2{color:#d5dfe5;font-size:19px;font-weight:500}
+#conv{flex:1;display:none;flex-direction:column;min-height:0}
+#convHead{height:60px;background:var(--panel);display:flex;align-items:center;gap:10px;padding:0 14px;flex:0 0 auto}
+#msgs{flex:1;overflow-y:auto;padding:18px 6% 12px;display:flex;flex-direction:column;gap:5px;overscroll-behavior:contain}
+.m{max-width:min(78%,560px);padding:7px 10px 8px;border-radius:8px;position:relative;line-height:1.45;
+  word-break:break-word;white-space:pre-wrap;font-size:14.3px;box-shadow:0 1px 1px rgba(0,0,0,.25)}
+.m.in{align-self:flex-start;background:var(--bubbleIn);border-top-right-radius:2px}
+.m.out{align-self:flex-end;background:var(--bubbleOut);border-top-left-radius:2px}
+.m .t{font-size:10.5px;color:rgba(233,237,239,.55);float:left;margin:6px 0 -2px 8px;user-select:none}
+.m.sys{align-self:center;background:#182229;color:var(--dim);font-size:11.5px;padding:4px 10px;border-radius:6px}
+.day{align-self:center;background:#182229;color:#8ea0a8;font-size:11.5px;padding:5px 12px;border-radius:7px;margin:8px 0}
+.m .rawbtn{position:absolute;inset-inline-end:-26px;top:4px;font-size:11px;color:#5f7381;display:none}
+.m:hover .rawbtn{display:block}
+#comp{flex:0 0 auto;padding:9px 14px max(9px,env(safe-area-inset-bottom));display:flex;gap:9px;align-items:flex-end}
+#txt{flex:1;min-height:44px;max-height:130px;resize:none;border-radius:22px;padding:12px 16px;background:var(--panel);border:none;outline:none}
+#send{width:46px;height:46px;border-radius:50%;background:var(--accent);color:#04110c;font-size:19px;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+#send:disabled{opacity:.4}
+
+/* ── panels (settings / accounts) ── */
+.pane{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.pane.on{display:flex}
+.pane .inner{width:100%;max-width:520px;max-height:86vh;overflow-y:auto;background:var(--panel);border-radius:14px;padding:20px}
+.pane h3{font-size:16px;margin-bottom:4px}
+.pane .sub{color:var(--dim);font-size:12.5px;margin-bottom:14px}
+.ln{display:flex;align-items:center;gap:11px;padding:11px;border-radius:10px;background:var(--panel2);margin-bottom:8px;border:1px solid transparent}
+.ln.on{border-color:var(--accent)}
+.ln .dot{width:9px;height:9px;border-radius:50%;background:#e2604a;flex:0 0 auto}
+.ln .dot.ok{background:#3ddc97}
+.ln .nm{flex:1;min-width:0}
+.ln .nm b{display:block;font-size:13.5px}
+.ln .nm span{font-size:11.5px;color:var(--dim)}
+.ln .q{font-size:10.5px;padding:2px 7px;border-radius:6px;background:#0b141a;color:#3ddc97;font-weight:700}
+.ln .q.bad{color:#e2604a}
+.close{position:sticky;top:0;float:left;font-size:22px;color:var(--dim);line-height:1}
+.row{display:flex;gap:8px;margin-top:6px}
+.btn{padding:11px 16px;border-radius:9px;background:var(--accent);color:#04110c;font-weight:800;font-size:13px}
+.btn.ghost{background:var(--panel2);color:var(--txt);font-weight:600}
+.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #2a3942;font-size:13px}
+.kv span:last-child{color:var(--dim)}
+
+@media(max-width:820px){
+  #side{max-width:none;width:100%;border-left:none}
+  #main{display:none}
+  body.open #side{display:none}
+  body.open #main{display:flex}
+  #back{display:flex!important}
+}
+#back{display:none}
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="box">
+    <h1>מרכזיית WABA</h1>
+    <p>הכניסו את מפתח הגישה שקיבלתם. הוא נשמר במכשיר הזה בלבד.</p>
+    <input id="keyin" type="password" placeholder="מפתח גישה" autocomplete="off">
+    <button id="gatebtn">כניסה</button>
+    <div id="gErr"></div>
+  </div>
+</div>
+
+<aside id="side">
+  <div class="top">
+    <button class="icon" id="accBtn" title="החלפת חשבון">👤</button>
+    <div class="avatar" id="avatar">W</div>
+    <div class="who"><b id="lineName">טוען…</b><span id="lineNum"></span></div>
+    <button class="icon" id="setBtn" title="הגדרות">⚙</button>
+  </div>
+  <input id="q" placeholder="חיפוש או התחלת שיחה">
+  <div id="list"></div>
+</aside>
+
+<main id="main">
+  <div id="empty">
+    <div style="font-size:52px;opacity:.35">💬</div>
+    <h2>בחרו שיחה</h2>
+    <div>כל ההודעות מכל קווי ה-WABA שלנו, במקום אחד.</div>
+  </div>
+  <div id="conv">
+    <div id="convHead">
+      <button class="icon" id="back">‹</button>
+      <div class="avatar" id="cAv">?</div>
+      <div class="who"><b id="cName"></b><span id="cPhone"></span></div>
+      <div style="font-size:11px;color:var(--dim)" id="cLine"></div>
+    </div>
+    <div id="msgs"></div>
+    <div id="comp">
+      <textarea id="txt" rows="1" placeholder="הקלד הודעה"></textarea>
+      <button id="send" title="שלח">➤</button>
+    </div>
+  </div>
+</main>
+
+<div class="pane" id="accPane"><div class="inner">
+  <button class="close" data-close>×</button>
+  <h3>בחירת חשבון</h3>
+  <div class="sub">כל קווי ה-WABA שמזוהים בחשבון. בחירה משנה את תיבת השיחות ואת הקו שממנו נשלח.</div>
+  <div id="accList"></div>
+  <div class="row"><button class="btn ghost" id="reloadLines">רענון קווים</button></div>
+</div></div>
+
+<div class="pane" id="setPane"><div class="inner">
+  <button class="close" data-close>×</button>
+  <h3>הגדרות</h3>
+  <div class="sub">מצב המערכת, בלי להסתיר כשלים.</div>
+  <div class="kv"><span>קו נבחר</span><span id="stLine">—</span></div>
+  <div class="kv"><span>קווים מזוהים</span><span id="stCount">—</span></div>
+  <div class="kv"><span>הודעות שנטענו</span><span id="stMsgs">—</span></div>
+  <div class="kv"><span>רענון אוטומטי</span><span>כל 20 שניות</span></div>
+  <div class="kv"><span>מפתח שמור במכשיר</span><span id="stKey">—</span></div>
+  <div class="row">
+    <button class="btn" id="refreshNow">רענן עכשיו</button>
+    <button class="btn ghost" id="logout">התנתק מהמכשיר</button>
+  </div>
+</div></div>
+
+<script>
+(() => {
+'use strict';
+const API = 'https://base44.app/api/apps/6a901f55a4d9a9b76a095a77/functions/wabaHub';
+let KEY = localStorage.getItem('waba_key') || '';
+let lines = [], chosen = localStorage.getItem('waba_line') || '', data = { byLine: {} };
+let convs = [], active = null;
+
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+async function call(action, extra = {}) {
+  const r = await fetch(API, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'x-waba-key': KEY },
+    body: JSON.stringify({ action, ...extra }),
+  });
+  const d = await r.json().catch(() => ({}));
+  if (r.status === 401) { throw new Error('unauthorized'); }
+  return d;
+}
+
+/* ── gate ── */
+async function tryKey(k) {
+  KEY = k;
+  const d = await call('state');
+  if (!d.ok) throw new Error(d.error || 'failed');
+  localStorage.setItem('waba_key', k);
+  return d;
+}
+$('#gatebtn').addEventListener('click', async () => {
+  const k = $('#keyin').value.trim();
+  if (!k) return;
+  $('#gErr').textContent = '';
+  try {
+    const d = await tryKey(k);
+    lines = d.lines || [];
+    if (!chosen || !lines.some(l => l.id === chosen)) chosen = (lines[0] || {}).id || '';
+    localStorage.setItem('waba_line', chosen);
+    start();
+  } catch (e) {
+    $('#gErr').textContent = e.message === 'unauthorized' ? 'מפתח שגוי' : 'שגיאה: ' + e.message;
+  }
+});
+$('#keyin').addEventListener('keydown', e => { if (e.key === 'Enter') $('#gatebtn').click(); });
+
+/* ── boot ── */
+async function start() {
+  $('#gate').style.display = 'none';
+  renderLines();
+  await refresh();
+  setInterval(refresh, 20000);
+}
+
+async function refresh() {
+  try {
+    const [st, ib] = await Promise.all([call('state'), call('inbox')]);
+    if (st.ok) { lines = st.lines || []; renderLines(); }
+    if (ib.ok) { data = ib; buildConvs(); renderList(); if (active) renderThread(); }
+    $('#stCount').textContent = lines.length + ' קווים';
+    $('#stMsgs').textContent = (data.count || 0) + ' הודעות';
+    $('#stKey').textContent = KEY ? 'כן' : 'לא';
+  } catch (e) {
+    if (e.message === 'unauthorized') { localStorage.removeItem('waba_key'); location.reload(); }
+  }
+}
+
+function curLine() { return lines.find(l => l.id === chosen) || lines[0] || null; }
+
+function renderLines() {
+  const l = curLine();
+  const nm = l ? (l.name || l.label || l.id) : 'ללא קו';
+  $('#lineName').textContent = nm;
+  $('#lineNum').textContent = (l && l.display) ? l.display + (l.quality ? ' · ' + l.quality : '') : '';
+  $('#avatar').textContent = (nm || 'W').trim().slice(0, 2);
+  $('#stLine').textContent = nm + (l && l.display ? ' · ' + l.display : '');
+
+  const box = $('#accList');
+  box.innerHTML = lines.map(x => `
+    <div class="ln ${x.id === chosen ? 'on' : ''}" data-id="${esc(x.id)}">
+      <div class="dot ${x.ok ? 'ok' : ''}"></div>
+      <div class="nm"><b>${esc(x.name || x.label || x.id)}</b><span>${esc(x.display || x.id)} · ${x.msgs || 0} הודעות</span></div>
+      <div class="q ${x.ok ? '' : 'bad'}">${esc(x.ok ? (x.quality || 'OK') : 'שגיאה')}</div>
+    </div>`).join('') || '<div class="sub">לא נמצאו קווים</div>';
+  box.querySelectorAll('.ln').forEach(el => el.addEventListener('click', () => {
+    chosen = el.dataset.id; localStorage.setItem('waba_line', chosen);
+    active = null; $('#conv').style.display = 'none'; $('#empty').style.display = 'flex';
+    renderLines(); buildConvs(); renderList(); closePanes();
+  }));
+}
+
+/* ── conversations ── */
+function buildConvs() {
+  const msgs = (data.byLine || {})[chosen] || [];
+  const map = new Map();
+  for (const m of msgs) {
+    const k = m.from || 'unknown';
+    if (!map.has(k)) map.set(k, { phone: k, name: m.name || '', msgs: [], unread: 0 });
+    const c = map.get(k);
+    if (m.name && !c.name) c.name = m.name;
+    c.msgs.push(m);
+  }
+  convs = [...map.values()];
+  for (const c of convs) {
+    c.msgs.sort((a, b) => (a.ts || 0) - (b.ts || 0));
+    c.last = c.msgs[c.msgs.length - 1];
+    c.unread = c.msgs.filter(m => m.direction === 'in').length;
+  }
+  convs.sort((a, b) => (b.last?.ts || 0) - (a.last?.ts || 0));
+}
+
+const fmtT = (ts) => {
+  if (!ts) return '';
+  const d = new Date(ts), now = new Date();
+  const same = d.toDateString() === now.toDateString();
+  return same ? d.toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' })
+              : d.toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit' });
+};
+
+function renderList() {
+  const q = ($('#q').value || '').trim().toLowerCase();
+  const items = convs.filter(c => !q || (c.phone + ' ' + c.name).toLowerCase().includes(q));
+  $('#list').innerHTML = items.map(c => `
+    <div class="chat ${active === c.phone ? 'on' : ''}" data-p="${esc(c.phone)}">
+      <div class="av">${esc((c.name || c.phone).slice(-2))}</div>
+      <div class="mid">
+        <b>${esc(c.name || '+' + c.phone)}</b>
+        <p>${esc((c.last?.direction === 'out' ? '✓ ' : '') + (c.last?.text || '').slice(0, 60))}</p>
+      </div>
+      <div class="rt"><time>${fmtT(c.last?.ts)}</time>${c.unread ? `<div class="badge">${c.unread}</div>` : ''}</div>
+    </div>`).join('') || '<div style="padding:26px;text-align:center;color:#6c7a83">אין שיחות בקו הזה עדיין</div>';
+  $('#list').querySelectorAll('.chat').forEach(el => el.addEventListener('click', () => openConv(el.dataset.p)));
+}
+
+function openConv(phone) {
+  active = phone;
+  document.body.classList.add('open');
+  $('#empty').style.display = 'none';
+  $('#conv').style.display = 'flex';
+  renderList(); renderThread();
+}
+
+function renderThread() {
+  const c = convs.find(x => x.phone === active);
+  if (!c) return;
+  const l = curLine();
+  $('#cName').textContent = c.name || '+' + c.phone;
+  $('#cPhone').textContent = '+' + c.phone;
+  $('#cAv').textContent = (c.name || c.phone).slice(-2);
+  $('#cLine').textContent = l ? (l.display || '') : '';
+  let html = '', lastDay = '';
+  for (const m of c.msgs) {
+    const day = new Date(m.ts || 0).toLocaleDateString('he-IL');
+    if (day !== lastDay) { html += `<div class="day">${day}</div>`; lastDay = day; }
+    if (m.type === 'status') { html += `<div class="sys">${esc(m.text)} · ${fmtT(m.ts)}</div>`; continue; }
+    const cls = m.direction === 'out' ? 'out' : 'in';
+    html += `<div class="m ${cls}"><button class="rawbtn" data-w="${esc(m.wamid || '')}">raw</button>${esc(m.text)}<span class="t">${fmtT(m.ts)}</span></div>`;
+  }
+  $('#msgs').innerHTML = html || '<div class="day">אין הודעות</div>';
+  $('#msgs').scrollTop = $('#msgs').scrollHeight;
+  $('#msgs').querySelectorAll('.rawbtn').forEach(b => b.addEventListener('click', async () => {
+    const w = b.dataset.w; if (!w) return;
+    const d = await call('raw', { wamid: w });
+    alert(d.record ? JSON.stringify(d.record, null, 1).slice(0, 1800) : 'לא נמצא תוכן גולמי להודעה הזו');
+  }));
+}
+
+/* ── send ── */
+async function send() {
+  const t = $('#txt').value.trim();
+  if (!t || !active) return;
+  const l = curLine(); if (!l) return;
+  $('#send').disabled = true;
+  const r = await call('send', { line: l.id, to: active, text: t });
+  $('#send').disabled = false;
+  if (r.ok) { $('#txt').value = ''; $('#txt').style.height = 'auto'; await refresh(); }
+  else alert('שליחה נכשלה: ' + (r.error || 'unknown') + (r.code ? ' (code ' + r.code + ')' : ''));
+}
+$('#send').addEventListener('click', send);
+$('#txt').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+});
+$('#txt').addEventListener('input', e => {
+  e.target.style.height = 'auto';
+  e.target.style.height = Math.min(130, e.target.scrollHeight) + 'px';
+});
+
+/* ── panes ── */
+function closePanes() { document.querySelectorAll('.pane').forEach(p => p.classList.remove('on')); }
+$('#setBtn').addEventListener('click', () => $('#setPane').classList.add('on'));
+$('#accBtn').addEventListener('click', () => $('#accPane').classList.add('on'));
+document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closePanes));
+document.querySelectorAll('.pane').forEach(p => p.addEventListener('click', e => { if (e.target === p) closePanes(); }));
+$('#refreshNow').addEventListener('click', refresh);
+$('#reloadLines').addEventListener('click', refresh);
+$('#logout').addEventListener('click', () => { localStorage.removeItem('waba_key'); localStorage.removeItem('waba_line'); location.reload(); });
+$('#back').addEventListener('click', () => { document.body.classList.remove('open'); });
+$('#q').addEventListener('input', renderList);
+
+/* ── autoboot with stored key ── */
+(async () => {
+  if (!KEY) return;
+  try {
+    const d = await tryKey(KEY);
+    lines = d.lines || [];
+    if (!chosen || !lines.some(l => l.id === chosen)) chosen = (lines[0] || {}).id || '';
+    start();
+  } catch (e) { /* נשאר בשער */ }
+})();
+})();
+</script>
+</body>
+</html>
