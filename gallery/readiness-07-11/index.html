@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Character entries — readiness board (07/11/2026)</title>
+<style>
+:root{--bg:#0b0e13;--card:#141922;--line:#232b38;--txt:#e9edf5;--dim:#98a3b6;--ok:#3ddc97;--warn:#f0b429;--bad:#e2604a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font-family:system-ui,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 16px 70px}
+h1{font-size:clamp(22px,4vw,32px);margin-bottom:6px}
+.lead{color:var(--dim);margin-bottom:22px;font-size:15px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:14px 0 8px}
+th,td{text-align:left;padding:9px 7px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--dim);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+tr:last-child td{border-bottom:none}
+.ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}.bad{color:var(--bad);font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:16px}
+.card h2{font-size:16px;margin-bottom:8px}
+.dim{color:var(--dim);font-size:13.5px}
+code{background:#0f1319;padding:1px 5px;border-radius:4px;font-size:12.5px}
+@media(max-width:700px){table{font-size:12.5px}th,td{padding:7px 4px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Character entries — readiness board</h1>
+<p class="lead">One page for the 09/11 decision. Every figure below was measured today with the same tool, on an explicitly defined set. Two days out, the useful question is not "which character is best" but "what can actually be submitted, and what breaks if it is".</p>
+
+<table>
+<tr><th>Entry</th><th>Faces / pairs</th><th>Median</th><th>Weakest</th><th>Motion</th><th>Status</th></tr>
+<tr><td><b>Roni</b></td><td>10 / 45</td><td class="ok">0.517</td><td class="ok">0.400</td><td class="ok">4 verified clips</td><td class="ok">READY</td></tr>
+<tr><td><b>Lea</b></td><td>11 / 55</td><td class="ok">0.565</td><td class="warn">0.359</td><td class="warn">clips exist, not in a canon set</td><td class="bad">INTERNAL by owner decision</td></tr>
+<tr><td><b>Noa</b> (extra)</td><td>5 / 10</td><td class="ok">0.527</td><td class="warn">0.474</td><td class="bad">none</td><td class="warn">thin — 5 faces</td></tr>
+<tr><td><b>Noa</b> (22/10)</td><td>3 / 3</td><td class="bad">0.282</td><td class="bad">0.194</td><td class="bad">none</td><td class="bad">insufficient evidence</td></tr>
+<tr><td><b>Layla</b></td><td>3 / 3</td><td class="bad">0.285</td><td class="bad">0.261</td><td class="bad">none</td><td class="bad">insufficient evidence</td></tr>
+<tr><td><b>Shira</b></td><td>0 / 0</td><td>—</td><td>—</td><td class="warn">21 clips in index</td><td class="bad">unmeasurable — no clothed set</td></tr>
+</table>
+
+<div class="card">
+<h2>How to read the "weakest" column</h2>
+<p class="dim">Two genuinely different characters score a median of <b>0.058</b> and never exceeded <b>0.221</b> across 120 measured pairs. So a weakest pair at 0.400 (Roni) sits far above anything a stranger produces; a weakest pair at 0.194 (Noa 22/10) is inside the range strangers occupy.</p>
+</div>
+
+<div class="card">
+<h2>Set definitions — so these numbers can be challenged</h2>
+<p class="dim">A number without its set is not a measurement. Each figure above comes from a fixed file list:</p>
+<ul class="dim" style="margin-left:18px;margin-top:6px">
+<li><b>Roni</b> — 12 raw frames of one session; 10 passed detection (conf &ge; 0.75, face &ge; 80px). Two rejected before measuring.</li>
+<li><b>Lea</b> — the 17 frames pinned in her page's gallery array; 11 passed detection. 6 files filtered out pre-detection by a clothed-frame check.</li>
+<li><b>Noa extra</b> — 15 files in <code>noa-extra-22-10</code>, 5 pass the clothed check and detection. <b>Noa 22/10</b> and <b>Layla</b> — 3 faces each after the same filters.</li>
+<li><b>Shira</b> — no frame in the indexed folders passes the clothed check, so there is nothing to measure. That is a content decision, not a technical failure.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>What I would submit, and why</h2>
+<p class="dim"><b>Roni</b>, with the entry pack and the verification bundle. Not because it has the highest median — Lea does, at 0.565 — but because it is the only entry where every claim is reproducible by a stranger in one command, and where motion, evidence and disclosure are already assembled. Lea is stronger on paper and blocked by an owner decision, so the right move is to have her ready, not to submit her.</p>
+<p class="dim" style="margin-top:8px">The two days left are better spent making one entry bulletproof than making five entries look similar. That is also the honest reason this page ranks Roni first: not quality, readiness.</p>
+</div>
+
+<div class="card">
+<h2>Corrections on this page's history</h2>
+<p class="dim">Earlier versions of the comparison used a <b>0.390</b> cross-identity baseline. That was wrong — it came from a mixed set, not from cross-character pairs. The corrected figure is 0.058 median / 0.221 maximum, and it changes one judgement: Layla and Noa at 0.28 were called "noise" and they are not. They are weakly consistent with three faces, which is still too little evidence to submit.</p>
+</div>
+
+<p class="dim" style="margin-top:18px">Measured 07/11/2026 with YuNet detection, 5-point alignment to 112&times;112, ArcFace w600k_mbf, cosine similarity. Reproduce any row with the bundle at <a href="/gallery/canon-2026-11/verify/verify-identity-0517.zip" style="color:#63e8ff">canon-2026-11/verify</a>.</p>
+</div>
+</body>
+</html>
