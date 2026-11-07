@@ -119,6 +119,7 @@ input,textarea{font-family:inherit;font-size:inherit;color:inherit}
 
 <aside id="side">
   <div class="top">
+    <button class="icon" id="newBtn" title="שיחה חדשה">＋</button>
     <button class="icon" id="accBtn" title="החלפת חשבון">👤</button>
     <div class="avatar" id="avatar">W</div>
     <div class="who"><b id="lineName">טוען…</b><span id="lineNum"></span></div>
@@ -320,6 +321,11 @@ function renderList() {
 }
 
 function openConv(phone) {
+  phone = String(phone || '').replace(/\D/g, '');
+  if (!phone) return;
+  if (!convs.some(c => c.phone === phone)) {
+    convs.unshift({ phone, name: '', msgs: [], unread: 0, last: null });
+  }
   active = phone;
   document.body.classList.add('open');
   $('#empty').style.display = 'none';
@@ -361,8 +367,26 @@ async function send() {
   const r = await call('send', { line: l.id, to: active, text: t });
   $('#send').disabled = false;
   if (r.ok) { $('#txt').value = ''; $('#txt').style.height = 'auto'; await refresh(); }
-  else alert('שליחה נכשלה: ' + (r.error || 'unknown') + (r.code ? ' (code ' + r.code + ')' : ''));
+  else {
+    const why = {
+      'unknown_line': 'הקו לא מזוהה',
+      'bad_recipient': 'מספר לא תקין — צריך קידומת מדינה',
+      'empty_text': 'טקסט ריק',
+      'meta_error': 'מטא דחתה את ההודעה'
+    }[r.error] || (r.error || 'שגיאה לא ידועה');
+    alert('שליחה נכשלה: ' + why + (r.code ? ' · קוד ' + r.code : '') + (r.detail ? '\n' + String(r.detail).slice(0,300) : ''));
+  }
 }
+
+$('#newBtn').addEventListener('click', () => {
+  const raw = prompt('מספר טלפון עם קידומת מדינה, בלי פלוס (למשל 972587233211):', '972587233211');
+  if (!raw) return;
+  const p = String(raw).replace(/\D/g, '');
+  if (p.length < 10) { alert('מספר קצר מדי'); return; }
+  openConv(p);
+  $('#txt').focus();
+});
+
 $('#send').addEventListener('click', send);
 $('#txt').addEventListener('keydown', e => {
   if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
