@@ -49,7 +49,7 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
   <div class="tagrow">
     <span class="tag">SFW</span><span class="tag">Fully synthetic</span>
     <span class="tag alt">10 measured frames</span><span class="tag alt">Identity 0.517</span>
-    <span class="tag alt">Baseline 0.390</span>
+    <span class="tag alt">Baseline 0.058</span>
   </div>
 </header>
 <div class="wrap">
@@ -79,14 +79,14 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
 
 <section>
   <h2>Measured consistency</h2>
-  <p class="note">Median cosine similarity across all face pairs in the set. The same pipeline scores <b>0.390</b>
-  between two different characters, so a score near 0.39 means “no shared identity”.</p>
+  <p class="note">Median cosine similarity across all face pairs in the set. The same pipeline scores <b>0.058</b>
+  across 120 pairs between two different characters (maximum 0.221), so a score near 0.06 means “no shared identity”.</p>
   <div class="metrics">
     <div class="m"><b>10</b><span>frames with a face</span></div>
     <div class="m"><b>0.517</b><span>median identity</span></div>
     <div class="m"><b>0.425</b><span>10th percentile</span></div>
     <div class="m"><b>0.400</b><span>weakest pair</span></div>
-    <div class="m"><b>0.390</b><span>cross-identity baseline</span></div>
+    <div class="m"><b>0.058</b><span>cross-identity baseline</span></div>
   </div>
   <div class="grid"><figure><img src="../roni-canon-sfw-04-11/frames/r00.jpg" alt="" loading="lazy"><figcaption>1</figcaption></figure>
 <figure><img src="../roni-canon-sfw-04-11/frames/r01.jpg" alt="" loading="lazy"><figcaption>2</figcaption></figure>
@@ -135,7 +135,7 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
     <tr><td>SDXL fixed seed + prompt variants</td><td><b>0.389</b></td><td>no consistency</td></tr>
   </table>
   <p class="note">Conclusion we now apply: character consistency is a property of a <b>production session</b>,
-  not of a character. Merging frames of the same character from different days collapses the score to 0.263.</p>
+  not of a character. Cross-session comparison is measured too: two shoots of the same character land well below a single-session set (see the comparison page). Single-session canon remains the only format that clears the gate reliably.</p>
 </section>
 
 <section class="internal">
@@ -186,7 +186,7 @@ ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.9} li b{color
 
 <section>
   <h2>Pairwise identity matrix</h2>
-  <p class="dim">A median hides a distribution. This is every pair in the set, all 45 of them. The red cell is the weakest pair in the submission: r02 against r08, at 0.400. It is still above the cross-identity baseline of 0.390, but only just, and a judge should see it rather than take the median on trust.</p>
+  <p class="dim">A median hides a distribution. This is every pair in the set, all 45 of them. The red cell is the weakest pair in the submission: r02 against r08, at 0.400. It is still above the cross-identity baseline of 0.058, but only just, and a judge should see it rather than take the median on trust.</p>
   <figure>
     <img src="media/identity_matrix.png" alt="Pairwise cosine similarity matrix across the ten submitted frames" width="100%">
     <figcaption>Full pairwise matrix, ArcFace w600k_mbf, cosine similarity. Diagonal is the frame against itself and is not counted.</figcaption>
@@ -240,7 +240,7 @@ python measure.py
 <figcaption><b>04 — breathing zoom</b> · median 0.525 · worst frame 0.513</figcaption></figure>
 </div>
 <h3>What we rejected, and why</h3>
-<p class="dim">Two of six clips did not clear the bar and are not in the set. A tilt-up crop lost the face entirely in every sampled frame (no detection at 0.75). A tighter crop scored 0.404 at its weakest frame — above the 0.390 cross-identity baseline, but below our own gate, so it was dropped rather than shipped. The generative image-to-video test below is published for the same reason: it measured 0.470 at 0.3s and 0.338–0.363 after, so motion from a generative pass does not preserve this identity, while camera-only motion does.</p>
+<p class="dim">Two of six clips did not clear the bar and are not in the set. A tilt-up crop lost the face entirely in every sampled frame (no detection at 0.75). A tighter crop scored 0.404 at its weakest frame — above the 0.058 cross-identity baseline, but below our own gate, so it was dropped rather than shipped. The generative image-to-video test below is published for the same reason: it measured 0.470 at 0.3s and 0.338–0.363 after, so motion from a generative pass does not preserve this identity, while camera-only motion does.</p>
 <figure style="margin-top:18px;max-width:420px">
 <video src="media/ltx_i2v_test.mp4" autoplay muted loop playsinline width="100%"></video>
 <figcaption><b>Negative result — generative i2v (LTX)</b> · 0.470 → 0.338 / 0.363 / 0.339. Identity leaves the character inside one second.</figcaption>

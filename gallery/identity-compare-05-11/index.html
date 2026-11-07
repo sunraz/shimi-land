@@ -40,7 +40,7 @@ code{background:#1b212c;padding:2px 6px;border-radius:5px;font-size:13.5px}
 <tr><td>Shira (22/10)</td><td class="n">13</td><td class="n">0</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="no">no SFW set</td></tr>
 <tr><td>Layla LoRA / Laila</td><td class="n">2 / 2</td><td class="n">0 / 0</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="no">too few</td></tr>
 </table>
-<p class="small">Cross-identity baseline on this tool: <b>0.390</b> — the score two genuinely different characters get. Anything near 0.39 means "no shared identity".</p>
+<p class="small">Cross-identity baseline on this tool: <b>0.058</b> median, <b>0.221</b> maximum, across 120 pairs between two genuinely different characters. Anything near 0.06 means "no shared identity"; no cross pair we measured reached 0.25.</p>
 
 <h2>How to read it without fooling yourself</h2>
 <div class="card">
@@ -48,6 +48,7 @@ code{background:#1b212c;padding:2px 6px;border-radius:5px;font-size:13.5px}
 <li><b>Frame count changes the meaning.</b> Noa's 0.527 rests on 5 faces; Roni's 0.517 on 10; Lea's 0.565 on 11. A median over more pairs is harder to hold, so 10 frames at 0.517 is a stronger result than 5 at 0.527.</li>
 <li><b>The weakest pair is the real test.</b> Noa's tail (0.474) is the tightest in the table. Roni's weakest pair sits at 0.400 — above noise, but visibly weaker than her median.</li>
 <li><b>The clothing filter is part of the gate.</b> Sets that are not clothed cannot enter the canon format at all, regardless of identity score. That is why Shira shows "no SFW set" here rather than a number.</li>
+<li><b>Correction, 07/11:</b> this page previously called the 0.28 sets "noise level" using a 0.390 baseline. That baseline was wrong: it came from a mixed set, not from cross-character pairs. The measured cross-identity maximum is <b>0.221</b>, so Layla (0.285) and Noa (0.282) sit <i>above</i> every cross pair we measured. They are weakly consistent, not random — and with only 3 faces each, that is not enough evidence to judge them either way.</li>
 <li><b>Nothing here says a character is good.</b> This measures one property: does the same face survive across frames. Art direction, motion and story are not in this table.</li>
 </ul>
 </div>

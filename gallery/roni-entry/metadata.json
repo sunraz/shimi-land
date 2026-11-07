@@ -14,7 +14,7 @@
     "p10": 0.425,
     "min": 0.400,
     "max": 0.706,
-    "cross_identity_baseline": 0.390,
+    "cross_identity_baseline": {"median": 0.058, "max": 0.221, "pairs": 120},
     "gate": 0.43
   },
   "motion_gate": "each clip sampled at 0.3/1.5/2.7/3.7s; accepted only if every sampled frame >= 0.43",
