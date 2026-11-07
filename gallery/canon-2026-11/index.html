@@ -226,6 +226,19 @@ python measure.py
   <p class="dim">What this proves: the number is a property of these ten crops and a public model, not of our tooling. What it does <b>not</b> prove: that the crops were not cherry-picked from a larger shoot. That is handled openly above — two frames of the same session were rejected before measurement, and the weakest pair in the set is published at 0.400 instead of removed.</p>
 </section>
 
+<section>
+  <h2>Complete separation, not just a median</h2>
+  <p class="dim">A median can hide overlap. This is the harder claim: <b>every</b> pair inside the set scores higher than <b>any</b> pair between two different characters. Measured on 45 within-character pairs and 120 cross-character pairs.</p>
+  <div class="grid2">
+    <div class="card"><div class="big">0.400</div><p class="dim">weakest pair inside the set (45 pairs)</p></div>
+    <div class="card"><div class="big">0.221</div><p class="dim">strongest pair between two different characters (120 pairs)</p></div>
+    <div class="card"><div class="big">0</div><p class="dim">pairs that overlap — zero</p></div>
+    <div class="card"><div class="big">0.179</div><p class="dim">margin between the two distributions</p></div>
+  </div>
+  <p class="dim">This means the identity is <i>separable</i> on this tool: no frame of this character is closer to a stranger than to her own set. It does not mean the set is aesthetically good, only that it is measurably one person.</p>
+  <p class="dim">Both distributions are in the verification bundle: <code>aligned/</code> (10 crops) and <code>aligned_ref/</code> (12 crops of a different character, used only for this test). Recompute the whole table with one command.</p>
+</section>
+
 <section class="motion">
 <h2>Motion set — four clips, identity-verified frame by frame</h2>
 <p class="dim">Each clip is a cinemagraph built from a different canonical frame of the same shoot: camera-only motion, no generative pass, so identity <em>cannot</em> drift structurally. Every clip was sampled at 0.3 / 1.5 / 2.7 / 3.7s and scored against the 10-frame canon set. A clip is accepted only if <b>every</b> sampled frame clears the 0.43 gate.</p>

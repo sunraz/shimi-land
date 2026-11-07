@@ -68,6 +68,24 @@ def embed(sess, path):
     return v / n
 
 
+
+def separation(A, B):
+    """Intra-character vs inter-character distributions, and whether they overlap."""
+    ia = [float(np.dot(A[i], A[j])) for i in range(len(A)) for j in range(i + 1, len(A))]
+    ie = [float(np.dot(a, b)) for a in A for b in B]
+    if not ia or not ie:
+        return None
+    return {
+        "intra_pairs": len(ia),
+        "intra_min": round(float(min(ia)), 3),
+        "intra_median": round(float(np.median(ia)), 3),
+        "inter_pairs": len(ie),
+        "inter_max": round(float(max(ie)), 3),
+        "inter_median": round(float(np.median(ie)), 3),
+        "overlap_pairs": int(sum(1 for v in ia if v <= max(ie))),
+        "margin": round(float(min(ia) - max(ie)), 3),
+    }
+
 def main():
     crops = sorted(glob.glob(os.path.join(HERE, "aligned", "*.png")))
     if not crops:
@@ -101,6 +119,15 @@ def main():
     }
 
     print(json.dumps(result, indent=2))
+
+    ref_dir = os.path.join(HERE, "aligned_ref")
+    if os.path.isdir(ref_dir):
+        ref = sorted(glob.glob(os.path.join(ref_dir, "*.png")))
+        B = [v for v in (embed(sess, p) for p in ref) if v is not None]
+        sep = separation(vecs, B)
+        if sep:
+            result["separation_vs_reference"] = sep
+            print(json.dumps({"separation_vs_reference": sep}, indent=2))
 
     if os.path.exists(EXPECTED):
         exp = json.load(open(EXPECTED))
