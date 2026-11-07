@@ -209,7 +209,7 @@ $('#gatebtn').addEventListener('click', async () => {
   try {
     const d = await tryKey(k);
     lines = d.lines || [];
-    if (!chosen || !lines.some(l => l.id === chosen)) chosen = (lines[0] || {}).id || '';
+    if (!chosen || !lines.some(l => l.id === chosen)) chosen = busiestLine();
     localStorage.setItem('waba_line', chosen);
     start();
   } catch (e) {
@@ -240,6 +240,17 @@ async function refresh() {
 }
 
 function curLine() { return lines.find(l => l.id === chosen) || lines[0] || null; }
+
+
+function busiestLine() {
+  const byL = (data && data.byLine) || {};
+  let best = (lines[0] || {}).id || '', bestN = -1;
+  for (const l of lines) {
+    const n = ((byL[l.id] || []).length) || l.msgs || 0;
+    if (l.ok && n > bestN) { bestN = n; best = l.id; }
+  }
+  return best;
+}
 
 function renderLines() {
   const l = curLine();
@@ -379,7 +390,7 @@ $('#q').addEventListener('input', renderList);
   try {
     const d = await tryKey(KEY);
     lines = d.lines || [];
-    if (!chosen || !lines.some(l => l.id === chosen)) chosen = (lines[0] || {}).id || '';
+    if (!chosen || !lines.some(l => l.id === chosen)) chosen = busiestLine();
     start();
   } catch (e) { /* נשאר בשער */ }
 })();
