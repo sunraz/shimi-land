@@ -267,7 +267,9 @@ function renderLines() {
 function buildConvs() {
   const msgs = (data.byLine || {})[chosen] || [];
   const map = new Map();
-  for (const m of msgs) {
+  const isNoise = (m) => (m.type === 'status') || /^\[(status|unsupported|system)/i.test(String(m.text || ''));
+  const real = msgs.filter(m => !isNoise(m) || (m.text && !/^\[/.test(String(m.text).trim())));
+  for (const m of (real.length ? real : msgs)) {
     const k = m.from || 'unknown';
     if (!map.has(k)) map.set(k, { phone: k, name: m.name || '', msgs: [], unread: 0 });
     const c = map.get(k);
