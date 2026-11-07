@@ -7,6 +7,7 @@
 <style>
 :root{--bg:#0b0e13;--card:#141922;--line:#232b38;--txt:#e9edf5;--dim:#98a3b6;--ok:#3ddc97;--warn:#f0b429;--bad:#e2604a}
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
 body{background:var(--bg);color:var(--txt);font-family:system-ui,Arial,sans-serif;line-height:1.6}
 .wrap{max-width:1000px;margin:0 auto;padding:26px 16px 70px}
 h1{font-size:clamp(22px,4vw,32px);margin-bottom:6px}
@@ -20,7 +21,7 @@ tr:last-child td{border-bottom:none}
 .card h2{font-size:16px;margin-bottom:8px}
 .dim{color:var(--dim);font-size:13.5px}
 code{background:#0f1319;padding:1px 5px;border-radius:4px;font-size:12.5px}
-@media(max-width:700px){table{font-size:12.5px}th,td{padding:7px 4px}}
+@media(max-width:700px){table{font-size:12px;min-width:560px}th,td{padding:7px 4px}.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px}}
 </style>
 </head>
 <body>
@@ -28,7 +29,7 @@ code{background:#0f1319;padding:1px 5px;border-radius:4px;font-size:12.5px}
 <h1>Character entries — readiness board</h1>
 <p class="lead">One page for the 09/11 decision. Every figure below was measured today with the same tool, on an explicitly defined set. Two days out, the useful question is not "which character is best" but "what can actually be submitted, and what breaks if it is".</p>
 
-<table>
+<div class="tw"><table>
 <tr><th>Entry</th><th>Faces / pairs</th><th>Median</th><th>Weakest</th><th>Motion</th><th>Status</th></tr>
 <tr><td><b>Roni</b></td><td>10 / 45</td><td class="ok">0.517</td><td class="ok">0.400</td><td class="ok">4 verified clips</td><td class="ok">READY</td></tr>
 <tr><td><b>Lea</b></td><td>11 / 55</td><td class="ok">0.565</td><td class="warn">0.359</td><td class="warn">clips exist, not in a canon set</td><td class="bad">INTERNAL by owner decision</td></tr>
@@ -36,7 +37,7 @@ code{background:#0f1319;padding:1px 5px;border-radius:4px;font-size:12.5px}
 <tr><td><b>Noa</b> (22/10)</td><td>3 / 3</td><td class="bad">0.282</td><td class="bad">0.194</td><td class="bad">none</td><td class="bad">insufficient evidence</td></tr>
 <tr><td><b>Layla</b></td><td>3 / 3</td><td class="bad">0.285</td><td class="bad">0.261</td><td class="bad">none</td><td class="bad">insufficient evidence</td></tr>
 <tr><td><b>Shira</b></td><td>0 / 0</td><td>—</td><td>—</td><td class="warn">21 clips in index</td><td class="bad">unmeasurable — no clothed set</td></tr>
-</table>
+</table></div>
 
 <div class="card">
 <h2>How to read the "weakest" column</h2>
