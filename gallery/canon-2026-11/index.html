@@ -233,7 +233,11 @@ python measure.py
     <div class="card"><div class="big">0.400</div><p class="dim">weakest pair inside the set (45 pairs)</p></div>
     <div class="card"><div class="big">0.221</div><p class="dim">strongest pair between two different characters (120 pairs)</p></div>
     <div class="card"><div class="big">0</div><p class="dim">pairs that overlap — zero</p></div>
-    <div class="card"><div class="big">0.179</div><p class="dim">margin between the two distributions</p></div>
+    <div class="card"><div class="big">0.179</div>  <figure>
+    <img src="media/separation.png" alt="Identity strip of both characters plus overlapping histograms showing zero overlap" width="100%">
+    <figcaption>Top: the ten submitted frames, then twelve frames of a different character through the same pipeline. Bottom: the two distributions. They do not touch.</figcaption>
+  </figure>
+<p class="dim">margin between the two distributions</p></div>
   </div>
   <p class="dim">This means the identity is <i>separable</i> on this tool: no frame of this character is closer to a stranger than to her own set. It does not mean the set is aesthetically good, only that it is measurably one person.</p>
   <p class="dim">Both distributions are in the verification bundle: <code>aligned/</code> (10 crops) and <code>aligned_ref/</code> (12 crops of a different character, used only for this test). Recompute the whole table with one command.</p>
