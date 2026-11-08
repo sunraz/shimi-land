@@ -1,0 +1,56 @@
+name: android-build
+on:
+  workflow_dispatch:
+    inputs:
+      versionName:
+        description: 'versionName'
+        default: '1.0'
+      versionCode:
+        description: 'versionCode'
+        default: '1'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+      - name: decode keystore
+        env:
+          UW_KEYSTORE_B64: ${{ secrets.UW_KEYSTORE_B64 }}
+        run: |
+          echo "$UW_KEYSTORE_B64" | base64 -d > "$RUNNER_TEMP/uw.p12"
+          ls -l "$RUNNER_TEMP/uw.p12"
+      - name: build apk
+        working-directory: android/uniwallet
+        env:
+          UW_KEYSTORE: ${{ runner.temp }}/uw.p12
+          UW_STORE_PASS: ${{ secrets.UW_STORE_PASS }}
+          UW_KEY_ALIAS: ${{ secrets.UW_KEY_ALIAS }}
+        run: |
+          gradle assembleRelease \
+            -PuwVersionName="${{ inputs.versionName }}" \
+            -PuwVersionCode="${{ inputs.versionCode }}" --no-daemon
+          ls -la app/build/outputs/apk/release/
+      - name: publish apk
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p out
+          cp android/uniwallet/app/build/outputs/apk/release/app-release.apk \
+             "out/UniWallet-${{ inputs.versionName }}.apk"
+          ls -la out
+          gh release create "uniwallet-v${{ inputs.versionName }}" out/*.apk \
+            --title "UniWallet ${{ inputs.versionName }}" \
+            --notes "UniWallet APK — תשלומים רב-מסלוליים, רשת שימי" \
+            --repo "$GITHUB_REPOSITORY" || \
+          gh release upload "uniwallet-v${{ inputs.versionName }}" out/*.apk --clobber --repo "$GITHUB_REPOSITORY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: UniWallet-apk
+          path: out/*.apk

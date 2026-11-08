@@ -1,0 +1,34 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'land.shimi.uniwallet'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "land.shimi.uniwallet"
+        minSdk 23
+        targetSdk 34
+        versionCode Integer.parseInt(project.findProperty("uwVersionCode") ?: "1")
+        versionName project.findProperty("uwVersionName") ?: "1.0"
+    }
+
+    signingConfigs {
+        release {
+            if (System.getenv("UW_KEYSTORE")) {
+                storeFile file(System.getenv("UW_KEYSTORE"))
+                storeType "PKCS12"
+                storePassword System.getenv("UW_STORE_PASS")
+                keyAlias System.getenv("UW_KEY_ALIAS")
+                keyPassword System.getenv("UW_STORE_PASS")
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            if (System.getenv("UW_KEYSTORE")) { signingConfig signingConfigs.release }
+        }
+    }
+    compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
+}
