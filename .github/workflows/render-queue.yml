@@ -21,6 +21,10 @@ jobs:
         env:
           RENDER_KEY: ${{ secrets.RENDER_KEY }}
         run: python scripts/render_queue_worker.py claim
+      - name: install engine deps
+        run: |
+          python -m pip install -q numpy
+          python -m pip install -q torch --index-url https://download.pytorch.org/whl/cpu
       - name: render
         env:
           RENDER_KEY: ${{ secrets.RENDER_KEY }}
