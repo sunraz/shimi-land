@@ -17,9 +17,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '17'
-      - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.7'
+      - name: gradle available
+        run: |
+          which gradle || echo "no system gradle"
+          gradle -v | head -5 || true
       - name: decode keystore
         env:
           UW_KEYSTORE_B64: ${{ secrets.UW_KEYSTORE_B64 }}
@@ -33,7 +34,7 @@ jobs:
           UW_STORE_PASS: ${{ secrets.UW_STORE_PASS }}
           UW_KEY_ALIAS: ${{ secrets.UW_KEY_ALIAS }}
         run: |
-          gradle assembleRelease \
+          gradle --no-daemon assembleRelease \
             -PuwVersionName="${{ inputs.versionName }}" \
             -PuwVersionCode="${{ inputs.versionCode }}" --no-daemon
           ls -la app/build/outputs/apk/release/
