@@ -1,72 +1,8 @@
-<!doctype html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>הארכיון של מיני-שימי</title>
-<style>
-  :root{--bg:#0b0e14;--card:#131826;--line:#232b3d;--txt:#e8ecf4;--dim:#8b96ad;--gold:#e8b84b;--green:#4ecb8f;--blue:#5aa2ff}
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--txt);font-family:'Segoe UI',Arial,sans-serif;padding:24px;max-width:900px;margin:0 auto}
-  h1{font-size:26px;margin-bottom:4px;color:var(--gold)}
-  .sub{color:var(--dim);font-size:13px;margin-bottom:14px}
-  .search{width:100%;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--txt);padding:12px 16px;font-size:15px;margin-bottom:18px}
-  .search:focus{outline:1px solid var(--gold)}
-  .toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:20px}
-  .toc .h{font-weight:700;color:var(--gold);margin-bottom:8px}
-  .toc a{color:var(--blue);text-decoration:none;font-size:14px;display:block;padding:3px 0}
-  .toc a:hover{text-decoration:underline}
-  .sess{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:14px}
-  .sess .head{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--dim);border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:10px}
-  .sess .head b{color:var(--gold)}
-  .exch{margin-bottom:12px}
-  .u{color:#dfe6f2;background:#1a2233;border-radius:10px 10px 10px 2px;padding:10px 14px;margin-bottom:6px;font-size:14px;line-height:1.5}
-  .a{color:#c7f2dd;background:#12261d;border-radius:10px 10px 2px 10px;padding:10px 14px;font-size:14px;line-height:1.5}
-  .who{font-size:11px;color:var(--dim);margin-bottom:3px}
-  .foot{margin-top:26px;color:var(--dim);font-size:12px;text-align:center}
-  .empty{color:var(--dim);text-align:center;padding:40px 0}
-</style>
-</head>
-<body>
-<h1>הארכיון של מיני-שימי</h1>
-<div class="sub">ההיסטוריה המלאה של כל שיחה שנעשתה עם מיני-שימי · דף רציף · מתעדכן חי ממסד הנתונים · <span id="sync"></span></div>
-<input class="search" id="q" placeholder="🔍 חיפוש חופשי בכל השיחות…" oninput="render()"/>
-<div class="toc" id="toc"></div>
-<div id="archive"></div>
-<div class="foot">ארכיון מיני-שימי · חלק מלוח הרשת של שימי · הרישום התחיל ב-13/10/2026 (v2.1 של הצ׳אט) · בנוי על ידי שימי פיתוח</div>
-<script>
-const API='https://xn--eebao6b.wtf/api/fn/netBoard.php?archive=mini_shimi';
-const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const when=s=>s?new Date(s).toLocaleString('he-IL'):'';
-let DATA={sessions:[],total:0};
-async function load(){
-  try{
-    const r=await fetch(API); const j=await r.json();
-    DATA={sessions:j.sessions||[],total:j.total_exchanges||0};
-    document.getElementById('sync').textContent='סונכרן '+when(j.synced_at)+' · '+DATA.total+' הודעות ב-'+DATA.sessions.length+' שיחות';
-    render();
-  }catch(e){document.getElementById('archive').innerHTML='<div class="empty">טעינה נכשלה: '+esc(e)+'</div>';}
-}
-function render(){
-  const q=(document.getElementById('q').value||'').trim().toLowerCase();
-  const sess=DATA.sessions.filter(s=>!q||JSON.stringify(s).toLowerCase().includes(q));
-  document.getElementById('toc').innerHTML=sess.length?
-    '<div class="h">תוכן עניינים ('+sess.length+' שיחות)</div>'+
-    sess.map((s,i)=>`<a href="#s${i}">${i+1}. ${esc(String(s.session_id).slice(0,18))} · ${when(s.started_at)} · ${s.exchanges.length} הודעות</a>`).join('')
-    :'<div class="h">אין שיחות'+(q?' התואמות לחיפוש':' עדיין — הארכיון נפתח היום ויתמלא כשידברו עם מיני-שימי')+'</div>';
-  document.getElementById('archive').innerHTML=sess.map((s,i)=>`
-    <div class="sess" id="s${i}">
-      <div class="head"><b>שיחה #${i+1}</b><span>${esc(s.session_id)}</span><span>${when(s.started_at)}</span>${s.page?`<span>עמוד: ${esc(s.page)}</span>`:''}<span>${s.exchanges.length} הודעות</span></div>
-      ${s.exchanges.map(x=>`
-        <div class="exch">
-          <div class="who">המשתמש · ${when(x.at)}</div>
-          <div class="u">${esc(x.user)}</div>
-          <div class="who">מיני-שימי</div>
-          <div class="a">${esc(x.shimi)}</div>
-        </div>`).join('')}
-    </div>`).join('')||'<div class="empty"></div>';
-}
-load(); setInterval(load,60000);
-</script>
-</body>
-</html>
+<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8">
+<title>ארכיון מיני-שימי — עבר לכתובת הקבועה</title>
+<link rel="canonical" href="https://shimi.land/agents/mini-shimi-archive.html">
+<meta http-equiv="refresh" content="0;url=https://shimi.land/agents/mini-shimi-archive.html">
+<script>location.replace("https://shimi.land/agents/mini-shimi-archive.html");</script>
+<style>body{background:#111216;color:#fff;font-family:system-ui,Arial;padding:40px 20px;text-align:center}a{color:#f7b955}</style>
+</head><body><p>ארכיון מיני-שימי עבר לכתובת הקבועה:</p>
+<p><a href="https://shimi.land/agents/mini-shimi-archive.html">https://shimi.land/agents/mini-shimi-archive.html</a></p></body></html>
