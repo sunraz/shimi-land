@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # רנדר לורה על GitHub Actions (CPU, bfloat16) — מנוע kohya-native
 # מופעל מ-workflow_dispatch. פרמטרים מגיעים ממשתני סביבה.
-import os, sys, math, random, re, json, subprocess, urllib.request
+import os, sys, math, random, re, json, time, subprocess, urllib.request
 import numpy as np
 import torch
 
@@ -26,9 +26,20 @@ os.makedirs(BASE, exist_ok=True)
 
 subprocess.run([sys.executable, "-m", "pip", "install", "-q", "ftfy","toml","einops","voluptuous","safetensors","transformers","accelerate","diffusers"], check=True)
 CKPT = os.path.join(BASE, "realvis.safetensors")
-if not os.path.exists(CKPT):
+def _fetch(url, dst, tries=6):
+    """curl with retries + resume: HF occasionally answers 504 on a 7GB pull."""
+    for i in range(1, tries + 1):
+        rc = subprocess.call(["curl", "-L", "--fail", "--retry", "4", "--retry-delay", "4",
+                              "--retry-all-errors", "-C", "-", "-sS", "-o", dst, url])
+        if rc == 0 and os.path.exists(dst) and os.path.getsize(dst) > 1024 * 1024:
+            return
+        print(f"הורדה נכשלה (ניסיון {i}/{tries}) rc={rc}, מנסה שוב...", flush=True)
+        time.sleep(5 * i)
+    raise RuntimeError("הורדת המודל נכשלה אחרי כל הניסיונות: " + url)
+
+if not os.path.exists(CKPT) or os.path.getsize(CKPT) < 1024 * 1024:
     print("מוריד מודל בסיס...", flush=True)
-    urllib.request.urlretrieve("https://huggingface.co/SG161222/RealVisXL_V5.0/resolve/main/RealVisXL_V5.0_fp16.safetensors", CKPT)
+    _fetch("https://huggingface.co/SG161222/RealVisXL_V5.0/resolve/main/RealVisXL_V5.0_fp16.safetensors", CKPT)
 LORA_PATH = os.path.join(BASE, f"{LORA}_lora.safetensors")
 if not os.path.exists(LORA_PATH):
     urllib.request.urlretrieve(LORA_URLS[LORA], LORA_PATH)
