@@ -19,7 +19,7 @@ def call(payload):
 
 
 def claim():
-    d = call({"action": "claim", "worker": "gh-actions", "limit": 2})
+    d = call({"action": "claim", "worker": "gh-actions", "limit": 1})
     jobs = d.get("jobs", [])
     json.dump(jobs, open(STATE, "w"))
     print("claimed", len(jobs))

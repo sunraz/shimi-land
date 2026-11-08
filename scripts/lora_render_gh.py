@@ -35,7 +35,9 @@ if not os.path.exists(LORA_PATH):
 print("לורה:", os.path.getsize(LORA_PATH), flush=True)
 
 # קוד kohya
-subprocess.run(["git","clone","--quiet","--depth","1","https://github.com/kohya-ss/sd-scripts", os.path.join(BASE,"sd-scripts")], check=True)
+_SD = os.path.join(BASE,"sd-scripts")
+if not os.path.isdir(_SD) or not os.listdir(_SD):
+    subprocess.run(["git","clone","--quiet","--depth","1","https://github.com/kohya-ss/sd-scripts", _SD], check=True)
 sys.path.insert(0, os.path.join(BASE,"sd-scripts"))
 from library import sdxl_model_util
 import networks.lora as lora
