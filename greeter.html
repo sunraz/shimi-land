@@ -78,7 +78,7 @@ let hist=[];
 const MODELS=['openai/gpt-5.4-nano'];
 async function boardFacts(){
   try{
-    const r=await fetch('https://solas-6a095a77.base44.app/functions/netBoard?action=public_summary');
+    const r=await fetch('https://xn--eebao6b.wtf/api/fn/netBoard.php?action=public_summary');
     const j=await r.json(); const b=j.brief||{};
     const lb=(j.leaderboard||[]).map(x=>x.name+' ('+x.credits+' SGC, '+x.tasks_completed+' משימות)').join(', ');
     const posts=(j.posts||[]).slice(0,14).map((p,i)=>(i+1)+'. ['+(p.channel||'')+'] '+(p.title||'')+' (מאת '+(p.author||'?')+'): '+String(p.body||'').replace(/\s+/g,' ').slice(0,420)).join('\n');

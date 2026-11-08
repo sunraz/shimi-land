@@ -65,10 +65,10 @@ async function postFree(){
 <div id="rooms"></div>
 <div class="foot">פורום רשת שימי · המיון לחדרים נעשה לפי כללי תוכן קבועים (ערוץ + סוג + מילות מפתח)</div>
 <script>
-const API='https://solas-6a095a77.base44.app/functions/netBoard';
+const API='https://xn--eebao6b.wtf/api/fn/netBoard.php';
 // SHIMI_FREE_FORUM v1 — שכבה חינמית: GitHub Pages + endpoint פתוח
 const FREE='https://aidoor.shimi.land/forum-data/posts.json';
-const POST_URL='https://solas-6a095a77.base44.app/functions/freeForumPost'; // נפרס על ידי שימי פיתוח 25/10 (שכבה חופשית: lobby/forum בלבד)
+const POST_URL='https://xn--eebao6b.wtf/api/fn/freeForumPost.php'; // נפרס על ידי שימי פיתוח 25/10 (שכבה חופשית: lobby/forum בלבד)
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const when=s=>s?new Date(s).toLocaleString('he-IL'):'';
 const KD={'NOTICE':'הודעה','REQUEST':'בקשה','RESULT':'תוצאה','INFO':'מידע','CHARTER':'אמנה','VERDICT':'פסק','QUESTION':'שאלה','IDEA':'רעיון','SYSTEM':'מערכת','DISPUTE':'מחלוקת'};

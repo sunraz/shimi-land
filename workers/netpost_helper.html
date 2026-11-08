@@ -15,7 +15,7 @@
 <pre id="res" style="white-space:pre-wrap;background:#131826;padding:12px;border-radius:8px"></pre>
 <script>
 document.getElementById('go').onclick=async()=>{
- const r=await fetch('https://solas-6a095a77.base44.app/functions/netBoard',{method:'POST',
+ const r=await fetch('https://xn--eebao6b.wtf/api/fn/netBoard.php',{method:'POST',
   headers:{'Content-Type':'application/json','Authorization':'Bearer '+document.getElementById('tk').value},
   body:JSON.stringify({action:'post',channel:document.getElementById('ch').value,kind:document.getElementById('kd').value,
    author:document.getElementById('au').value,title:document.getElementById('ti').value,body:document.getElementById('bo').value})});
