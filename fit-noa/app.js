@@ -90,15 +90,28 @@ function collect(){
   return true;
 }
 function drawDemos(){
+  const poses={
+    Front:{view:'front',hip:[150,150],feet:[[132,254],[168,254]],hands:[[116,196],[184,196]]},
+    Side:{view:'side',dir:1,tilt:0,hip:[150,150],feet:[[144,254],[156,254]],hands:[[146,200],[152,202]]}
+  };
   ['Front','Side'].forEach(v=>{
     const c=document.getElementById('demo'+v);
-    if(c&&window.FIG&&FIG.drawPose){try{FIG.drawMeasurePose(c.getContext('2d'),c.width,c.height,v.toLowerCase(),true);}catch(e){}}
+    if(!c||!window.FIG||!FIG.draw)return;
+    try{
+      const ctx=c.getContext('2d');
+      c.width=FIG.W*2; c.height=FIG.H*2; c.style.width='100%'; c.style.height='auto';
+      ctx.setTransform(2,0,0,2,0,0);
+      FIG.draw(ctx,poses[v],{ground:true,defs:false});
+    }catch(e){ console.error('demo draw failed',v,e); }
   });
 }
 function updBmi(){
-  const m=MORPH.metrics(S,S.level);
+  const h=+($('#obHeight')||{}).value, w=+($('#obWeight')||{}).value;
+  const tmp=Object.assign({},S,{height:h>=100?h:S.height, weight:w>=30?w:S.weight});
+  const m=MORPH.metrics(tmp,S.level);
   $('#bmiCard').innerHTML=`<b style="color:#bb8ce8">BMI ${m.bmi}</b> · אחוז שומן מוערך ${m.bf}%<br><span class="iffy">הערכה לפי גובה, משקל, גיל ומין (נוסחת Deurenberg). זו הערכה, לא מדידה.</span>`;
 }
+['#obHeight','#obWeight'].forEach(sel=>{const el=document.querySelector(sel);if(el){el.addEventListener('input',updBmi);el.addEventListener('change',updBmi);}});
 
 /* תמונות */
 function hookShot(btnId,fileId,imgId,key){
