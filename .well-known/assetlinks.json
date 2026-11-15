@@ -1,0 +1,14 @@
+[
+ {
+  "relation": [
+   "delegate_permission/common.handle_all_urls"
+  ],
+  "target": {
+   "namespace": "android_app",
+   "package_name": "land.shimi.fitnoa",
+   "sha256_cert_fingerprints": [
+    "BB:0E:82:31:73:D4:9C:92:34:56:9C:92:1D:B2:5C:2F:08:75:FB:A6:57:11:BA:27:24:A0:4F:96:F5:8F:D8:77"
+   ]
+  }
+ }
+]
