@@ -1,1 +1,1 @@
-window.PHOTO_OK=["glute_bridge", "rdl", "bulgarian", "kickback", "step_up", "lunge", "sumo_squat", "lateral_walk", "squat_pulse"];
+window.PHOTO_OK=["step_up", "lunge", "squat_pulse", "sumo_squat", "rdl", "glute_bridge", "hip_thrust", "bulgarian", "kickback", "lateral_walk", "donkey_kick", "good_morning", "abduction", "single_rdl"];

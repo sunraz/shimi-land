@@ -750,7 +750,7 @@ function setPhoto(id){
   _photoHas=true; PHOTO_ON=true;
   im.onload = function(){ if(PHOTO_ON) stage.classList.add('photo'); };
   im.onerror = function(){ _photoHas=false; PHOTO_ON=false; stage.classList.remove('photo'); _paintBtn(); };
-  im.src = 'coach/ex/' + id + '.jpg?v=4';
+  im.src = 'coach/ex/' + id + '.jpg?v=5';
   stage.classList.add('photo');
   _paintBtn();
 }
