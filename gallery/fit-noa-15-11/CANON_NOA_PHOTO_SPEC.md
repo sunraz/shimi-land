@@ -23,3 +23,9 @@ Light grey studio wall, soft daylight, sharp photo.
 * הריצה הבאה: photo_runner.py עם הפרומפט שלמעלה, פריים לכל תרגיל, אחד-אחד עם בדיקה.
 
 נוצר על ידי קודה — גורם לא רשמי בסטודיו שימי
+
+## עדכון 15/11 20:15 — הושלם
+* כל 14 התרגילים רונדרו ב-v3 דרך ספייס Rapid-AIO (Qwen-Image-Edit, 4 צעדים, 7-15 שניות לתמונה, ZeroGPU חינמי).
+* התמונות חיות באפליקציה: https://aidoor.shimi.land/fit-noa/ (כפתור 📷 מחליף בין תמונה להנפשת המנוע).
+* גיליון כל התרגילים: https://aidoor.shimi.land/gallery/fit-noa-15-11/noa_photos_v3_sheet.png
+* לכל תמונה יש פרומפט מדויק באותה תיקייה, והכל נרשם ב-history-index.json.
