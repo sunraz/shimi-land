@@ -2,6 +2,33 @@
  "items": [
   {
    "date": "2026-11-15",
+   "type": "app",
+   "title": "שימי פיט · נועה — APK חתום 1.0",
+   "url": "https://aidoor.shimi.land/fit-noa/downloads/ShimiFit-Noa-1.0.apk",
+   "note": "package land.shimi.fitnoa, TWA, signed SHA256 BB:0E:82:31…8F:D8:77; AAB לצד זה"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "app",
+   "title": "פרופיל התקנה לאייפון (מתוקן, מצביע על fit-noa)",
+   "url": "https://aidoor.shimi.land/fit-noa/shimi-fit-noa.mobileconfig",
+   "note": "הפרופיל הקודם הצביע על /fit/ הישן"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "app",
+   "title": "עמוד התקנה חדש + באנר התקנה באפליקציה",
+   "url": "https://aidoor.shimi.land/fit-noa/install/",
+   "note": "install_prompt.js?v=1"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "app",
+   "title": "assetlinks.json ל-TWA",
+   "url": "https://aidoor.shimi.land/.well-known/assetlinks.json"
+  },
+  {
+   "date": "2026-11-15",
    "type": "image",
    "title": "נועה — lunge v3 (לבוש סגול, פס חמישית)",
    "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_lunge_photo_v3.png",
