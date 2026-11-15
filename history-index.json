@@ -1,6 +1,6 @@
 {
  "version": "2026-11-06-canon-motion",
- "count": 1548,
+ "count": 1554,
  "items": [
   {
    "url": "https://aidoor.shimi.land/gallery/lea-koda-22-10/20261022_lea_final_back.png",
@@ -10300,6 +10300,42 @@
    "char": "נועה",
    "folder": "fit-noa-15-11/poses",
    "title": "פריים מנוע תנועה · sumo_squat_1.png"
+  },
+  {
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/noa_photos_v1_sheet.png",
+   "char": "נועה",
+   "folder": "fit-noa-15-11",
+   "title": "נועה · סבב תמונות v1 (נפסל: חזייה+גוף כבד)"
+  },
+  {
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos_prompt_v1.md",
+   "char": "נועה",
+   "folder": "fit-noa-15-11",
+   "title": "פרומפט סבב v1 · מתועד כנפסל"
+  },
+  {
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/CANON_NOA_PHOTO_SPEC.md",
+   "char": "נועה",
+   "folder": "fit-noa-15-11",
+   "title": "מפרט קאנון נעול · פס חמישית + ברזילאי, גוף רזה"
+  },
+  {
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/lunge.png",
+   "char": "נועה",
+   "folder": "fit-noa-15-11/photos",
+   "title": "נועה · lunge (v1, נפסל)"
+  },
+  {
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/squat_pulse.png",
+   "char": "נועה",
+   "folder": "fit-noa-15-11/photos",
+   "title": "נועה · squat_pulse (v1, נפסל)"
+  },
+  {
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/sumo_squat.png",
+   "char": "נועה",
+   "folder": "fit-noa-15-11/photos",
+   "title": "נועה · sumo_squat (v1, נפסל)"
   }
  ],
  "videos_count": 101
