@@ -1,7 +1,14 @@
 {
- "version": "2026-11-06-canon-motion",
- "count": 1554,
  "items": [
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — תמונת צעד על מדרגה v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_step_up_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_step_up_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "route: 4 steps, 9s GPU, fits free ZeroGPU quota"
+  },
   {
    "url": "https://aidoor.shimi.land/gallery/lea-koda-22-10/20261022_lea_final_back.png",
    "char": "לאה",
@@ -10337,6 +10344,5 @@
    "folder": "fit-noa-15-11/photos",
    "title": "נועה · sumo_squat (v1, נפסל)"
   }
- ],
- "videos_count": 101
+ ]
 }
