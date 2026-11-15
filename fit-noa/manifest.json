@@ -1,0 +1,15 @@
+{
+  "name": "שימי פיט · אימוני ישבן",
+  "short_name": "שימי פיט · נועה",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0c11",
+  "theme_color": "#0a0c11",
+  "lang": "he",
+  "dir": "rtl",
+  "icons": [
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

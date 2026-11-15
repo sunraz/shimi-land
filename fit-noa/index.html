@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0b0d12">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="שימי פיט">
+<title>שימי פיט · נועה · אימוני ישבן חכמים</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<!-- ===== ONBOARDING ===== -->
+<div id="onboard" class="screen">
+  <div class="ob-top">
+    <div class="brand"><span class="dot"></span> שימי פיט</div>
+    <div class="steps"><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+
+  <section class="ob-step" data-step="1">
+    <h1>בוא נכיר</h1>
+    <p class="lede">תוכנית אימונים אישית לישבן, שנבנית סביב הגוף שלך, הזמן שלך והתוצאה שתרצה לראות.</p>
+    <label class="fld"><span>איך קוראים לך</span><input id="obName" type="text" placeholder="השם שלך" autocomplete="given-name"></label>
+    <div class="fld"><span>מין</span>
+      <div class="seg" id="obSex">
+        <button data-v="m" class="on">גבר</button><button data-v="f">אישה</button>
+      </div>
+    </div>
+    <div class="dual">
+      <label class="fld"><span>גיל</span><input id="obAge" type="number" inputmode="numeric" placeholder="30"></label>
+      <label class="fld"><span>ניסיון באימונים</span>
+        <select id="obExp">
+          <option value="0">מתחיל לגמרי</option>
+          <option value="1">התאמנתי בעבר</option>
+          <option value="2">מתאמן/ת קבוע/ה</option>
+        </select>
+      </label>
+    </div>
+    <button class="cta" data-next>הלאה</button>
+  </section>
+
+  <section class="ob-step hide" data-step="2">
+    <h1>המידות שלך</h1>
+    <p class="lede">גובה ומשקל קובעים את העומסים והתזונה. את היקף המותן והירכיים אני מעריך מהתמונות בשלב הבא, אז אין צורך למדוד בסרט.</p>
+    <div class="row2">
+      <label class="fld"><span>גובה (ס״מ)</span><input id="obHeight" type="number" inputmode="numeric" placeholder="170"></label>
+      <label class="fld"><span>משקל (ק״ג)</span><input id="obWeight" type="number" inputmode="numeric" placeholder="65"></label>
+    </div>
+    <div class="card soft" id="bmiCard"></div>
+    <div class="iffy" style="margin:6px 0 10px">מותן וירכיים ימולאו אוטומטית מהצילום. אם יש לך מדידה מדויקת, אפשר להזין ידנית בהמשך.</div>
+    <input id="obWaist" type="hidden"><input id="obHip" type="hidden">
+    <button class="cta" data-next>הבא: צילום</button>
+    <button class="ghost" data-prev>חזרה</button>
+  </section>
+
+  <section class="ob-step hide" data-step="3">
+    <h1>תצלם את עצמך</h1>
+    <p class="lede">שתי תמונות: חזית וצד (מצלמה או גלריה), בגוף מלא, לבוש צמוד, רקע פשוט. מהתמונות אני מודד את מבנה הגוף ובונה את ההדמיה האישית שלך.</p>
+    <div class="howto">
+      <div class="howto-t">שתי תמונות, שני רגעים של דקה. נועה מדגימה בדיוק איך.</div>
+      <div class="howto-g">
+        <figure><canvas id="demoFront" width="300" height="400"></canvas><figcaption><b>1 · חזית</b><br>עומדים זקוף, ידיים קצת מהצדדים, רגליים ברוחב אגן, מבט למצלמה</figcaption></figure>
+        <figure><canvas id="demoSide" width="300" height="400"></canvas><figcaption><b>2 · צד</b><br>זקוף, ידיים לאורך הגוף (לא מול הבטן), מבט קדימה. צד ימין למצלמה</figcaption></figure>
+      </div>
+      <ol class="howto-l">
+        <li>גוף מלא, מהראש עד כפות הרגליים, בתוך המסגרת. הטלפון מונח אנכית.</li>
+        <li>לבוש צמוד (בגד ספורט או בגד ים), בלי בגדים רחבים, בלי מעיל.</li>
+        <li>רקע אחיד ובהיר (קיר), בלי חפצים וצמחים מאחור.</li>
+        <li>מרחק כ-2.5 מטר, הטלפון בגובה האגן, ישר ולא מוטה. עדיף שמישהו יצלם.</li>
+        <li>אור מלפנים, בלי צל חזק. נשימה רגילה, בלי לנפח או לכווץ את הבטן.</li>
+      </ol>
+    </div>
+    <div class="shots">
+      <button class="shot" id="shotFront">
+        <div class="ph"><img id="imgFront" alt=""></div>
+        <span>חזית</span>
+      </button>
+      <button class="shot" id="shotSide">
+        <div class="ph"><img id="imgSide" alt=""></div>
+        <span>צד</span>
+      </button>
+    </div>
+    <input id="fileFront" type="file" accept="image/*" hidden>
+    <input id="fileSide" type="file" accept="image/*" hidden>
+    <div class="card soft" id="scanCard">אחרי שתעלה חזית וצד, אעריך כאן את היקף המותן, הירכיים וה-BMI.</div>
+    <button class="cta" data-next>המשך</button>
+    <button class="ghost" data-prev>חזרה</button>
+    <button class="ghost tiny" id="skipPhotos">לדלג בלי תמונות</button>
+  </section>
+
+  <section class="ob-step hide" data-step="4">
+    <h1>לאן תרצה להגיע</h1>
+    <p class="lede">גרור את הסליידר. התמונה שלך משתנה בזמן אמת, וזה בדיוק מה שהתוכנית תייצר.</p>
+    <div class="morphwrap">
+      <canvas id="sliderCanvas"></canvas>
+      <div class="morph-badge" id="morphBadge">—</div>
+    </div>
+    <input id="goalSlider" class="slider" type="range" min="1" max="4" step="0.05" value="2">
+    <div class="tiers" id="tierLabels">
+      <span>1 · רך</span><span>2 · טונוס</span><span>3 · חד</span><span>4 · מקצועי</span>
+    </div>
+    <div class="card" id="goalCard"></div>
+    <div id="prefOnboard"></div>
+    <button class="cta" data-next>זה היעד שלי</button>
+    <button class="ghost" data-prev>חזרה</button>
+  </section>
+
+  <section class="ob-step hide" data-step="5">
+    <h1>התוכנית שלך מוכנה</h1>
+    <p class="lede" id="readyLede"></p>
+    <div class="card" id="readyCard"></div>
+    <button class="cta" id="startApp">כניסה לאפליקציה</button>
+  </section>
+</div>
+
+<!-- ===== MAIN APP ===== -->
+<div id="app" class="screen hide">
+  <header class="hdr">
+    <div>
+      <div class="hi">שלום <span id="hUserName"></span></div>
+      <div class="sub" id="hSub">—</div>
+    </div>
+    <div class="livechip" id="liveChip"><span class="pulse"></span><span id="liveTxt">משדר</span></div>
+  </header>
+
+  <main id="view"></main>
+
+  <nav class="tabs">
+    <button data-tab="today" class="on"><i>●</i><span>היום</span></button>
+    <button data-tab="plan"><i>▤</i><span>תוכנית</span></button>
+    <button data-tab="progress"><i>◐</i><span>התקדמות</span></button>
+    <button data-tab="despair"><i>◆</i><span>ייאוש</span></button>
+    <button data-tab="settings"><i>⚙</i><span>הגדרות</span></button>
+  </nav>
+</div>
+
+<!-- ===== PLAYER ===== -->
+<div id="player" class="overlay hide">
+  <div class="pl-top">
+    <button class="x" id="plClose">✕</button>
+    <div class="pl-title">
+      <div id="plName">—</div>
+      <div class="sub" id="plStep">—</div>
+    </div>
+    <button class="x" id="plMode">📷</button>
+    <button class="x" id="plVoice">🔊</button>
+  </div>
+
+  <div class="pl-stage">
+    <img id="plPhoto" alt="">
+    <canvas id="demoCanvas"></canvas>
+    <div id="plTension" style="margin:8px auto 0;max-width:320px;display:flex;align-items:center;gap:10px;direction:rtl">
+      <div style="flex:1;height:8px;border-radius:6px;background:rgba(255,255,255,.10);overflow:hidden">
+        <div id="plTensionFill" style="height:100%;width:0%;background:linear-gradient(90deg,#e88c3c,#bb8ce8);transition:width .08s linear"></div>
+      </div>
+      <span id="plTensionTxt" style="font-size:12px;color:#bb8ce8;min-width:74px">שחרור מלא</span>
+    </div>
+    <div class="frames" id="frameStrip"></div>
+    <div class="cue" id="plCue"></div>
+<div id="plMuscle"></div>
+  </div>
+
+  <div class="pl-mid">
+    <div class="ring">
+      <svg viewBox="0 0 120 120"><circle class="bg" cx="60" cy="60" r="52"/><circle class="fg" id="ringFg" cx="60" cy="60" r="52"/></svg>
+      <div class="ring-txt"><div id="ringMain">0</div><div class="sub" id="ringSub">חזרות</div></div>
+    </div>
+    <div class="pl-info">
+      <div class="row"><span>סט</span><b id="plSet">1 / 3</b></div>
+      <div class="row"><span>מנוחה</span><b id="plRest">45″</b></div>
+      <div class="row"><span>הערה</span><b id="plHint">—</b></div>
+    </div>
+  </div>
+
+  <div class="pl-actions">
+    <button class="big ghost" id="plPrev">הקודם</button>
+    <button class="big cta" id="plDone">סיים סט</button>
+    <button class="big ghost" id="plNext">דלג</button>
+  </div>
+  <div class="pl-reps hide" id="repPad">
+    <button data-rep="-1">−</button>
+    <div><b id="repCount">0</b><span class="sub"> / <span id="repGoal">12</span></span></div>
+    <button data-rep="1">+</button>
+  </div>
+</div>
+
+<!-- ===== REST / SUMMARY ===== -->
+<div id="summary" class="overlay hide">
+  <div class="sum-card">
+    <div class="trophy">✓</div>
+    <h2 id="sumTitle">סיימת</h2>
+    <div class="sum-grid" id="sumGrid"></div>
+    <button class="cta" id="sumClose">חזרה</button>
+  </div>
+</div>
+
+<div id="toast" class="toast hide"></div>
+
+<script src="fig.js?v=7"></script>
+<script src="data.js?v=3"></script>
+<script src="poses.js?v=3"></script>
+<script src="morph.js?v=9"></script>
+<script src="muscles.js?v=2"></script>
+<script src="musclecard.js?v=4"></script>
+<script src="musclelayer.js?v=1"></script>
+<script>
+/* תמונות אמת שאומתו ויזואלית פר תרגיל (תנוחה נכונה + אנטומיה תקינה + לבוש קנוני) */
+window.PHOTO_OK = ['step_up','lunge','sumo_squat','squat_pulse','single_rdl','glute_bridge','rdl','bulgarian','kickback','lateral_walk'];
+</script>
+<script src="photo_ok.js?v=1"></script>
+<script src="app.js?v=7"></script>
+</body>
+</html>

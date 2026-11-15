@@ -1,0 +1,93 @@
+/* שימי פיט · פוזות v3 — נכתבו מחדש לשלד החדש (עוגנים + IK)
+   כל פוזה: hip או sa (כתף נעוצה), tilt, feet (קרסוליים), hands (שורשי כף יד), prop */
+(function(){
+if(!window.DATA||!window.DATA.EX)return;
+const P={
+hip_thrust:[
+ {dir:-1,tilt:46,sa:[196,194],feet:[[100,254],[108,254]],hands:[[152,224],[160,228]],headTilt:-6,
+  prop:'bench+mat+bar',benchX:178,benchY:194,barAt:'hip',arrow:[156,236,156,208]},
+ {dir:-1,tilt:84,sa:[196,194],feet:[[100,254],[108,254]],hands:[[140,196],[148,200]],headTilt:-10,
+  prop:'bench+mat+bar',benchX:178,benchY:194,barAt:'hip',arrow:[150,206,150,180]}
+],
+glute_bridge:[
+ {dir:-1,tilt:96,sa:[194,243],feet:[[116,254],[124,254]],hands:[[152,246],[160,248]],headTilt:-4,
+  prop:'mat',arrow:[150,240,150,220]},
+ {dir:-1,tilt:124,sa:[194,243],feet:[[112,254],[120,254]],hands:[[150,244],[158,246]],headTilt:-8,
+  prop:'mat',arrow:[156,216,156,194]}
+],
+rdl:[
+ {dir:1,tilt:6,hip:[150,158],feet:[[146,254],[156,254]],hands:[[160,160],[168,164]],
+  prop:'dumbbell',arrow:[178,164,182,206]},
+ {dir:1,tilt:104,hip:[142,166],feet:[[146,254],[156,254]],hands:[[186,228],[194,230]],
+  prop:'dumbbell',arrow:[206,176,210,222]}
+],
+bulgarian:[
+ {dir:1,tilt:8,hip:[150,160],feet:[[220,192],[150,254]],bends:[1,-1],hands:[[150,168],[158,172]],
+  prop:'bench',benchX:206,benchY:200,arrow:[150,178,150,206]},
+ {dir:1,tilt:14,hip:[148,198],feet:[[224,192],[152,254]],bends:[1,-1],hands:[[146,206],[154,210]],
+  prop:'bench',benchX:206,benchY:200,arrow:[150,216,150,244]}
+],
+kickback:[
+ {dir:-1,tilt:92,hip:[158,206],feet:[[108,254],[104,254]],bends:['down','down'],
+  hands:[[208,250],[216,252]],prop:'mat',arrow:[118,242,96,214]},
+ {dir:-1,tilt:92,hip:[158,206],feet:[[108,254],[72,198]],bends:['down',-1],
+  hands:[[208,250],[216,252]],prop:'mat',arrow:[112,232,84,190]}
+],
+donkey_kick:[
+ {dir:-1,tilt:92,hip:[158,206],feet:[[108,254],[106,254]],bends:['down','down'],
+  hands:[[208,250],[216,252]],prop:'mat',arrow:[110,240,96,206]},
+ {dir:-1,tilt:92,hip:[158,206],feet:[[108,254],[92,198]],bends:['down','down'],
+  hands:[[208,250],[216,252]],prop:'mat',arrow:[104,232,92,182]}
+],
+step_up:[
+ {dir:1,tilt:16,hip:[150,208],feet:[[150,254],[214,200]],hands:[[160,212],[168,216]],
+  prop:'step',benchX:196,benchY:206,arrow:[188,238,188,210]},
+ {dir:1,tilt:6,hip:[150,164],feet:[[152,254],[214,200]],hands:[[156,168],[164,172]],
+  prop:'step',benchX:196,benchY:206,arrow:[188,198,188,170]}
+],
+lunge:[
+ {dir:1,tilt:4,hip:[150,158],feet:[[186,254],[122,254]],hands:[[158,158],[166,162]],
+  prop:'dumbbell',arrow:[150,176,150,204]},
+ {dir:1,tilt:8,hip:[150,196],feet:[[190,254],[118,254]],hands:[[158,196],[166,200]],
+  prop:'dumbbell',arrow:[150,214,150,242]}
+],
+good_morning:[
+ {dir:1,tilt:8,hip:[150,158],feet:[[146,254],[156,254]],hands:[[150,118],[158,122]],
+  prop:'bar',barAt:'sh',arrow:[204,140,208,182]},
+ {dir:1,tilt:100,hip:[146,170],feet:[[146,254],[156,254]],hands:[[184,182],[192,186]],
+  prop:'bar',barAt:'sh',arrow:[214,180,216,218]}
+],
+sumo_squat:[
+ {view:'front',hip:[150,162],feet:[[118,254],[182,254]],hands:[[120,216],[180,216]],prop:'dumbbell',
+  arrow:[150,180,150,206]},
+ {view:'front',hip:[150,204],feet:[[108,254],[192,254]],hands:[[128,248],[172,248]],prop:'dumbbell',
+  arrow:[150,216,150,244]}
+],
+abduction:[
+ {view:'front',hip:[150,168],feet:[[132,254],[168,254]],hands:[[124,198],[176,198]],prop:'band',
+  band:[[134,216],[166,216]],arrow:[180,214,206,214]},
+ {view:'front',hip:[150,168],feet:[[110,254],[190,254]],hands:[[124,198],[176,198]],prop:'band',
+  band:[[112,216],[188,216]],arrow:[196,214,220,214]}
+],
+lateral_walk:[
+ {view:'front',hip:[150,166],feet:[[130,254],[170,254]],hands:[[128,204],[172,204]],prop:'band',
+  band:[[132,218],[168,218]],arrow:[190,190,214,190]},
+ {view:'front',hip:[156,168],feet:[[110,254],[186,254]],hands:[[134,206],[178,206]],prop:'band',
+  band:[[112,218],[184,218]],arrow:[198,190,222,190]}
+],
+squat_pulse:[
+ {view:'front',hip:[150,178],feet:[[124,254],[176,254]],hands:[[120,214],[180,214]],
+  arrow:[150,192,150,206]},
+ {view:'front',hip:[150,192],feet:[[120,254],[180,254]],hands:[[118,222],[182,222]],
+  arrow:[150,206,150,228]}
+],
+single_rdl:[
+ {dir:1,tilt:4,hip:[150,158],feet:[[148,254],[140,250]],hands:[[158,160],[166,164]],
+  prop:'dumbbell',arrow:[196,168,212,206]},
+ {dir:1,tilt:78,hip:[150,158],feet:[[152,254],[78,118]],hands:[[178,200],[186,204]],
+  prop:'dumbbell',arrow:[212,150,232,186]}
+]
+};
+window.DATA.EX.forEach(function(e){if(P[e.id])e.frames=P[e.id];});
+window.FIT_POSES=P;
+})();

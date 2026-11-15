@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>שימי פיט · כל ההנפשות</title>
+<style>
+:root{--bg:#0a0d12;--card:#121821;--line:#1f2833;--txt:#eef2f7;--dim:#8b95a7;--gold:#bb8ce8}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(1000px 600px at 50% -10%,#151d29,#080b10 60%) fixed #080b10;color:var(--txt);
+ font-family:-apple-system,"SF Hebrew","Heebo",system-ui,sans-serif;padding:14px 12px 40px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:4px}
+h1{font-size:19px;font-weight:800;letter-spacing:-.3px}
+a{color:var(--dim);font-size:12.5px;text-decoration:none}
+.sub{color:var(--dim);font-size:12.5px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:15px;overflow:hidden;position:relative}
+canvas{display:block;width:100%;height:auto}
+.meta{padding:8px 10px 10px}
+.n{font-size:10.5px;color:var(--gold);font-weight:800;letter-spacing:.4px}
+.t{font-size:13.5px;font-weight:700;margin-top:1px;line-height:1.25}
+.s{font-size:11px;color:var(--dim);margin-top:2px}
+.bar{position:absolute;top:8px;left:8px;display:flex;gap:6px}
+button.b{background:rgba(10,13,18,.72);border:1px solid var(--line);color:#c9d3e0;border-radius:9px;
+ font-size:11px;padding:5px 8px;font-family:inherit}
+.ctrl{display:flex;gap:8px;margin:0 0 12px;align-items:center;flex-wrap:wrap}
+.ctrl button{background:#151c26;border:1px solid var(--line);color:#c9d3e0;border-radius:10px;padding:8px 12px;font-size:12.5px;font-family:inherit}
+.ctrl button.on{background:rgba(187,140,232,.15);border-color:rgba(187,140,232,.5);color:#f7d98a}
+</style>
+</head>
+<body>
+<header><h1>כל 14 ההנפשות · נועה</h1><a href="../">חזרה לאפליקציה ›</a></header>
+<div class="sub">הדמות בלבוש הקנוני, כל התרגילים בתנועה חיה. לחיצה על כרטיס עוצרת ומראה פריים.</div>
+<div class="ctrl">
+  <button id="allPlay" class="on">▶ הכול בתנועה</button>
+  <button id="slow">🐢 איטי</button>
+  <button id="arrows" class="on">↕ חצים</button>
+  <a href="../" style="margin-inline-start:auto">לאפליקציה ›</a>
+</div>
+<div class="grid" id="grid"></div>
+<script src="../fig.js?v=4"></script>
+<script src="../data.js?v=3"></script>
+<script src="../poses.js?v=3"></script>
+<script>
+const grid=document.getElementById('grid');
+let playing=true, speed=0.32, showArrows=true;
+const items=DATA.EX.map((ex,i)=>{
+  const card=document.createElement('div'); card.className='card';
+  const cv=document.createElement('canvas');
+  cv.width=FIG.W; cv.height=FIG.H;
+  const meta=document.createElement('div'); meta.className='meta';
+  meta.innerHTML=`<div class="n">תרגיל ${i+1}</div><div class="t">${ex.name}</div><div class="s">${ex.sub||''}</div>`;
+  card.appendChild(cv); card.appendChild(meta);
+  grid.appendChild(card);
+  card.addEventListener('click',()=>{ it.paused=!it.paused; });
+  return {ex,ctx:cv.getContext('2d'),phase:i*0.13,paused:false};
+});
+let last=0;
+function loop(t){
+  const dt=Math.min(0.05,(t-last)/1000||0); last=t;
+  items.forEach(it=>{
+    if(!it.paused && playing) it.phase=(it.phase+dt*speed)%1;
+    const p=FIG.phasePose(it.ex.frames,it.phase);
+    p.view=it.ex.view||'side';
+    FIG.draw(it.ctx,p,{arrow:showArrows,ground:true});
+  });
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+document.getElementById('allPlay').onclick=(e)=>{playing=!playing;
+  e.target.classList.toggle('on',playing);
+  e.target.textContent=playing?'▶ הכול בתנועה':'❚❚ עצור הכול';};
+document.getElementById('slow').onclick=(e)=>{speed=speed===0.32?0.12:0.32;
+  e.target.classList.toggle('on',speed===0.12);
+  e.target.textContent=speed===0.12?'🐇 רגיל':'🐢 איטי';};
+document.getElementById('arrows').onclick=(e)=>{showArrows=!showArrows;
+  e.target.classList.toggle('on',showArrows);};
+</script>
+</body>
+</html>
