@@ -3,6 +3,130 @@
   {
    "date": "2026-11-15",
    "type": "image",
+   "title": "נועה — lunge v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_lunge_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_lunge_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — squat_pulse v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_squat_pulse_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_squat_pulse_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — sumo_squat v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_sumo_squat_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_sumo_squat_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — rdl v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_rdl_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_rdl_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — glute_bridge v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_glute_bridge_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_glute_bridge_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — hip_thrust v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_hip_thrust_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_hip_thrust_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — bulgarian v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_bulgarian_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_bulgarian_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — kickback v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_kickback_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_kickback_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — lateral_walk v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_lateral_walk_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_lateral_walk_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — donkey_kick v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_donkey_kick_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_donkey_kick_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — good_morning v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_good_morning_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_good_morning_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — abduction v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_abduction_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_abduction_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — single_rdl v3 (לבוש סגול, פס חמישית)",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_single_rdl_photo_v3.png",
+   "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_single_rdl_photo_v3_prompt.md",
+   "engine": "Qwen-Image-Edit Rapid-AIO (HF Space)",
+   "note": "free ZeroGPU route, 7-15s per image"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
+   "title": "נועה — גיליון 14 התרגילים v3",
+   "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/noa_photos_v3_sheet.png",
+   "engine": "contact sheet"
+  },
+  {
+   "date": "2026-11-15",
+   "type": "image",
    "title": "נועה — תמונת צעד על מדרגה v3 (לבוש סגול, פס חמישית)",
    "url": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_step_up_photo_v3.png",
    "prompt": "https://aidoor.shimi.land/gallery/fit-noa-15-11/photos/noa_step_up_photo_v3_prompt.md",
