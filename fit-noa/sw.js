@@ -1,4 +1,4 @@
-const CACHE = 'shimifit-noa-v3';
+const CACHE = 'shimifit-noa-v4';
 const ASSETS = ['./', './index.html', './style.css', './app.js', './data.js', './poses.js', './fig.js', './morph.js', './manifest.json'];
 const NET_FIRST = /\.(js|css|html)$|\/$/;
 
