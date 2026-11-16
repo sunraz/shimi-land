@@ -720,7 +720,11 @@ $('#sumClose').onclick=()=>{$('#summary').classList.add('hide');go('today');};
 
 /* ---------- האתחול ---------- */
 window.addEventListener('load',()=>{
-  if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{});}
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.update();});}).catch(function(){});
+    navigator.serviceWorker.register('sw.js?v=5').then(function(r){r.update();}).catch(()=>{});
+    var _rl=false;navigator.serviceWorker.addEventListener('controllerchange',function(){if(_rl)return;_rl=true;location.reload();});
+  }
   if(S.started){
     $('#onboard').classList.add('hide');$('#app').classList.remove('hide');
     if(!S.plan)buildPlan();
@@ -753,6 +757,7 @@ function setPhoto(id){
   im.src = 'coach/ex/' + id + '.jpg?v=5';
   stage.classList.add('photo');
   _paintBtn();
+  buildStages(id);
 }
 (function(){
   var b = document.getElementById('plMode');
@@ -765,3 +770,33 @@ function setPhoto(id){
     _paintBtn();
   };
 })();
+
+/* ===== שלבי התרגיל: התחלה, אמצע, סוף ===== */
+var STAGE_LBL=['התחלה','אמצע','סוף'];
+function buildStages(id){
+  var box=document.getElementById('stageStrip'); if(!box) return;
+  box.innerHTML='';
+  var list=[[id+'_a'],[id+'_b'],[id]];
+  list.forEach(function(pair,i){
+    var src='coach/ex/'+pair[0]+'.jpg?v=1';
+    var im=new Image();
+    im.onload=function(){
+      im.className = (i===2)?'on':'';
+      im.setAttribute('data-src',src);
+      var wrap=document.createElement('div');
+      wrap.style.cssText='flex:1;width:0';
+      wrap.appendChild(im);
+      var l=document.createElement('div');l.className='lbl';l.textContent=STAGE_LBL[i];wrap.appendChild(l);
+      im.onclick=function(){
+        var st=document.querySelector('.pl-stage'); if(!st) return;
+        var main=document.getElementById('plPhoto'); if(!main) return;
+        main.src=src; PHOTO_ON=true; st.classList.add('photo'); _paintBtn();
+        Array.prototype.forEach.call(box.querySelectorAll('img'),function(o){o.classList.remove('on');});
+        im.classList.add('on');
+      };
+      box.appendChild(wrap);
+    };
+    im.onerror=function(){};
+    im.src=src;
+  });
+}
