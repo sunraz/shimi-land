@@ -1,6 +1,6 @@
-const CACHE = 'shimifit-noa-v5';
+const CACHE = 'shimifit-noa-v6';
 const ASSETS = ['./', './index.html', './style.css', './app.js', './data.js', './poses.js', './fig.js', './morph.js', './manifest.json'];
-const NET_FIRST = /\.(js|css|html)$|\/$/;
+const NET_FIRST = /\.(js|css|html|jpg|jpeg|png|webp)$|\/$/;
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting()));
