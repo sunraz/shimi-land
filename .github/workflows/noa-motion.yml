@@ -22,7 +22,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -q gradio_client
+      - run: pip install -q gradio_client pillow
       - name: Render Noa clips
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -118,5 +118,76 @@ jobs:
                                           "tree": t["sha"], "parents": [head]})
           gh("PATCH", "/git/refs/heads/main", {"sha": c["sha"]})
           print("committed", c["sha"], "clips", len(done))
+
+          # ---- assemble labeled reel when all clips exist ----
+          try:
+              import glob, subprocess
+              have = sorted(glob.glob(os.path.join(OUT, "*.mp4")))
+              if len(have) == len(JOBS):
+                  from PIL import Image, ImageDraw, ImageFont
+                  W, H = 896, 832
+                  FB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+                  FR = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+
+                  def ctext(d, xy, txt, font, fill, rtl=True):
+                      try:
+                          d.text(xy, txt, font=font, fill=fill, direction="rtl" if rtl else None, anchor="ra")
+                      except TypeError:
+                          d.text(xy, txt, font=font, fill=fill)
+
+                  def card(lines, path):
+                      im = Image.new("RGB", (W, H), (12, 16, 23)); d = ImageDraw.Draw(im)
+                      y = H // 2 - len(lines) * 45
+                      for txt, size, col in lines:
+                          f = ImageFont.truetype(FB if size > 30 else FR, size)
+                          try:
+                              b = d.textbbox((0, 0), txt, font=f, direction="rtl")
+                          except TypeError:
+                              b = d.textbbox((0, 0), txt, font=f)
+                          d.text(((W - (b[2] - b[0])) // 2, y), txt, font=f, fill=col,
+                                 direction="rtl") if size > 30 else d.text(((W - (b[2] - b[0])) // 2, y), txt, font=f, fill=col)
+                          y += (b[3] - b[1]) + 34
+                      im.save(path)
+
+                  card([("שימי פיט", 28, (160, 170, 185)), ("נו\u05e2ה · תנועה אמיתית", 52, (245, 245, 250)),
+                        ("14 תרגילי ישבן", 38, (187, 140, 232))], os.path.join(OUT, "c_intro.png"))
+                  card([("נוצר על ידי קודה", 38, (235, 235, 242)),
+                        ("גורם לא רשמי בסטודיו שימי", 26, (170, 175, 190))], os.path.join(OUT, "c_outro.png"))
+                  parts = []
+                  for i, j in enumerate(JOBS, 1):
+                      ov = Image.new("RGBA", (W, H), (0, 0, 0, 0)); d = ImageDraw.Draw(ov)
+                      d.rectangle([0, H - 120, W, H], fill=(10, 13, 19, 210))
+                      ctext(d, (W - 40, H - 98), j["heb"], ImageFont.truetype(FB, 46), (245, 245, 250))
+                      d.text((40, H - 88), "%d/%d" % (i, len(JOBS)), font=ImageFont.truetype(FR, 26), fill=(150, 158, 172))
+                      cap = os.path.join(OUT, "cap_%d.png" % i); ov.save(cap)
+                      lab = os.path.join(OUT, "lbl_%d.mp4" % i)
+                      subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", os.path.join(OUT, j["name"] + ".mp4"),
+                                      "-i", cap, "-filter_complex",
+                                      "[0:v]scale=%d:%d:force_original_aspect_ratio=increase,crop=%d:%d,fps=25[v];[v][1:v]overlay=0:0[o]" % (W, H, W, H),
+                                      "-map", "[o]", "-c:v", "libx264", "-preset", "medium", "-crf", "20",
+                                      "-pix_fmt", "yuv420p", lab], check=True)
+                      parts.append(lab)
+                  lst = os.path.join(OUT, "reel.txt")
+                  with open(lst, "w") as fh:
+                      fh.write("file '%s'\nduration 2.5\n" % os.path.join(OUT, "c_intro.png"))
+                      for p2 in parts:
+                          fh.write("file '%s'\nduration 5.0\n" % p2)
+                      fh.write("file '%s'\nduration 3.0\n" % os.path.join(OUT, "c_outro.png"))
+                      fh.write("file '%s'\n" % os.path.join(OUT, "c_outro.png"))
+                  reel = os.path.join(OUT, "noa_14_motion_reel.mp4")
+                  subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", lst,
+                                  "-vf", "fps=25,format=yuv420p", "-c:v", "libx264", "-preset", "medium",
+                                  "-crf", "20", "-movflags", "+faststart", reel], check=True)
+                  rb = gh("POST", "/git/blobs", {"content": base64.b64encode(open(reel, "rb").read()).decode(), "encoding": "base64"})
+                  rpath = "gallery/videos/fit-noa/noa_14_motion_reel.mp4"
+                  ref2 = gh("GET", "/git/ref/heads/main")
+                  head2 = ref2["object"]["sha"]
+                  tree2 = gh("GET", "/git/commits/" + head2)["tree"]["sha"]
+                  t2 = gh("POST", "/git/trees", {"base_tree": tree2, "tree": [{"path": rpath, "mode": "100644", "type": "blob", "sha": rb["sha"]}]})
+                  c2 = gh("POST", "/git/commits", {"message": "Noa motion reel (14 real-motion clips)", "tree": t2["sha"], "parents": [head2]})
+                  gh("PATCH", "/git/refs/heads/main", {"sha": c2["sha"]})
+                  print("reel committed", os.path.getsize(reel))
+          except Exception as e:
+              print("assemble skipped:", str(e)[:200])
           PYEOF
           python /tmp/r.py
