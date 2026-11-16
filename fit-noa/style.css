@@ -119,6 +119,11 @@ input:focus,select:focus{border-color:#3a465c;background:#121722}
 #demoCanvas{width:100%;display:block;aspect-ratio:1/0.95}
 #plPhoto{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;z-index:1;background:#080a0e}
 .pl-stage.photo #plPhoto{display:block}
+#plVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:none;z-index:2;background:#080a0e}
+.pl-stage.video #plVideo{display:block}
+.pl-stage.video #plPhoto{display:none}
+.pl-stage.video #demoCanvas{opacity:0}
+.pl-stage.video .frames{display:none}
 .pl-stage.photo #demoCanvas{opacity:0}
 .pl-stage.photo .frames{display:none}
 .frames{position:absolute;top:8px;inset-inline-start:8px;display:flex;gap:5px}

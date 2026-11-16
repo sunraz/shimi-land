@@ -747,16 +747,29 @@ function _paintBtn(){
 }
 function setPhoto(id){
   var im = document.getElementById('plPhoto');
+  var vid = document.getElementById('plVideo');
   var stage = document.querySelector('.pl-stage');
   if(!im || !stage) return;
   stage.classList.remove('photo');
+  stage.classList.remove('video');
+  if(vid){ try{ vid.pause(); }catch(e){} }
   if(!_photoOk(id)){ _photoHas=false; PHOTO_ON=false; im.removeAttribute('src'); _paintBtn(); return; }
   _photoHas=true; PHOTO_ON=true;
-  im.onload = function(){ if(PHOTO_ON) stage.classList.add('photo'); };
-  im.onerror = function(){ _photoHas=false; PHOTO_ON=false; stage.classList.remove('photo'); _paintBtn(); };
+  im.onload = function(){ if(PHOTO_ON && !stage.classList.contains('video')) stage.classList.add('photo'); };
+  im.onerror = function(){ _photoHas=false; _paintBtn(); };
   im.src = 'coach/ex/' + id + '.jpg?v=5';
-  stage.classList.add('photo');
   _paintBtn();
+  if(vid){
+    if(vid.getAttribute('data-id') !== id){
+      vid.setAttribute('data-id', id);
+      vid.src = 'coach/motion/' + id + '.mp4';
+      vid.loop = true; vid.muted = true; vid.playsInline = true;
+    }
+    stage.classList.add('video');
+    var pr = vid.play(); if(pr && pr.catch) pr.catch(function(){});
+  } else {
+    stage.classList.add('photo');
+  }
   buildStages(id);
 }
 (function(){
@@ -765,8 +778,20 @@ function setPhoto(id){
   b.onclick = function(){
     if(!_photoHas) return;
     var stage = document.querySelector('.pl-stage');
+    var vid = document.getElementById('plVideo');
+    if(!stage) return;
+    if(stage.classList.contains('video')){
+      stage.classList.remove('video'); stage.classList.remove('photo');
+      if(vid){ try{ vid.pause(); }catch(e){} }
+      PHOTO_ON = false; _paintBtn(); return;
+    }
+    if(vid){
+      stage.classList.add('video'); stage.classList.remove('photo');
+      var pr = vid.play(); if(pr && pr.catch) pr.catch(function(){});
+      PHOTO_ON = true; _paintBtn(); return;
+    }
     PHOTO_ON = !PHOTO_ON;
-    if(stage) stage.classList.toggle('photo', PHOTO_ON);
+    stage.classList.toggle('photo', PHOTO_ON);
     _paintBtn();
   };
 })();
