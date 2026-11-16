@@ -10,8 +10,6 @@ on:
         description: seconds per clip
         required: false
         default: "3"
-  schedule:
-    - cron: '10 0 * * *'
 jobs:
   render:
     runs-on: ubuntu-latest
